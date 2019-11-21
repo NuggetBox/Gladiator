@@ -4,7 +4,7 @@
 int main()
 {
 	App tempApp;
-	sf::RenderWindow window(sf::VideoMode(1280, 1024), "DeepDive");				  //Här sätter vi storleken och namnet på vårt fönster.
+	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Gladiator");				  //Här sätter vi storleken och namnet på vårt fönster.
 
 	sf::Clock tempClock;														  //Här skapar vi en klocka, denna kommer användas för Delta Time.
 	sf::Time tempDelta;															  //Här skapar vi en Time, detta är den som kommer ge oss delta time.
