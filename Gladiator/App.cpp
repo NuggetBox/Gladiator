@@ -2,7 +2,7 @@
 
 App::App()
 {
-	myTexture.loadFromFile("Circle_White.png");			  //Här laddar vi in texturen, notera att om texturen inte är en medlem så kommer den tas bort ur minnet och vi kommer endast se en vit fyrkant.
+	myTexture.loadFromFile("ball.png");			  //Här laddar vi in texturen, notera att om texturen inte är en medlem så kommer den tas bort ur minnet och vi kommer endast se en vit fyrkant.
 	myPlayer.Init(myTexture);							  //Vi andänder Init för att vi måste ladda texturen innan vi skickar in den till spelaren.
 }
 
