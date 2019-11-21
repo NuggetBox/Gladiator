@@ -9,6 +9,7 @@ App::App()
 
 App::~App()
 {
+
 }
 
 bool App::Update(const float& someDelta)
