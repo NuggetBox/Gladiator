@@ -2,13 +2,13 @@
 
 Player::Player()
 {
-
-
+	mySpeed = 250;
 }
 
 
 Player::~Player()
 {
+
 }
 
 void Player::Init(const sf::Texture& aTexture)
@@ -17,13 +17,10 @@ void Player::Init(const sf::Texture& aTexture)
 	//mySprite.setTextureRect(sf::IntRect(0, 0, 64, 64));			//Denna används om vi endast vill visa en del av texturen, eller om vi t.ex. vill animera den
 	mySprite.setColor(sf::Color(255, 255, 255, 200));				//Här sätter vi färgen
 	mySprite.setPosition(100, 25);									//Och här sätter vi positionen
-
-	mySpeed = 250;
 }
 
 bool Player::Update(const float& someDelta)							//Delta Time kommer in från App-klassen.
 {
-
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))				//Här kollar vi spelarens input, om spelaren trycker A så kommer vi flytta vår sprite i X-led.
 	{
 		mySprite.move(-mySpeed * someDelta, 0);
@@ -41,7 +38,6 @@ bool Player::Update(const float& someDelta)							//Delta Time kommer in från Ap
 	{
 		mySprite.move(0, mySpeed * someDelta);
 	}
-
 
 	return true;
 }
