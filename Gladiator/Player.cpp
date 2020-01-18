@@ -25,7 +25,8 @@ bool Player::Update(const float& someDelta)							//Delta Time kommer in från Ap
 	{
 		mySprite.move(-mySpeed * someDelta, 0);
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		mySprite.move(mySpeed * someDelta, 0);
 	}
@@ -34,7 +35,8 @@ bool Player::Update(const float& someDelta)							//Delta Time kommer in från Ap
 	{
 		mySprite.move(0, -mySpeed * someDelta);						//Och här flyttar vi i Y-led istället.
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 		mySprite.move(0, mySpeed * someDelta);
 	}
