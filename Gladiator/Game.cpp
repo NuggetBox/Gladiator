@@ -14,7 +14,9 @@ Game::~Game()
 
 bool Game::Update(const float& someDelta)
 {
-	return myPlayer.Update(someDelta);
+	myPlayer.Update(someDelta);
+
+	return true;
 }
 
 void Game::Draw(sf::RenderWindow& aWindow)
