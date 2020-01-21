@@ -9,6 +9,7 @@ class Appearance
 public:
 	Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin, sf::Color aColor);
 	Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin, sf::Color aColor, Animation anAnimation);
+	Appearance();
 	~Appearance();
 
 	void Update(const float& someDelta);

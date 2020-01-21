@@ -11,9 +11,10 @@ public:
 
 	bool Update(const float& someDelta);
 	void Draw(sf::RenderWindow& aWindow);
+
 private:
-	Player myPlayer;
-	sf::Texture myTexture;
+	std::vector<GameObject*> myGameObjects;
+
 };
 
 #endif

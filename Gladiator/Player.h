@@ -2,8 +2,9 @@
 #define PLAYER_HEADER
 
 #include <SFML/Graphics.hpp>
+#include "GameObject.h"
 
-class Player
+class Player : public GameObject
 {
 public:
 	Player();

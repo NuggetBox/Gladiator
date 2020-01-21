@@ -1,8 +1,7 @@
 #ifndef GAMEOBJECT_HEADER
 #define GAMEOBJECT_HEADER
 
-#include <SFML/Graphics.hpp>
-#include "Vector2.h"
+#include "Appearance.h"
 
 class GameObject
 {
@@ -10,13 +9,14 @@ public:
 	GameObject();
 	virtual ~GameObject();
 
-	virtual void Update() = 0;
+	virtual void Update(const float& someDelta);
 
-	virtual void Draw();
+	virtual void Draw(sf::RenderWindow& aWindow);
 
 protected:
-	Vector2 myPosition;
 
+	Appearance myAppearance;
+	Vector2 myPosition;
 };
 
 #endif

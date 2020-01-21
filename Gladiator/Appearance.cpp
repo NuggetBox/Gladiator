@@ -22,9 +22,15 @@ Appearance::Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Ve
 	myAnimation = anAnimation;
 }
 
+Appearance::Appearance()
+{
+	mySprite = sf::Sprite();
+	myAnimation = Animation();
+}
+
 Appearance::~Appearance()
 {
-
+	
 }
 
 void Appearance::Update(const float& someDelta)
