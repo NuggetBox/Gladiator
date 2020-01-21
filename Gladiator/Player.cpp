@@ -19,13 +19,14 @@ void Player::Init(const sf::Texture& aTexture)
 	mySprite.setPosition(100, 25);									//Och här sätter vi positionen
 }
 
-bool Player::Update(const float& someDelta)							//Delta Time kommer in från App-klassen.
+void Player::Update(const float& someDelta)							//Delta Time kommer in från App-klassen.
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))				//Här kollar vi spelarens input, om spelaren trycker A så kommer vi flytta vår sprite i X-led.
 	{
 		mySprite.move(-mySpeed * someDelta, 0);
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		mySprite.move(mySpeed * someDelta, 0);
 	}
@@ -34,12 +35,11 @@ bool Player::Update(const float& someDelta)							//Delta Time kommer in från Ap
 	{
 		mySprite.move(0, -mySpeed * someDelta);						//Och här flyttar vi i Y-led istället.
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 		mySprite.move(0, mySpeed * someDelta);
 	}
-
-	return true;
 }
 
 void Player::Draw(sf::RenderWindow& aWindow)

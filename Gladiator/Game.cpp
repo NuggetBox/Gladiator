@@ -1,23 +1,25 @@
-#include "App.h"
+#include "Game.h"
 
-App::App()
+Game::Game()
 {
 	myTexture.loadFromFile("Agent.png");			  //Här laddar vi in texturen, notera att om texturen inte är en medlem så kommer den tas bort ur minnet och vi kommer endast se en vit fyrkant.
 	myPlayer.Init(myTexture);							  //Vi andänder Init för att vi måste ladda texturen innan vi skickar in den till spelaren.
 }
 
 
-App::~App()
+Game::~Game()
 {
 
 }
 
-bool App::Update(const float& someDelta)
+bool Game::Update(const float& someDelta)
 {
-	return myPlayer.Update(someDelta);
+	myPlayer.Update(someDelta);
+
+	return true;
 }
 
-void App::Draw(sf::RenderWindow& aWindow)
+void Game::Draw(sf::RenderWindow& aWindow)
 {
 	myPlayer.Draw(aWindow);
 }

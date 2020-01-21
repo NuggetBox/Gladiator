@@ -1,13 +1,22 @@
-#pragma once
-#include "SFML/Graphics.hpp"
+#ifndef GAMEOBJECT_HEADER
+#define GAMEOBJECT_HEADER
+
+#include <SFML/Graphics.hpp>
+#include "Vector2.h"
+
 class GameObject
 {
 public:
-	sf::Vector2f Position;
-	virtual void Update();
-	virtual void Draw();
-
 	GameObject();
 	virtual ~GameObject();
+
+	virtual void Update() = 0;
+
+	virtual void Draw();
+
+protected:
+	Vector2 myPosition;
+
 };
 
+#endif

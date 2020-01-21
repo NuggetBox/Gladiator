@@ -1,9 +1,9 @@
 #include <SFML/Graphics.hpp>
-#include "App.h"
+#include "Game.h"
 
 int main()
 {
-	App tempApp;
+	Game tempGame;
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Gladiator");				  //Här sätter vi storleken och namnet på vårt fönster.
 
 	sf::Clock tempClock;														  //Här skapar vi en klocka, denna kommer användas för Delta Time.
@@ -20,14 +20,14 @@ int main()
 				window.close();
 		}
 
-		if (tempApp.Update(tempDelta.asSeconds()) == false)						  //Här uppdaterar vi vår App och skickar in Delta Time som sekunder.
+		if (tempGame.Update(tempDelta.asSeconds()) == false)						  //Här uppdaterar vi vår App och skickar in Delta Time som sekunder.
 		{
 			return 0;
 		}
 
 		window.clear();
 
-		tempApp.Draw(window);													  //Här skickar vi in vår RenderWindow som kommer rita ut spelaren.
+		tempGame.Draw(window);													  //Här skickar vi in vår RenderWindow som kommer rita ut spelaren.
 
 		window.display();
 	}

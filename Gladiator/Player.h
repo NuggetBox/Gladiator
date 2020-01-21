@@ -11,7 +11,7 @@ public:
 
 	void Init(const sf::Texture& aTexture);
 
-	bool Update(const float& someDelta);
+	void Update(const float& someDelta);
 	void Draw(sf::RenderWindow& aWindow);
 private:
 	sf::Sprite mySprite;
