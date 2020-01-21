@@ -5,6 +5,7 @@
 
 class Boss : public Enemy
 {
+
 	Boss();
 	~Boss();
 };
