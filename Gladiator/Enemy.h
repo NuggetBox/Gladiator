@@ -1,5 +1,5 @@
-#ifndef Enemy_HEADER
-#define Enemy_HEADER
+#ifndef ENEMY_HEADER
+#define ENEMY_HEADER
 
 #include "GameObject.h"
 

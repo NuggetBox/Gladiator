@@ -20,7 +20,7 @@ Animation::Animation()
 
 Animation::~Animation()
 {
-	/// ?????
+	
 }
 
 void Animation::Update(const float& someDelta)

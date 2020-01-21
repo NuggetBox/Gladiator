@@ -7,8 +7,8 @@
 class Appearance
 {
 public:
-	Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin, sf::Color aColor);
-	Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin, sf::Color aColor, Animation anAnimation);
+	Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin);
+	Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin, Animation anAnimation);
 	Appearance();
 	~Appearance();
 
@@ -18,7 +18,11 @@ public:
 	void SetRotation(float aRotation);
 	void SetScale(Vector2 aScale);
 	void SetOrigin(Vector2 anOrigin);
-	void SetColor(sf::Color aColor);
+
+	sf::Texture GetTexture();
+	float GetRotation();
+	Vector2 GetScale();
+	Vector2 GetOrigin();
 
 	void SetAnimation(Animation anAnimation);
 	void PlayAnimationOnce();
@@ -27,10 +31,11 @@ public:
 	void PlayAnimationOnLoop(Animation anAnimation);
 	void StopAnimation();
 
-	sf::Sprite GetSprite();
-
 private:
-	sf::Sprite mySprite;
+	sf::Texture myTexture;
+	float myRotation;
+	Vector2 myScale;
+	Vector2 myOrigin;
 	Animation myAnimation;
 };
 

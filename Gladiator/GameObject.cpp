@@ -18,7 +18,12 @@ void GameObject::Update(const float& someDelta)
 
 void GameObject::Draw(sf::RenderWindow& aWindow)
 {
-	sf::Sprite tempSprite = myAppearance.GetSprite();
+	sf::Sprite tempSprite;
+	sf::Texture tempTexture = myAppearance.GetTexture();
+	tempSprite.setTexture(tempTexture);
+	tempSprite.setRotation(myAppearance.GetRotation());
+	tempSprite.setOrigin(myAppearance.GetOrigin().x, myAppearance.GetOrigin().y);
+	tempSprite.setScale(myAppearance.GetScale().x, myAppearance.GetScale().y);
 	tempSprite.setPosition(myPosition.x, myPosition.y);
 	aWindow.draw(tempSprite);
 }

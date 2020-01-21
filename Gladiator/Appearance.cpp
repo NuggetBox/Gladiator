@@ -1,30 +1,25 @@
 #include "Appearance.h"
 
-Appearance::Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin, sf::Color aColor)
+Appearance::Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin)
 {
-	mySprite.setTexture(aTexture);
-	mySprite.setRotation(aRotation);
-	mySprite.setScale(aScale.x, aScale.y);
-	mySprite.setOrigin(anOrigin.x, anOrigin.y);
-	mySprite.setColor(aColor);
-	mySprite.setPosition(0, 0);
-	myAnimation = Animation({ aTexture }, 0.1f);
+	myTexture = aTexture;
+	myRotation = aRotation;
+	myScale = aScale;
+	myOrigin = anOrigin;
+	myAnimation = Animation();
 }
 
-Appearance::Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin, sf::Color aColor, Animation anAnimation)
+Appearance::Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin, Animation anAnimation)
 {
-	mySprite.setTexture(aTexture);
-	mySprite.setRotation(aRotation);
-	mySprite.setScale(aScale.x, aScale.y);
-	mySprite.setOrigin(anOrigin.x, anOrigin.y);
-	mySprite.setColor(aColor);
-	mySprite.setPosition(0, 0);
+	myTexture = aTexture;
+	myRotation = aRotation;
+	myScale = aScale;
+	myOrigin = anOrigin;
 	myAnimation = anAnimation;
 }
 
 Appearance::Appearance()
 {
-	mySprite = sf::Sprite();
 	myAnimation = Animation();
 }
 
@@ -40,28 +35,55 @@ void Appearance::Update(const float& someDelta)
 
 void Appearance::SetTexture(sf::Texture aTexture)
 {
-	mySprite.setTexture(aTexture);
+	myTexture = aTexture;
 }
 
 void Appearance::SetRotation(float aRotation)
 {
-	mySprite.setRotation(aRotation);
+	myRotation = aRotation;
 }
 
 void Appearance::SetScale(Vector2 aScale)
 {
-	mySprite.setScale(aScale.x, aScale.y);
+	myScale = aScale;
 }
 
-void Appearance::SetOrigin(Vector2 aScale)
+void Appearance::SetOrigin(Vector2 anOrigin)
 {
-	mySprite.setOrigin(aScale.x, aScale.y);
+	myOrigin = anOrigin;
 }
 
-void Appearance::SetColor(sf::Color aColor)
+
+
+
+sf::Texture Appearance::GetTexture()
 {
-	mySprite.setColor(aColor);
+	if (myAnimation.GetIsPlaying())
+	{
+		return myAnimation.GetCurrentTexture();
+	}
+
+	return myTexture;
 }
+
+float Appearance::GetRotation()
+{
+	return myRotation;
+}
+
+Vector2 Appearance::GetScale()
+{
+	return myScale;
+}
+
+Vector2 Appearance::GetOrigin()
+{
+	return myOrigin;
+}
+
+
+
+
 
 void Appearance::SetAnimation(Animation anAnimation)
 {
@@ -95,18 +117,4 @@ void Appearance::PlayAnimationOnLoop(Animation anAnimation)
 void Appearance::StopAnimation()
 {
 	myAnimation.Stop();
-}
-
-sf::Sprite Appearance::GetSprite()
-{
-	if (myAnimation.GetIsPlaying())
-	{
-		sf::Sprite tempSprite = mySprite;
-
-		tempSprite.setTexture(myAnimation.GetCurrentTexture());
-
-		return tempSprite;
-	}
-
-	return mySprite;
 }
