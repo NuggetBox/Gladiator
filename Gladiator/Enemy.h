@@ -5,4 +5,3 @@ class Enemy : public GameObject
 	Enemy();
 	~Enemy();
 };
-
