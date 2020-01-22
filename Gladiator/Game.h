@@ -1,19 +1,20 @@
-#ifndef APP_HEADER
-#define APP_HEADER
+#ifndef GAME_HEADER
+#define GAME_HEADER
 
 #include "Player.h"
 
-class App
+class Game
 {
 public:
-	App();
-	~App();
+	Game();
+	~Game();
 
 	bool Update(const float& someDelta);
 	void Draw(sf::RenderWindow& aWindow);
+
 private:
-	Player myPlayer;
-	sf::Texture myTexture;
+	std::vector<GameObject*> myGameObjects;
+
 };
 
 #endif

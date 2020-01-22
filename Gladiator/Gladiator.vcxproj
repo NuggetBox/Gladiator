@@ -139,7 +139,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="App.cpp" />
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Appearance.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -148,7 +150,9 @@
     <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="App.h" />
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="Appearance.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Boss.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameObject.h" />

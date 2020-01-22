@@ -1,55 +1,62 @@
 #include "Player.h"
-#include "Vector2.h"
 
 Player::Player()
 {
 	mySpeed = 250;
-}
+	mySwordSwingSpeed = 0.2f;
 
+	sf::Texture tempTexture;
+	tempTexture.loadFromFile("Textures/NoArmor_NoHelmet_NoSword.png");
+	myNoArmorNoHelmetNoSword = tempTexture;
+	tempTexture.loadFromFile("Textures/NoArmor_NoHelmet_BasicSword.png");
+	myNoArmorNoHelmetBasicSword = tempTexture;
+
+	sf::Texture tempSwing1;
+	sf::Texture tempSwing2;
+	sf::Texture tempSwing3;
+	tempSwing1.loadFromFile("Textures/NoArmor_NoHelmet_BasicSword_Swing1.png");
+	tempSwing2.loadFromFile("Textures/NoArmor_NoHelmet_BasicSword_Swing2.png");
+	tempSwing3.loadFromFile("Textures/NoArmor_NoHelmet_BasicSword_Swing3.png");
+	mySwingNoArmorNoHelmetBasicSword = Animation({ tempSwing1, tempSwing2, tempSwing3 }, mySwordSwingSpeed);
+
+	myAppearance = Appearance(myNoArmorNoHelmetBasicSword, 0, { 5, 5 }, { 0.5f * myNoArmorNoHelmetBasicSword.getSize().x, 0.5f * myNoArmorNoHelmetBasicSword.getSize().y });
+}
 
 Player::~Player()
 {
 
 }
 
-void Player::Init(const sf::Texture& aTexture)
+void Player::Update(const float& someDelta)
 {
-	mySprite.setTexture(aTexture);									//Här sätter vi texturen till vår Sprite
-	//mySprite.setTextureRect(sf::IntRect(0, 0, 64, 64));			//Denna används om vi endast vill visa en del av texturen, eller om vi t.ex. vill animera den
-	mySprite.setColor(sf::Color(255, 255, 255, 200));				//Här sätter vi färgen
-	mySprite.setPosition(100, 25);									//Och här sätter vi positionen
-}
-
-bool Player::Update(const float& someDelta)							//Delta Time kommer in från App-klassen.
-{
-	Vector2 tempMove = Vector2(0, 0);
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))				//Här kollar vi spelarens input, om spelaren trycker A så kommer vi flytta vår sprite i X-led.
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		tempMove += Vector2(-mySpeed * someDelta, 0);
-		mySprite.move(-mySpeed * someDelta, 0);
+		myPosition += Vector2(-mySpeed * someDelta, 0);
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		tempMove += Vector2(mySpeed * someDelta, 0);
-		mySprite.move(mySpeed * someDelta, 0);
+		myPosition += Vector2(mySpeed * someDelta, 0);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		tempMove += Vector2(0, -mySpeed * someDelta);
-		mySprite.move(0, -mySpeed * someDelta);						//Och här flyttar vi i Y-led istället.
+		myPosition += Vector2(0, -mySpeed * someDelta);
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		tempMove += Vector2(0, mySpeed * someDelta);
-		mySprite.move(0, mySpeed * someDelta);
+		myPosition += Vector2(0, mySpeed * someDelta);
 	}
 
-	return true;
-}
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	{
+		myAppearance.PlayAnimationOnce(mySwingNoArmorNoHelmetBasicSword);
+	}
 
-void Player::Draw(sf::RenderWindow& aWindow)
-{
-	aWindow.draw(mySprite);											//Här ritar vi ut vår sprite, notera att det är en referens som vi tar emot.
+	Vector2 tempMousePos = Vector2(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y);
+	Vector2 tempPlayerToMouse = tempMousePos - myPosition;
+	myAppearance.SetRotation(90 + atan2(tempPlayerToMouse.y, tempPlayerToMouse.x) * 180 / M_PI);
+
+	myAppearance.Update(someDelta);
 }
