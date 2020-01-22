@@ -1,6 +1,7 @@
 #ifndef GAME_HEADER
 #define GAME_HEADER
 
+#include "GameInfo.h"
 #include "Player.h"
 
 class Game
@@ -15,6 +16,7 @@ public:
 private:
 	std::vector<GameObject*> myGameObjects;
 
+	std::vector<GameObject*> SortByLayer(std::vector<GameObject*> someGameObjects);
 };
 
 #endif

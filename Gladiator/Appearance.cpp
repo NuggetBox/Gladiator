@@ -7,7 +7,7 @@ Appearance::Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Ve
 	myScale = aScale;
 	myOrigin = anOrigin;
 	myColor = { 255,255,255,255 };
-	myIntRect = sf::IntRect( 0, 0, aTexture.getSize().x, aTexture.getSize().y );
+	myTextureRect = sf::IntRect( 0, 0, aTexture.getSize().x, aTexture.getSize().y );
 	myAnimation = Animation();
 }
 
@@ -18,13 +18,14 @@ Appearance::Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Ve
 	myScale = aScale;
 	myOrigin = anOrigin;
 	myColor = { 255,255,255,255 };
-	myIntRect = sf::IntRect(0, 0, aTexture.getSize().x, aTexture.getSize().y);
+	myTextureRect = sf::IntRect(0, 0, aTexture.getSize().x, aTexture.getSize().y);
 	myAnimation = anAnimation;
 }
 
 Appearance::Appearance()
 {
 	myAnimation = Animation();
+	myColor = { 255,255,255,255 };
 }
 
 Appearance::~Appearance()
@@ -36,6 +37,23 @@ void Appearance::Update(const float& someDelta)
 {
 	myAnimation.Update(someDelta);
 }
+
+void Appearance::Draw(sf::RenderWindow& aWindow, Vector2 aPosition)
+{
+	sf::Sprite tempSprite;
+	sf::Texture tempTexture = GetTexture();
+	tempSprite.setTexture(tempTexture);
+	tempSprite.setRotation(myRotation);
+	tempSprite.setOrigin(myOrigin.x, myOrigin.y);
+	tempSprite.setScale(myScale.x, myScale.y);
+	tempSprite.setPosition(aPosition.x, aPosition.y);
+	tempSprite.setColor(myColor);
+	tempSprite.setTextureRect(GetTextureRect());
+	aWindow.draw(tempSprite);
+}
+
+
+
 
 void Appearance::SetTexture(sf::Texture aTexture)
 {
@@ -64,7 +82,7 @@ void Appearance::SetColor(sf::Color aColor)
 
 void Appearance::SetTextureRect(sf::IntRect anIntRect)
 {
-	myIntRect = anIntRect;
+	myTextureRect = anIntRect;
 }
 
 
@@ -107,7 +125,7 @@ sf::IntRect Appearance::GetTextureRect()
 		return myAnimation.GetCurrentTextureRect();
 	}
 
-	return myIntRect;
+	return myTextureRect;
 }
 
 

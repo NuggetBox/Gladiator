@@ -2,7 +2,6 @@
 #define ANIMATION_HEADER
 
 #include <SFML/Graphics.hpp>
-#include <vector>
 
 class Animation
 {

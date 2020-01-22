@@ -1,8 +1,17 @@
 #include "GameObject.h"
 
+GameObject::GameObject(Vector2 aPosition, sf::Texture aTexture, float aRotation, float aScale, int aLayer)
+{
+	myPosition = aPosition;
+
+	myLayer = aLayer;
+
+	myAppearance = Appearance(aTexture, aRotation, { aScale, aScale }, { 0.5f * aTexture.getSize().x, 0.5f * aTexture.getSize().y });
+}
+
 GameObject::GameObject()
 {
-	myPosition = Vector2(0, 0);
+	myPosition = { 0, 0 };
 	myAppearance = Appearance();
 }
 
@@ -18,14 +27,10 @@ void GameObject::Update(const float& someDelta)
 
 void GameObject::Draw(sf::RenderWindow& aWindow)
 {
-	sf::Sprite tempSprite;
-	sf::Texture tempTexture = myAppearance.GetTexture();
-	tempSprite.setTexture(tempTexture);
-	tempSprite.setRotation(myAppearance.GetRotation());
-	tempSprite.setOrigin(myAppearance.GetOrigin().x, myAppearance.GetOrigin().y);
-	tempSprite.setScale(myAppearance.GetScale().x, myAppearance.GetScale().y);
-	tempSprite.setPosition(myPosition.x, myPosition.y);
-	tempSprite.setColor(myAppearance.GetColor());
-	tempSprite.setTextureRect(myAppearance.GetTextureRect());
-	aWindow.draw(tempSprite);
+	myAppearance.Draw(aWindow, myPosition);
+}
+
+int GameObject::GetLayer()
+{
+	return myLayer;
 }

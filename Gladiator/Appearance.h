@@ -14,12 +14,14 @@ public:
 
 	void Update(const float& someDelta);
 
+	void Draw(sf::RenderWindow& aWindow, Vector2 aPositon);
+
 	void SetTexture(sf::Texture aTexture);
 	void SetRotation(float aRotation);
 	void SetScale(Vector2 aScale);
 	void SetOrigin(Vector2 anOrigin);
 	void SetColor(sf::Color aColor);
-	void SetTextureRect(sf::IntRect anIntRect);
+	void SetTextureRect(sf::IntRect aTextureRect);
 
 	sf::Texture GetTexture();
 	float GetRotation();
@@ -41,7 +43,7 @@ private:
 	Vector2 myScale;
 	Vector2 myOrigin;
 	sf::Color myColor;
-	sf::IntRect myIntRect;
+	sf::IntRect myTextureRect;
 	Animation myAnimation;
 };
 
