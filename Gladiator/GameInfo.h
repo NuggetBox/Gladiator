@@ -8,7 +8,7 @@ namespace gameInfo
 {
 	std::vector<GameObject*> GetGameObjects();
 
-	void SetGameObjects(std::vector<GameObject*>*);
+	void SetGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects);
 }
 
 #endif
