@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Vector2.h"
 
 Player::Player()
 {
@@ -21,21 +22,27 @@ void Player::Init(const sf::Texture& aTexture)
 
 bool Player::Update(const float& someDelta)							//Delta Time kommer in från App-klassen.
 {
+	Vector2 tempMove = Vector2(0, 0);
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))				//Här kollar vi spelarens input, om spelaren trycker A så kommer vi flytta vår sprite i X-led.
 	{
+		tempMove += Vector2(-mySpeed * someDelta, 0);
 		mySprite.move(-mySpeed * someDelta, 0);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
+		tempMove += Vector2(mySpeed * someDelta, 0);
 		mySprite.move(mySpeed * someDelta, 0);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
+		tempMove += Vector2(0, -mySpeed * someDelta);
 		mySprite.move(0, -mySpeed * someDelta);						//Och här flyttar vi i Y-led istället.
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
+		tempMove += Vector2(0, mySpeed * someDelta);
 		mySprite.move(0, mySpeed * someDelta);
 	}
 
