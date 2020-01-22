@@ -6,13 +6,13 @@ GameObject::GameObject(Vector2 aPosition, sf::Texture aTexture, float aRotation,
 
 	myLayer = aLayer;
 
-	myAppearance = Appearance(aTexture, aRotation, { aScale, aScale }, { 0.5f * aTexture.getSize().x, 0.5f * aTexture.getSize().y });
+	myVisual = Visual(aTexture, aRotation, { aScale, aScale }, { 0.5f * aTexture.getSize().x, 0.5f * aTexture.getSize().y });
 }
 
 GameObject::GameObject()
 {
 	myPosition = { 0, 0 };
-	myAppearance = Appearance();
+	myVisual = Visual();
 }
 
 GameObject::~GameObject()
@@ -22,12 +22,12 @@ GameObject::~GameObject()
 
 void GameObject::Update(const float& someDelta)
 {
-	myAppearance.Update(someDelta);
+	myVisual.Update(someDelta);
 }
 
 void GameObject::Draw(sf::RenderWindow& aWindow)
 {
-	myAppearance.Draw(aWindow, myPosition);
+	myVisual.Draw(aWindow, myPosition);
 }
 
 int GameObject::GetLayer()

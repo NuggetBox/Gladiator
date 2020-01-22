@@ -4,28 +4,23 @@ Player::Player()
 {
 	mySpeed = 250;
 	mySwordSwingSpeed = 0.2f;
-	myXOrigin = 0.5f;
-	myYOrigin = 0.7f;
-	myScale = 5;
 	myLayer = 10;
 
-	sf::Texture tempTexture;
-	tempTexture.loadFromFile("Textures/NoArmor.png");
-	myNoArmor = tempTexture;
-	tempTexture.loadFromFile("Textures/NoHelmet.png");
-	myNoHelmet = tempTexture;
-	tempTexture.loadFromFile("Textures/BasicSword.png");
-	myBasicSword = tempTexture;
-	tempTexture.loadFromFile("Textures/NoArmorSwing.png");
-	myNoArmorSwing = tempTexture;
-	tempTexture.loadFromFile("Textures/NoHelmetSwing.png");
-	myNoHelmetSwing = tempTexture;
-	tempTexture.loadFromFile("Textures/BasicSwordSwing.png");
-	myBasicSwordSwing = tempTexture;
+	float tempXOrigin = 0.5f;
+	float tempYOrigin = 0.7f;
+	float tempScale = 5;
+	float tempRotation = 0;
 
-	myBodyAppearance = Appearance(myNoArmor, 0, { myScale, myScale }, { myXOrigin * myNoArmor.getSize().x, myYOrigin * myNoArmor.getSize().y });
-	myHeadAppearance = Appearance(myNoHelmet, 0, { myScale, myScale }, { myXOrigin * myNoHelmet.getSize().x, myYOrigin* myNoHelmet.getSize().y });
-	myWeaponAppearance = Appearance(myBasicSword, 0, { myScale, myScale }, { myXOrigin * myBasicSword.getSize().x, myYOrigin * myBasicSword.getSize().y });
+	myNoArmor.loadFromFile("Textures/NoArmor.png");
+	myNoHelmet.loadFromFile("Textures/NoHelmet.png");
+	myBasicSword.loadFromFile("Textures/BasicSword.png");
+	myNoArmorSwing.loadFromFile("Textures/NoArmorSwing.png");
+	myNoHelmetSwing.loadFromFile("Textures/NoHelmetSwing.png");
+	myBasicSwordSwing.loadFromFile("Textures/BasicSwordSwing.png");
+
+	myBodyVisual = Visual(myNoArmor, tempRotation, { tempScale, tempScale }, { tempXOrigin * myNoArmor.getSize().x, tempYOrigin * myNoArmor.getSize().y });
+	myHeadVisual = Visual(myNoHelmet, tempRotation, { tempScale, tempScale }, { tempXOrigin * myNoHelmet.getSize().x, tempYOrigin* myNoHelmet.getSize().y });
+	myWeaponVisual = Visual(myBasicSword, tempRotation, { tempScale, tempScale }, { tempXOrigin * myBasicSword.getSize().x, tempYOrigin * myBasicSword.getSize().y });
 }
 
 Player::~Player()
@@ -57,25 +52,25 @@ void Player::Update(const float& someDelta)
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
-		myBodyAppearance.PlayAnimationOnce(Animation(myNoArmorSwing, 3, mySwordSwingSpeed));
-		myHeadAppearance.PlayAnimationOnce(Animation(myNoHelmetSwing, 3, mySwordSwingSpeed));
-		myWeaponAppearance.PlayAnimationOnce(Animation(myBasicSwordSwing, 3, mySwordSwingSpeed));
+		myBodyVisual.PlayAnimationOnce(Animation(myNoArmorSwing, 3, mySwordSwingSpeed));
+		myHeadVisual.PlayAnimationOnce(Animation(myNoHelmetSwing, 3, mySwordSwingSpeed));
+		myWeaponVisual.PlayAnimationOnce(Animation(myBasicSwordSwing, 3, mySwordSwingSpeed));
 	}
 
 	Vector2 tempPlayerToMouse = Vector2(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y) - myPosition;
 	float tempRotation = 90 + atan2(tempPlayerToMouse.y, tempPlayerToMouse.x) * 180 / M_PI;
-	myBodyAppearance.SetRotation(tempRotation);
-	myHeadAppearance.SetRotation(tempRotation);
-	myWeaponAppearance.SetRotation(tempRotation);
+	myBodyVisual.SetRotation(tempRotation);
+	myHeadVisual.SetRotation(tempRotation);
+	myWeaponVisual.SetRotation(tempRotation);
 
-	myBodyAppearance.Update(someDelta);
-	myHeadAppearance.Update(someDelta);
-	myWeaponAppearance.Update(someDelta);
+	myBodyVisual.Update(someDelta);
+	myHeadVisual.Update(someDelta);
+	myWeaponVisual.Update(someDelta);
 }
 
 void Player::Draw(sf::RenderWindow& aWindow)
 {
-	myBodyAppearance.Draw(aWindow, myPosition);
-	myHeadAppearance.Draw(aWindow, myPosition);
-	myWeaponAppearance.Draw(aWindow, myPosition);
+	myBodyVisual.Draw(aWindow, myPosition);
+	myHeadVisual.Draw(aWindow, myPosition);
+	myWeaponVisual.Draw(aWindow, myPosition);
 }

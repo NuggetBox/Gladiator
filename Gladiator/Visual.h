@@ -1,16 +1,16 @@
-#ifndef APPEARANCE_HEADER
-#define APPEARANCE_HEADER
+#ifndef VISUAL_HEADER
+#define VISUAL_HEADER
 
 #include "Animation.h"
 #include "Vector2.h"
 
-class Appearance
+class Visual
 {
 public:
-	Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin);
-	Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin, Animation anAnimation);
-	Appearance();
-	~Appearance();
+	Visual(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin);
+	Visual(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin, Animation anAnimation);
+	Visual();
+	~Visual();
 
 	void Update(const float& someDelta);
 

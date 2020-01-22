@@ -1,7 +1,7 @@
 #ifndef GAMEOBJECT_HEADER
 #define GAMEOBJECT_HEADER
 
-#include "Appearance.h"
+#include "Visual.h"
 
 class GameObject
 {
@@ -18,9 +18,9 @@ public:
 
 protected:
 
-	Appearance myAppearance;
-	int myLayer;
+	Visual myVisual;
 	Vector2 myPosition;
+	int myLayer;
 };
 
 #endif

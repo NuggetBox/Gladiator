@@ -1,6 +1,6 @@
-#include "Appearance.h"
+#include "Visual.h"
 
-Appearance::Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin)
+Visual::Visual(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin)
 {
 	myTexture = aTexture;
 	myRotation = aRotation;
@@ -11,7 +11,7 @@ Appearance::Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Ve
 	myAnimation = Animation();
 }
 
-Appearance::Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin, Animation anAnimation)
+Visual::Visual(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin, Animation anAnimation)
 {
 	myTexture = aTexture;
 	myRotation = aRotation;
@@ -22,23 +22,23 @@ Appearance::Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Ve
 	myAnimation = anAnimation;
 }
 
-Appearance::Appearance()
+Visual::Visual()
 {
 	myAnimation = Animation();
 	myColor = { 255,255,255,255 };
 }
 
-Appearance::~Appearance()
+Visual::~Visual()
 {
 	
 }
 
-void Appearance::Update(const float& someDelta)
+void Visual::Update(const float& someDelta)
 {
 	myAnimation.Update(someDelta);
 }
 
-void Appearance::Draw(sf::RenderWindow& aWindow, Vector2 aPosition)
+void Visual::Draw(sf::RenderWindow& aWindow, Vector2 aPosition)
 {
 	sf::Sprite tempSprite;
 	sf::Texture tempTexture = GetTexture();
@@ -55,32 +55,32 @@ void Appearance::Draw(sf::RenderWindow& aWindow, Vector2 aPosition)
 
 
 
-void Appearance::SetTexture(sf::Texture aTexture)
+void Visual::SetTexture(sf::Texture aTexture)
 {
 	myTexture = aTexture;
 }
 
-void Appearance::SetRotation(float aRotation)
+void Visual::SetRotation(float aRotation)
 {
 	myRotation = aRotation;
 }
 
-void Appearance::SetScale(Vector2 aScale)
+void Visual::SetScale(Vector2 aScale)
 {
 	myScale = aScale;
 }
 
-void Appearance::SetOrigin(Vector2 anOrigin)
+void Visual::SetOrigin(Vector2 anOrigin)
 {
 	myOrigin = anOrigin;
 }
 
-void Appearance::SetColor(sf::Color aColor)
+void Visual::SetColor(sf::Color aColor)
 {
 	myColor = aColor;
 }
 
-void Appearance::SetTextureRect(sf::IntRect anIntRect)
+void Visual::SetTextureRect(sf::IntRect anIntRect)
 {
 	myTextureRect = anIntRect;
 }
@@ -88,7 +88,7 @@ void Appearance::SetTextureRect(sf::IntRect anIntRect)
 
 
 
-sf::Texture Appearance::GetTexture()
+sf::Texture Visual::GetTexture()
 {
 	if (myAnimation.GetIsPlaying())
 	{
@@ -98,27 +98,27 @@ sf::Texture Appearance::GetTexture()
 	return myTexture;
 }
 
-float Appearance::GetRotation()
+float Visual::GetRotation()
 {
 	return myRotation;
 }
 
-Vector2 Appearance::GetScale()
+Vector2 Visual::GetScale()
 {
 	return myScale;
 }
 
-Vector2 Appearance::GetOrigin()
+Vector2 Visual::GetOrigin()
 {
 	return myOrigin;
 }
 
-sf::Color Appearance::GetColor()
+sf::Color Visual::GetColor()
 {
 	return myColor;
 }
 
-sf::IntRect Appearance::GetTextureRect()
+sf::IntRect Visual::GetTextureRect()
 {
 	if (myAnimation.GetIsPlaying())
 	{
@@ -132,36 +132,36 @@ sf::IntRect Appearance::GetTextureRect()
 
 
 
-void Appearance::SetAnimation(Animation anAnimation)
+void Visual::SetAnimation(Animation anAnimation)
 {
 	myAnimation = anAnimation;
 }
 
-void Appearance::PlayAnimationOnce()
+void Visual::PlayAnimationOnce()
 {
 	myAnimation.PlayOnce();
 }
 
-void Appearance::PlayAnimationOnLoop()
+void Visual::PlayAnimationOnLoop()
 {
 	myAnimation.PlayOnLoop();
 }
 
-void Appearance::PlayAnimationOnce(Animation anAnimation)
+void Visual::PlayAnimationOnce(Animation anAnimation)
 {
 	myAnimation = anAnimation;
 	
 	myAnimation.PlayOnce();
 }
 
-void Appearance::PlayAnimationOnLoop(Animation anAnimation)
+void Visual::PlayAnimationOnLoop(Animation anAnimation)
 {
 	myAnimation = anAnimation;
 
 	myAnimation.PlayOnLoop();
 }
 
-void Appearance::StopAnimation()
+void Visual::StopAnimation()
 {
 	myAnimation.Stop();
 }

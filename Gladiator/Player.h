@@ -19,13 +19,10 @@ public:
 private:
 	float mySpeed;
 	float mySwordSwingSpeed;
-	float myXOrigin;
-	float myYOrigin;
-	float myScale;
 
-	Appearance myBodyAppearance;
-	Appearance myHeadAppearance;
-	Appearance myWeaponAppearance;
+	Visual myBodyVisual;
+	Visual myHeadVisual;
+	Visual myWeaponVisual;
 
 	sf::Texture myNoArmor;
 	sf::Texture myNoHelmet;
