@@ -18,11 +18,15 @@ public:
 	void SetRotation(float aRotation);
 	void SetScale(Vector2 aScale);
 	void SetOrigin(Vector2 anOrigin);
+	void SetColor(sf::Color aColor);
+	void SetTextureRect(sf::IntRect anIntRect);
 
 	sf::Texture GetTexture();
 	float GetRotation();
 	Vector2 GetScale();
 	Vector2 GetOrigin();
+	sf::Color GetColor();
+	sf::IntRect GetTextureRect();
 
 	void SetAnimation(Animation anAnimation);
 	void PlayAnimationOnce();
@@ -36,6 +40,8 @@ private:
 	float myRotation;
 	Vector2 myScale;
 	Vector2 myOrigin;
+	sf::Color myColor;
+	sf::IntRect myIntRect;
 	Animation myAnimation;
 };
 

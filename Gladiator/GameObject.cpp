@@ -25,5 +25,7 @@ void GameObject::Draw(sf::RenderWindow& aWindow)
 	tempSprite.setOrigin(myAppearance.GetOrigin().x, myAppearance.GetOrigin().y);
 	tempSprite.setScale(myAppearance.GetScale().x, myAppearance.GetScale().y);
 	tempSprite.setPosition(myPosition.x, myPosition.y);
+	tempSprite.setColor(myAppearance.GetColor());
+	tempSprite.setTextureRect(myAppearance.GetTextureRect());
 	aWindow.draw(tempSprite);
 }

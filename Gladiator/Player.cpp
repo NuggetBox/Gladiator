@@ -11,13 +11,8 @@ Player::Player()
 	tempTexture.loadFromFile("Textures/NoArmor_NoHelmet_BasicSword.png");
 	myNoArmorNoHelmetBasicSword = tempTexture;
 
-	sf::Texture tempSwing1;
-	sf::Texture tempSwing2;
-	sf::Texture tempSwing3;
-	tempSwing1.loadFromFile("Textures/NoArmor_NoHelmet_BasicSword_Swing1.png");
-	tempSwing2.loadFromFile("Textures/NoArmor_NoHelmet_BasicSword_Swing2.png");
-	tempSwing3.loadFromFile("Textures/NoArmor_NoHelmet_BasicSword_Swing3.png");
-	mySwingNoArmorNoHelmetBasicSword = Animation({ tempSwing1, tempSwing2, tempSwing3 }, mySwordSwingSpeed);
+	tempTexture.loadFromFile("Textures/NoArmor_NoHelmet_BasicSword_Swing.png");
+	mySwingNoArmorNoHelmetBasicSword = Animation(tempTexture, 3, mySwordSwingSpeed);
 
 	myAppearance = Appearance(myNoArmorNoHelmetBasicSword, 0, { 5, 5 }, { 0.5f * myNoArmorNoHelmetBasicSword.getSize().x, 0.5f * myNoArmorNoHelmetBasicSword.getSize().y });
 }

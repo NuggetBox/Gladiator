@@ -6,6 +6,8 @@ Appearance::Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Ve
 	myRotation = aRotation;
 	myScale = aScale;
 	myOrigin = anOrigin;
+	myColor = { 255,255,255,255 };
+	myIntRect = sf::IntRect( 0, 0, aTexture.getSize().x, aTexture.getSize().y );
 	myAnimation = Animation();
 }
 
@@ -15,6 +17,8 @@ Appearance::Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Ve
 	myRotation = aRotation;
 	myScale = aScale;
 	myOrigin = anOrigin;
+	myColor = { 255,255,255,255 };
+	myIntRect = sf::IntRect(0, 0, aTexture.getSize().x, aTexture.getSize().y);
 	myAnimation = anAnimation;
 }
 
@@ -53,6 +57,16 @@ void Appearance::SetOrigin(Vector2 anOrigin)
 	myOrigin = anOrigin;
 }
 
+void Appearance::SetColor(sf::Color aColor)
+{
+	myColor = aColor;
+}
+
+void Appearance::SetTextureRect(sf::IntRect anIntRect)
+{
+	myIntRect = anIntRect;
+}
+
 
 
 
@@ -60,7 +74,7 @@ sf::Texture Appearance::GetTexture()
 {
 	if (myAnimation.GetIsPlaying())
 	{
-		return myAnimation.GetCurrentTexture();
+		return myAnimation.GetTexture();
 	}
 
 	return myTexture;
@@ -79,6 +93,21 @@ Vector2 Appearance::GetScale()
 Vector2 Appearance::GetOrigin()
 {
 	return myOrigin;
+}
+
+sf::Color Appearance::GetColor()
+{
+	return myColor;
+}
+
+sf::IntRect Appearance::GetTextureRect()
+{
+	if (myAnimation.GetIsPlaying())
+	{
+		return myAnimation.GetCurrentTextureRect();
+	}
+
+	return myIntRect;
 }
 
 

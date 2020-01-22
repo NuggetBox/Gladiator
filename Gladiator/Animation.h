@@ -7,7 +7,7 @@
 class Animation
 {
 public:
-	Animation(std::vector<sf::Texture> someTextures, float aLengthInSec);
+	Animation(sf::Texture aTextures, int aNumberOfFrames, float aLengthInSec);
 	Animation();
 	~Animation();
 
@@ -19,11 +19,15 @@ public:
 
 	bool GetIsPlaying();
 
-	sf::Texture GetCurrentTexture();
+	sf::Texture GetTexture();
+
+	sf::IntRect GetCurrentTextureRect();
 
 private:
-	std::vector<sf::Texture> myTextures;
+	sf::Texture myTexture;
+	int myNumberOfFrames;
 	float myLength;
+
 	float myTimer;
 	bool myIsPlaying;
 	bool myPlayingOnlyOnce;

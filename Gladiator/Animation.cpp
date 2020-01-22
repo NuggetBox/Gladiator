@@ -1,8 +1,9 @@
 #include "Animation.h"
 
-Animation::Animation(std::vector<sf::Texture> someTextures, float aLengthInSec)
+Animation::Animation(sf::Texture aTexture, int aNumberOfFrames, float aLengthInSec)
 {
-	myTextures = someTextures;
+	myTexture = aTexture;
+	myNumberOfFrames = aNumberOfFrames;
 	myLength = aLengthInSec;
 	myTimer = 0;
 	myIsPlaying = false;
@@ -11,7 +12,8 @@ Animation::Animation(std::vector<sf::Texture> someTextures, float aLengthInSec)
 
 Animation::Animation()
 {
-	myTextures = { sf::Texture() };
+	myTexture = sf::Texture();
+	myNumberOfFrames = 1;
 	myLength = 0.1f;
 	myTimer = 0;
 	myIsPlaying = false;
@@ -66,7 +68,12 @@ bool Animation::GetIsPlaying()
 	return myIsPlaying;
 }
 
-sf::Texture Animation::GetCurrentTexture()
+sf::Texture Animation::GetTexture()
 {
-	return myTextures[(int)(myTimer * myTextures.size() / myLength)];
+	return myTexture;
+}
+
+sf::IntRect Animation::GetCurrentTextureRect()
+{
+	return sf::IntRect(((int)(myTimer * myNumberOfFrames / myLength)) * (myTexture.getSize().x / myNumberOfFrames), 0, myTexture.getSize().x / myNumberOfFrames, myTexture.getSize().y);
 }
