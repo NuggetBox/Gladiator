@@ -5,6 +5,7 @@ Player::Player()
 	mySpeed = 250;
 	mySwordSwingSpeed = 0.2f;
 	myLayer = 10;
+	myPosition = { 1000, 500 };
 
 	float tempXOrigin = 0.5f;
 	float tempYOrigin = 0.7f;
