@@ -15,18 +15,25 @@ Vector2::~Vector2()
 {
 
 }
+
 void Vector2::Normalize()
 {
+	
 }
 
 float Vector2::Length()
 {
-	return 0.0f;
+	return sqrtf(x * x + y * y);
 }
 
 float Vector2::LengthSquared()
 {
-	return 0.0f;
+	return x * x + y * y;
+}
+
+float Vector2::Distance(Vector2 a, Vector2 b)
+{
+	return (a - b).Length();
 }
 
 // Operators

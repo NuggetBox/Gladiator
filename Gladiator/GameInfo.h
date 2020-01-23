@@ -3,12 +3,15 @@
 
 #include <vector>
 #include "GameObject.h"
+#include <cmath>
 
 namespace gameInfo
 {
-	std::vector<GameObject*> GetGameObjects();
+	std::vector<GameObject*> getGameObjects();
 
-	void SetGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects);
+	bool getOutOfBounds(Vector2 aPlayerPosition);
+
+	void setGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects);
 }
 
 #endif

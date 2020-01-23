@@ -3,6 +3,7 @@
 
 #define _USE_MATH_DEFINES
 
+#include "GameInfo.h"
 #include "GameObject.h"	
 #include <cmath>
 

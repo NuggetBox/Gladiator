@@ -2,7 +2,7 @@
 
 Game::Game()
 {
-	gameInfo::SetGameObjects(&myGameObjects);
+	gameInfo::setGameObjects(&myGameObjects);
 
 	myGameObjects.push_back(new Player());
 
