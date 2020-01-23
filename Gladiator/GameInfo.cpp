@@ -9,7 +9,7 @@ namespace gameInfo
 
 	std::vector<GameObject*> GetGameObjects()
 	{
-
+		return *myGameObjects;
 	}
 
 	void SetGameObjects(std::vector<GameObject*>*)
