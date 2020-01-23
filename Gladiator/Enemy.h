@@ -5,8 +5,14 @@
 
 class Enemy : public GameObject
 {
+public:
 	Enemy();
 	~Enemy();
+
+	virtual void Attack();
+	virtual void Idle();
+
+private:
 };
 
 #endif
