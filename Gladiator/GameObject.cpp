@@ -1,10 +1,10 @@
 #include "GameObject.h"
 
-GameObject::GameObject(Vector2 aPosition, sf::Texture aTexture, float aRotation, float aScale, int aLayer)
+GameObject::GameObject(Vector2 aPosition, sf::Texture aTexture, float aRotation, float aScale, int aLayer, float aHitBox)
 {
 	myPosition = aPosition;
-
 	myLayer = aLayer;
+	myHitBox = aHitBox;
 
 	myVisual = Visual(aTexture, aRotation, { aScale, aScale }, { 0.5f * aTexture.getSize().x, 0.5f * aTexture.getSize().y });
 }

@@ -6,7 +6,7 @@
 class GameObject
 {
 public:
-	GameObject(Vector2 aPosition, sf::Texture aTexture, float aRotation, float aScale, int aLayer);
+	GameObject(Vector2 aPosition, sf::Texture aTexture, float aRotation, float aScale, int aLayer, float aHitBox);
 	GameObject();
 	virtual ~GameObject();
 
@@ -21,6 +21,7 @@ protected:
 	Visual myVisual;
 	Vector2 myPosition;
 	int myLayer;
+	float myHitBox;
 };
 
 #endif
