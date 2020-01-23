@@ -3,8 +3,7 @@
 
 #define _USE_MATH_DEFINES
 
-#include <SFML/Graphics.hpp>
-#include "GameObject.h"
+#include "GameObject.h"	
 #include <cmath>
 
 class Player : public GameObject
@@ -15,15 +14,22 @@ public:
 
 	void Update(const float& someDelta) override;
 
+	void Draw(sf::RenderWindow& aWindow) override;
+
 private:
 	float mySpeed;
-
 	float mySwordSwingSpeed;
 
-	sf::Texture myNoArmorNoHelmetNoSword;
-	sf::Texture myNoArmorNoHelmetBasicSword;
+	Visual myBodyVisual;
+	Visual myHeadVisual;
+	Visual myWeaponVisual;
 
-	Animation mySwingNoArmorNoHelmetBasicSword;
+	sf::Texture myNoArmor;
+	sf::Texture myNoHelmet;
+	sf::Texture myBasicSword;
+	sf::Texture myNoArmorSwing;
+	sf::Texture myNoHelmetSwing;
+	sf::Texture myBasicSwordSwing;
 };
 
 #endif

@@ -1,11 +1,12 @@
 #ifndef GAMEOBJECT_HEADER
 #define GAMEOBJECT_HEADER
 
-#include "Appearance.h"
+#include "Visual.h"
 
 class GameObject
 {
 public:
+	GameObject(Vector2 aPosition, sf::Texture aTexture, float aRotation, float aScale, int aLayer);
 	GameObject();
 	virtual ~GameObject();
 
@@ -13,10 +14,13 @@ public:
 
 	virtual void Draw(sf::RenderWindow& aWindow);
 
+	int GetLayer();
+
 protected:
 
-	Appearance myAppearance;
+	Visual myVisual;
 	Vector2 myPosition;
+	int myLayer;
 };
 
 #endif

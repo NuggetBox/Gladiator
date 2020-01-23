@@ -12,8 +12,8 @@ namespace gameInfo
 		return *myGameObjects;
 	}
 
-	void SetGameObjects(std::vector<GameObject*>*)
+	void SetGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects)
 	{
-
+		myGameObjects = aPointerToTheGameObjects;
 	}
 }

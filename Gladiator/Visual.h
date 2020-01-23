@@ -1,25 +1,27 @@
-#ifndef APPEARANCE_HEADER
-#define APPEARANCE_HEADER
+#ifndef VISUAL_HEADER
+#define VISUAL_HEADER
 
 #include "Animation.h"
 #include "Vector2.h"
 
-class Appearance
+class Visual
 {
 public:
-	Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin);
-	Appearance(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin, Animation anAnimation);
-	Appearance();
-	~Appearance();
+	Visual(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin);
+	Visual(sf::Texture aTexture, float aRotation, Vector2 aScale, Vector2 anOrigin, Animation anAnimation);
+	Visual();
+	~Visual();
 
 	void Update(const float& someDelta);
+
+	void Draw(sf::RenderWindow& aWindow, Vector2 aPositon);
 
 	void SetTexture(sf::Texture aTexture);
 	void SetRotation(float aRotation);
 	void SetScale(Vector2 aScale);
 	void SetOrigin(Vector2 anOrigin);
 	void SetColor(sf::Color aColor);
-	void SetTextureRect(sf::IntRect anIntRect);
+	void SetTextureRect(sf::IntRect aTextureRect);
 
 	sf::Texture GetTexture();
 	float GetRotation();
@@ -41,7 +43,7 @@ private:
 	Vector2 myScale;
 	Vector2 myOrigin;
 	sf::Color myColor;
-	sf::IntRect myIntRect;
+	sf::IntRect myTextureRect;
 	Animation myAnimation;
 };
 
