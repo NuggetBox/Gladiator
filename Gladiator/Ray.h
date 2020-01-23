@@ -2,20 +2,25 @@
 #define RAY_HEADER
 
 #include "GameInfo.h"
+#include "GMath.h"
 
 class Ray
 {
 public:
 	Ray();
-	virtual ~Ray();
+	~Ray();
 
-	Ray Cast(float anAngle, Vector2 anOrigin);
+	/*Ray Cast(float anAngle, Vector2 anOrigin);
 	Ray Cast(Vector2 aDirection, Vector2 anOrigin);
 	Ray Cast(float anAngle, Vector2 anOrigin, float aMaxLength);
-	Ray Cast(Vector2 aDirection, Vector2 anOrigin, float aMexLength);
+	Ray Cast(Vector2 aDirection, Vector2 anOrigin, float aMaxLength);*/
 
 private:
+	//Ray Calculate(Vector2 aDirection, Vector2 anOrigin, float aMaxLength);
 
+	float myLength;
+	Vector2 myPosition;
+	GameObject myObjectHit;
 	
 };
 

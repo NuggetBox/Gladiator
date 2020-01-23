@@ -6,17 +6,17 @@
 
 namespace gameInfo
 {
-	std::vector<GameObject*> GetGameObjects();
+	std::vector<GameObject*> getGameObjects();
 
-	std::vector<GameObject*>* GetGameObjectsPointer();
+	std::vector<GameObject*>* getGameObjectsPointer();
 
-	Player GetPlayer();
+	Player getPlayer();
 
-	Player* GetPlayerPointer();
+	Player* getPlayerPointer();
 
-	void SetGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects);
+	void setGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects);
 
-	void SetPlayer(Player* aPointerToPlayer);
+	void setPlayer(Player* aPointerToPlayer);
 }
 
 #endif

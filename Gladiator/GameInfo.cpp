@@ -9,32 +9,32 @@ namespace gameInfo
 		Player* myPlayer;
 	}
 
-	std::vector<GameObject*> GetGameObjects()
+	std::vector<GameObject*> getGameObjects()
 	{
 		return *myGameObjects;
 	}
 
-	std::vector<GameObject*>* GetGameObjectsPointer()
+	std::vector<GameObject*>* getGameObjectsPointer()
 	{
 		return myGameObjects;
 	}
 
-	Player GetPlayer()
+	Player getPlayer()
 	{
 		return *myPlayer;
 	}
 
-	Player* GetPlayerPointer()
+	Player* getPlayerPointer()
 	{
 		return myPlayer;
 	}
 
-	void SetGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects)
+	void setGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects)
 	{
 		myGameObjects = aPointerToTheGameObjects;
 	}
 
-	void SetPlayer(Player* aPlayerPointer)
+	void setPlayer(Player* aPlayerPointer)
 	{
 		myPlayer = aPlayerPointer;
 	}

@@ -2,10 +2,10 @@
 
 Game::Game()
 {
-	gameInfo::SetGameObjects(&myGameObjects);
+	gameInfo::setGameObjects(&myGameObjects);
 
 	Player* tempPlayer = new Player();
-	gameInfo::SetPlayer(tempPlayer);
+	gameInfo::setPlayer(tempPlayer);
 	myGameObjects.push_back(tempPlayer);
 
 	sf::Texture tempTexture;

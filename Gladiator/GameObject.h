@@ -22,6 +22,10 @@ protected:
 	Vector2 myPosition;
 	int myLayer;
 	float myHitBox;
+
+	bool myIsPlayer;
+	bool myIsBoss;
+	bool myIsEnemy;
 };
 
 #endif
