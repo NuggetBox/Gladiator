@@ -19,11 +19,12 @@ public:
 	Vector2 GetPosition();
 
 protected:
+	void RequestMove(Vector2 aMovement);
 
 	Visual myVisual;
 	Vector2 myPosition;
 	int myLayer;
-	float myHitBox;
+	float myHitRadius;
 
 	bool myIsPlayer;
 	bool myIsBoss;

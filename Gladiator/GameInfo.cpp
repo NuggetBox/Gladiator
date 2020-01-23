@@ -16,22 +16,12 @@ namespace gameInfo
 		return aNewPosition.Distance(myArenaCenter) + aHitBoxRadius > myArenaRadius;
 	}
 
-	std::vector<GameObject*> getGameObjects()
-	{
-		return *myGameObjects;
-	}
-
-	std::vector<GameObject*>* getGameObjectsPointer()
+	std::vector<GameObject*>* getGameObjects()
 	{
 		return myGameObjects;
 	}
 
-	Player getPlayer()
-	{
-		return *myPlayer;
-	}
-
-	Player* getPlayerPointer()
+	Player* getPlayer()
 	{
 		return myPlayer;
 	}

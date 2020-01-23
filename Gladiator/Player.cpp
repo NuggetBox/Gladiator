@@ -7,7 +7,7 @@ Player::Player()
 	mySwordSwingSpeed = 0.2f;
 	myLayer = 10;
 	myPosition = { 1000, 500 };
-	myHitBox = 10;
+	myHitRadius = 10;
 	myIsPlayer = true;
 
 	float tempXOrigin = 0.5f;
@@ -38,28 +38,31 @@ void Player::Update(const float& someDelta)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		tempMove += Vector2(-mySpeed * someDelta, 0);
+		tempMove += Vector2(-1, 0);
+		//tempMove += Vector2(-mySpeed * someDelta, 0);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		tempMove += Vector2(mySpeed * someDelta, 0);
+		tempMove += Vector2(1, 0);
+		//tempMove += Vector2(mySpeed * someDelta, 0);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		tempMove += Vector2(0, -mySpeed * someDelta);
+		tempMove += Vector2(0, -1);
+		//tempMove += Vector2(0, -mySpeed * someDelta);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		tempMove += Vector2(0, mySpeed * someDelta);
+		tempMove += Vector2(0, 1);
+		//tempMove += Vector2(0, mySpeed * someDelta);
 	}
 
-	if (!gameInfo::getOutOfBounds(myPosition + tempMove, myHitBox))
-	{
-		myPosition += tempMove;
-	}
+	tempMove *= (mySpeed * someDelta);
+
+	RequestMove(tempMove);
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
