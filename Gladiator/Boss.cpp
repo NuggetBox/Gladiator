@@ -8,10 +8,10 @@ Boss::Boss()
 
 void Boss::Update(const float& someDelta)
 {
-	/*if (player->GetPosition(). )
-	{
+	//if (player->GetPosition(). )
+	//{
 
-	}*/
+	//}
 }
 
 void Boss::Attack()
