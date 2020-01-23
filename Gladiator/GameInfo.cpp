@@ -7,6 +7,13 @@ namespace gameInfo
 		std::vector<GameObject*>* myGameObjects;
 
 		Player* myPlayer;
+		float myArenaRadius = 1080 * 0.5f - 50;
+		Vector2 myArenaCenter = Vector2(1920.0f * 0.5f, 1080.0f * 0.5f);
+	}
+
+	bool getOutOfBounds(Vector2 aNewPosition, float aHitBoxRadius)
+	{
+		return aNewPosition.Distance(myArenaCenter) + aHitBoxRadius > myArenaRadius;
 	}
 
 	std::vector<GameObject*> getGameObjects()

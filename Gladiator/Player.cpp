@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "GameInfo.h"
 
 Player::Player()
 {
@@ -33,24 +34,31 @@ Player::~Player()
 
 void Player::Update(const float& someDelta)
 {
+	Vector2 tempMove;
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		myPosition += Vector2(-mySpeed * someDelta, 0);
+		tempMove += Vector2(-mySpeed * someDelta, 0);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		myPosition += Vector2(mySpeed * someDelta, 0);
+		tempMove += Vector2(mySpeed * someDelta, 0);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		myPosition += Vector2(0, -mySpeed * someDelta);
+		tempMove += Vector2(0, -mySpeed * someDelta);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		myPosition += Vector2(0, mySpeed * someDelta);
+		tempMove += Vector2(0, mySpeed * someDelta);
+	}
+
+	if (!gameInfo::getOutOfBounds(myPosition + tempMove, myHitBox))
+	{
+		myPosition += tempMove;
 	}
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))

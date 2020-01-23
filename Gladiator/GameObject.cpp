@@ -34,3 +34,8 @@ int GameObject::GetLayer()
 {
 	return myLayer;
 }
+
+Vector2 GameObject::GetPosition()
+{
+	return myPosition;
+}

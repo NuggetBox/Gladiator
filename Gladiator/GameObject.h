@@ -16,6 +16,8 @@ public:
 
 	int GetLayer();
 
+	Vector2 GetPosition();
+
 protected:
 
 	Visual myVisual;
