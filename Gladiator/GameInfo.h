@@ -2,16 +2,21 @@
 #define GAMEINFO_HEADER
 
 #include <vector>
-#include "GameObject.h"
-#include <cmath>
+#include "Player.h"
 
 namespace gameInfo
 {
-	std::vector<GameObject*> getGameObjects();
+	std::vector<GameObject*> GetGameObjects();
 
-	bool getOutOfBounds(Vector2 aPlayerPosition);
+	std::vector<GameObject*>* GetGameObjectsPointer();
 
-	void setGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects);
+	Player GetPlayer();
+
+	Player* GetPlayerPointer();
+
+	void SetGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects);
+
+	void SetPlayer(Player* aPointerToPlayer);
 }
 
 #endif

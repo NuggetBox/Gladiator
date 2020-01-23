@@ -5,22 +5,37 @@ namespace gameInfo
 	namespace
 	{
 		std::vector<GameObject*>* myGameObjects;
-		float myArenaRadius = 1080 * 0.5f;
-		Vector2 myArenaCenter = Vector2(1920.0f * 0.5f, 1080.0f * 0.5f);
+
+		Player* myPlayer;
 	}
 
-	std::vector<GameObject*> getGameObjects()
+	std::vector<GameObject*> GetGameObjects()
 	{
 		return *myGameObjects;
 	}
 
-	bool getOutOfBounds(Vector2 aPlayerPosition)
+	std::vector<GameObject*>* GetGameObjectsPointer()
 	{
-		return (aPlayerPosition - myArenaCenter).Length() > myArenaRadius;
+		return myGameObjects;
 	}
 
-	void setGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects)
+	Player GetPlayer()
+	{
+		return *myPlayer;
+	}
+
+	Player* GetPlayerPointer()
+	{
+		return myPlayer;
+	}
+
+	void SetGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects)
 	{
 		myGameObjects = aPointerToTheGameObjects;
+	}
+
+	void SetPlayer(Player* aPlayerPointer)
+	{
+		myPlayer = aPlayerPointer;
 	}
 }
