@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "GameInfo.h"
 
 Player::Player()
 {
@@ -54,7 +55,7 @@ void Player::Update(const float& someDelta)
 		tempMove += Vector2(0, mySpeed * someDelta);
 	}
 
-	if (!gameInfo::getOutOfBounds(myPosition + tempMove))
+	if (!gameInfo::getOutOfBounds(myPosition + tempMove, myHitBox))
 	{
 		myPosition += tempMove;
 	}

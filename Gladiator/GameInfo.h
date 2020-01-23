@@ -6,17 +6,19 @@
 
 namespace gameInfo
 {
-	std::vector<GameObject*> GetGameObjects();
+	std::vector<GameObject*> getGameObjects();
 
-	std::vector<GameObject*>* GetGameObjectsPointer();
+	bool getOutOfBounds(Vector2 aNewPosition, float aHitBoxRadius);
 
-	Player GetPlayer();
+	std::vector<GameObject*>* getGameObjectsPointer();
 
-	Player* GetPlayerPointer();
+	Player getPlayer();
 
-	void SetGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects);
+	Player* getPlayerPointer();
 
-	void SetPlayer(Player* aPointerToPlayer);
+	void setGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects);
+
+	void setPlayer(Player* aPointerToPlayer);
 }
 
 #endif

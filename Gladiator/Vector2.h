@@ -13,7 +13,7 @@ public:
 	void Normalize();
 	float Length();
 	float LengthSquared();
-	float Distance(Vector2 a, Vector2 b);
+	float Distance(Vector2 b);
 
 	Vector2 operator-() const;
 	Vector2 operator+(const Vector2& b) const;
