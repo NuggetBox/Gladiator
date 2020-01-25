@@ -66,3 +66,8 @@ void GameObject::RequestMove(Vector2 aMovement)
 
 	myPosition = tempDestination;
 }
+
+float GameObject::GetHitRadius()
+{
+	return myHitRadius;
+}
