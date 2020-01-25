@@ -18,6 +18,8 @@ public:
 
 	Vector2 GetPosition();
 
+	float GetHitRadius();
+
 protected:
 
 	Visual myVisual;

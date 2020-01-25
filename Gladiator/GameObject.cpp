@@ -39,3 +39,8 @@ Vector2 GameObject::GetPosition()
 {
 	return myPosition;
 }
+
+float GameObject::GetHitRadius()
+{
+	return myHitBox;
+}
