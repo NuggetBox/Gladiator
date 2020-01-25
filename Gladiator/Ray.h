@@ -22,6 +22,7 @@ private:
 	Vector2 myHitPosition;
 	GameObject* myObjectHit;
 	bool myHit;
+	std::vector<GameObject*> myAllObjectsHit;
 	
 };
 

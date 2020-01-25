@@ -50,12 +50,19 @@ Ray Ray::Calculate(Vector2 aDirection, Vector2 anOrigin, float aMaxLength, std::
 
 		Vector2 tempIntersection = { (tempThisM - m) / (k - tempThisK), (k * tempThisM - tempThisK * m) / (k - tempThisK) };
 
-		if (((tempIntersection - someGameObjects[i]->GetPosition()).Length() <= someGameObjects[i]->GetHitRadius()) && (tempGoingRight && anOrigin.x < tempIntersection.x || !tempGoingRight && tempIntersection.x < anOrigin.x) && (aMaxLength == 0 || (tempIntersection - anOrigin).Length() <= aMaxLength) && (!myHit || (tempIntersection - anOrigin).Length() < myLength))
+		if (((tempIntersection - someGameObjects[i]->GetPosition()).Length() <= someGameObjects[i]->GetHitRadius()) && // The intersection is within hitradius
+			(tempGoingRight && anOrigin.x < tempIntersection.x || !tempGoingRight && tempIntersection.x < anOrigin.x) && // The intersection is in the right direction
+			(aMaxLength == 0 || (tempIntersection - anOrigin).Length() <= aMaxLength)) // The intersection is within the max length
 		{
-			myHitPosition = tempIntersection;
-			myHit = true;
-			myLength = (tempIntersection - anOrigin).Length();
-			myObjectHit = someGameObjects[i];
+			myAllObjectsHit.push_back(someGameObjects[i]);
+
+			if (!myHit || (tempIntersection - anOrigin).Length() < myLength) // This is the shortest ray yet
+			{
+				myHitPosition = tempIntersection;
+				myHit = true;
+				myLength = (tempIntersection - anOrigin).Length();
+				myObjectHit = someGameObjects[i];
+			}
 		}
 	}
 
@@ -64,6 +71,7 @@ Ray Ray::Calculate(Vector2 aDirection, Vector2 anOrigin, float aMaxLength, std::
 		myHitPosition = anOrigin;
 		myLength = 0;
 		myObjectHit = &GameObject();
+		myAllObjectsHit = { myObjectHit };
 	}
 
 	return *this;
