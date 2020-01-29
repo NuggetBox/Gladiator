@@ -142,6 +142,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="GMath.cpp" />
     <ClCompile Include="Ray.cpp" />
+    <ClCompile Include="StartingBoss.cpp" />
     <ClCompile Include="Visual.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Boss.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="GMath.h" />
     <ClInclude Include="Ray.h" />
+    <ClInclude Include="StartingBoss.h" />
     <ClInclude Include="Visual.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Boss.h" />
