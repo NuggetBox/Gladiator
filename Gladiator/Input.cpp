@@ -15,13 +15,20 @@ namespace in
 
 	void update()
 	{
-		if (getWDown()) { myWWasDownLastFrame = true; } else { myWWasDownLastFrame = false; }
-		if (getADown()) { myAWasDownLastFrame = true; } else { myAWasDownLastFrame = false; }
-		if (getSDown()) { mySWasDownLastFrame = true; } else { mySWasDownLastFrame = false; }
-		if (getDDown()) { myDWasDownLastFrame = true; } else { myDWasDownLastFrame = false; }
-		if (getSpaceDown()) { mySpaceWasDownLastFrame = true; } else { mySpaceWasDownLastFrame = false; }
-		if (getM1Down()) { myM1WasDownLastFrame = true; } else { myM1WasDownLastFrame = false; }
-		if (getM2Down()) { myM2WasDownLastFrame = true; } else { myM2WasDownLastFrame = false; }
+		if (getWDown()) { myWWasDownLastFrame = true; }
+		else { myWWasDownLastFrame = false; }
+		if (getADown()) { myAWasDownLastFrame = true; }
+		else { myAWasDownLastFrame = false; }
+		if (getSDown()) { mySWasDownLastFrame = true; }
+		else { mySWasDownLastFrame = false; }
+		if (getDDown()) { myDWasDownLastFrame = true; }
+		else { myDWasDownLastFrame = false; }
+		if (getSpaceDown()) { mySpaceWasDownLastFrame = true; }
+		else { mySpaceWasDownLastFrame = false; }
+		if (getM1Down()) { myM1WasDownLastFrame = true; }
+		else { myM1WasDownLastFrame = false; }
+		if (getM2Down()) { myM2WasDownLastFrame = true; }
+		else { myM2WasDownLastFrame = false; }
 	}
 
 	bool getWDown() { return sf::Keyboard::isKeyPressed(sf::Keyboard::W); }

@@ -9,7 +9,7 @@ public:
 	Enemy();
 	~Enemy();
 
-	virtual void Attack();
+	virtual void Attack(bool aNear);
 	virtual void Idle();
 
 private:

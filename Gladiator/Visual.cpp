@@ -128,10 +128,6 @@ sf::IntRect Visual::GetTextureRect()
 	return myTextureRect;
 }
 
-
-
-
-
 void Visual::SetAnimation(Animation anAnimation)
 {
 	myAnimation = anAnimation;
@@ -165,9 +161,6 @@ void Visual::StopAnimation()
 {
 	myAnimation.Stop();
 }
-
-
-
 
 bool Visual::GetAnimationOn()
 {

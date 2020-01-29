@@ -3,26 +3,14 @@
 
 Boss::Boss()
 {
-	player = gameInfo::getPlayer();
+	myPlayer = gameInfo::getPlayer();
 }
 
 void Boss::Update(const float& someDelta)
 {
-	//if (player->GetPosition(). )
-	//{
-
-	//}
-}
-
-void Boss::Attack()
-{
 
 }
 
-void Boss::Idle()
-{
-
-}
 
 void Boss::Ultimate()
 {

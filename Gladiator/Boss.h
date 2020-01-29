@@ -13,12 +13,10 @@ public:
 
 	void Update(const float& someDelta) override;
 
-	void Attack() override;
-	void Idle() override;
-	void Ultimate();
+	virtual void Ultimate();
 
-private:
-	Player* player;
+protected:
+	Player* myPlayer;
 
 };
 

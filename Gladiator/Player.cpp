@@ -57,7 +57,7 @@ Player::Player()
 #pragma endregion
 
 	myBodyVisual = Visual(myNoArmor, tempRotation, { tempScale, tempScale }, { tempXOrigin * myNoArmor.getSize().x, tempYOrigin * myNoArmor.getSize().y });
-	myHeadVisual = Visual(myNoHelmet, tempRotation, { tempScale, tempScale }, { tempXOrigin * myNoHelmet.getSize().x, tempYOrigin* myNoHelmet.getSize().y });
+	myHeadVisual = Visual(myNoHelmet, tempRotation, { tempScale, tempScale }, { tempXOrigin * myNoHelmet.getSize().x, tempYOrigin * myNoHelmet.getSize().y });
 	myWeaponVisual = Visual(myStoneSword, tempRotation, { tempScale, tempScale }, { tempXOrigin * myStoneSword.getSize().x, tempYOrigin * myStoneSword.getSize().y });
 }
 

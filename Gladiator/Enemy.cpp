@@ -6,7 +6,7 @@ Enemy::Enemy()
 
 }
 
-void Enemy::Attack()
+void Enemy::Attack(bool aNear)
 {
 
 }
