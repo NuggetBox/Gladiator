@@ -2,7 +2,7 @@
 
 StartingBoss::StartingBoss()
 {
-	myPlayer = gameInfo::getPlayerPointer();
+	myPlayer = gameInfo::getPlayer();
 }
 
 void StartingBoss::Update(const float& someDelta)

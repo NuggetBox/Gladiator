@@ -37,6 +37,8 @@ public:
 	void PlayAnimationOnLoop(Animation anAnimation);
 	void StopAnimation();
 
+	bool GetAnimationOn();
+
 private:
 	sf::Texture myTexture;
 	float myRotation;

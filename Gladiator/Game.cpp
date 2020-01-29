@@ -26,6 +26,8 @@ bool Game::Update(const float& someDelta)
 		myGameObjects[i]->Update(someDelta);
 	}
 
+	in::update();
+
 	return true;
 }
 
