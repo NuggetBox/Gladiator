@@ -165,3 +165,11 @@ void Visual::StopAnimation()
 {
 	myAnimation.Stop();
 }
+
+
+
+
+bool Visual::GetAnimationOn()
+{
+	return myAnimation.GetIsPlaying();
+}

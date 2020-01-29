@@ -1,8 +1,8 @@
 #ifndef VISUAL_HEADER
 #define VISUAL_HEADER
 
-#include "Animation.h"
 #include "Vector2.h"
+#include "Animation.h"
 
 class Visual
 {
@@ -36,6 +36,8 @@ public:
 	void PlayAnimationOnce(Animation anAnimation);
 	void PlayAnimationOnLoop(Animation anAnimation);
 	void StopAnimation();
+
+	bool GetAnimationOn();
 
 private:
 	sf::Texture myTexture;

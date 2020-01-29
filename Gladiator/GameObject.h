@@ -2,6 +2,7 @@
 #define GAMEOBJECT_HEADER
 
 #include "Visual.h"
+#include "Input.h"
 
 class GameObject
 {

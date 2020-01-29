@@ -26,6 +26,8 @@ bool Game::Update(const float& someDelta)
 		myGameObjects[i]->Update(someDelta);
 	}
 
+	in::update();
+
 	return true;
 }
 
@@ -48,14 +50,14 @@ std::vector<GameObject*> Game::SortByLayer(std::vector<GameObject*> someGameObje
 	{
 		tempNoErrors = true;
 
-		for (int i = 0; i + 1 < someGameObjects.size(); ++i)
+		for (int i = 0; 1 + i < someGameObjects.size(); ++i)
 		{
-			if (someGameObjects[i]->GetLayer() > someGameObjects[i + 1]->GetLayer())
+			if (someGameObjects[i]->GetLayer() > someGameObjects[1 + i]->GetLayer())
 			{
 				tempNoErrors = false;
 
-				GameObject* tempGameObject = someGameObjects[i + 1];
-				someGameObjects[i + 1] = someGameObjects[i];
+				GameObject* tempGameObject = someGameObjects[1 + i];
+				someGameObjects[1 + i] = someGameObjects[i];
 				someGameObjects[i] = tempGameObject;
 			}
 		}
