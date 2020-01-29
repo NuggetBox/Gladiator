@@ -10,17 +10,19 @@ public:
 	Ray();
 	~Ray();
 
-	/*Ray Cast(float anAngle, Vector2 anOrigin);
-	Ray Cast(Vector2 aDirection, Vector2 anOrigin);
-	Ray Cast(float anAngle, Vector2 anOrigin, float aMaxLength);
-	Ray Cast(Vector2 aDirection, Vector2 anOrigin, float aMaxLength);*/
+	Ray Cast(float anAngle, Vector2 anOrigin, std::vector<GameObject*> someValidGameObjects);
+	Ray Cast(Vector2 aDirection, Vector2 anOrigin, std::vector<GameObject*> someValidGameObjects);
+	Ray Cast(float anAngle, Vector2 anOrigin, float aMaxLength, std::vector<GameObject*> someValidGameObjects);
+	Ray Cast(Vector2 aDirection, Vector2 anOrigin, float aMaxLength, std::vector<GameObject*> someValidGameObjects);
 
 private:
-	//Ray Calculate(Vector2 aDirection, Vector2 anOrigin, float aMaxLength);
+	Ray Calculate(Vector2 aDirection, Vector2 anOrigin, float aMaxLength, std::vector<GameObject*> someGameObjects);
 
 	float myLength;
-	Vector2 myPosition;
-	GameObject myObjectHit;
+	Vector2 myHitPosition;
+	GameObject* myObjectHit;
+	bool myHit;
+	std::vector<GameObject*> myAllObjectsHit;
 	
 };
 

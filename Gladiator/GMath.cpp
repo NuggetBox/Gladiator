@@ -1,13 +1,16 @@
 #include "GMath.h"
 
-Vector2 RotateVector(Vector2 aVector, float aRadian)
+namespace gMath
 {
-	float tempSin = (float)sin(aRadian);
-	float tempCos = (float)cos(aRadian);
-
-	return
+	Vector2 RotateVector(Vector2 aVector, float aRadian)
 	{
-		(tempCos * aVector.x) - (tempSin * aVector.y),
-		(tempSin * aVector.x) + (tempCos * aVector.y)
-	};
+		float tempSin = (float)sin(aRadian);
+		float tempCos = (float)cos(aRadian);
+
+		return
+		{
+			(tempCos * aVector.x) - (tempSin * aVector.y),
+			(tempSin * aVector.x) + (tempCos * aVector.y)
+		};
+	}
 }

@@ -3,18 +3,15 @@
 
 #include <vector>
 #include "Player.h"
+#include "GameObject.h"	
 
 namespace gameInfo
 {
-	std::vector<GameObject*> getGameObjects();
-
 	bool getOutOfBounds(Vector2 aNewPosition, float aHitBoxRadius);
 
-	std::vector<GameObject*>* getGameObjectsPointer();
+	std::vector<GameObject*>* getGameObjects();
 
-	Player getPlayer();
-
-	Player* getPlayerPointer();
+	Player* getPlayer();
 
 	void setGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects);
 
