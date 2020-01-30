@@ -2,11 +2,16 @@
 
 StartingBoss::StartingBoss()
 {
-	myPlayer = gameInfo::getPlayerPointer();
+	myPlayer = gameInfo::getPlayer();
+	mySpeed = 100;
+	myVisual = Visual();
 }
 
 void StartingBoss::Update(const float& someDelta)
 {
+	myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
+
+
 	if (myPlayer->GetPosition().Distance(myPosition) < 100)
 	{
 		Attack(true);
@@ -15,6 +20,8 @@ void StartingBoss::Update(const float& someDelta)
 	{
 		Attack(false);
 	}
+
+	Idle();
 }
 
 void StartingBoss::Attack(bool aNear)
@@ -25,6 +32,7 @@ void StartingBoss::Attack(bool aNear)
 		
 		break;
 	case 1:
+
 		break;
 	}
 }
@@ -35,6 +43,18 @@ void StartingBoss::Ultimate()
 }
 
 void StartingBoss::Idle()
+{
+	if (myPlayer->GetPosition().Distance(myPosition) < 100)
+	{
+		myPosition = myMove * mySpeed;
+	}
+	if (myPlayer->GetPosition().Distance(myPosition) > 100)
+	{
+
+	}
+}
+
+void StartingBoss::Draw(sf::RenderWindow& aWindow)
 {
 
 }
