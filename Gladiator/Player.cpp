@@ -1,5 +1,4 @@
 #include "Player.h"
-#include "GameInfo.h"
 
 Player::Player()
 {
@@ -10,21 +9,56 @@ Player::Player()
 	myHitRadius = 10;
 	myIsPlayer = true;
 
+	myDodgeTime = 0.1f;
+	myDodgeInvincibilityTime = 0.08f;
+	myDodgeTimer = 0;
+	myDodgeSpeed = 1000;
+	myIsDodging = false;
+	myDodgeDirection = { 0, 0 };
+	myIsInvincible = false;
+	myInvincibilityAlpha = 100;
+
 	float tempXOrigin = 0.5f;
 	float tempYOrigin = 0.7f;
 	float tempScale = 5;
 	float tempRotation = 0;
 
-	myNoArmor.loadFromFile("Textures/NoArmor.png");
-	myNoHelmet.loadFromFile("Textures/NoHelmet.png");
-	myBasicSword.loadFromFile("Textures/BasicSword.png");
-	myNoArmorSwing.loadFromFile("Textures/NoArmorSwing.png");
-	myNoHelmetSwing.loadFromFile("Textures/NoHelmetSwing.png");
-	myBasicSwordSwing.loadFromFile("Textures/BasicSwordSwing.png");
+#pragma region Load textures
+	myNoHelmetIdle.loadFromFile("Textures/Player/NoHelmetIdle.png");
+	myIronHelmetIdle.loadFromFile("Textures/Player/IronHelmetIdle.png");
+	myDiamondHelmetIdle.loadFromFile("Textures/Player/DiamondHelmetIdle.png");
+	myNoArmorIdle.loadFromFile("Textures/Player/NoArmorIdle.png");
+	myIronArmorIdle.loadFromFile("Textures/Player/IronArmorIdle.png");
+	myDiamonArmorIdle.loadFromFile("Textures/Player/DiamondArmorIdle.png");
+	myNoHelmet.loadFromFile("Textures/Player/NoHelmet.png");
+	myIronHelmet.loadFromFile("Textures/Player/IronHelmet.png");
+	myDiamondHelmet.loadFromFile("Textures/Player/DiamondHelmet.png");
+	myNoArmor.loadFromFile("Textures/Player/NoArmor.png");
+	myIronArmor.loadFromFile("Textures/Player/IronArmor.png");
+	myDiamondArmor.loadFromFile("Textures/Player/DiamondArmor.png");
+	myStoneSword.loadFromFile("Textures/Player/StoneSword.png");
+	myIronSword.loadFromFile("Textures/Player/IronSword.png");
+	myDiamondSword.loadFromFile("Textures/Player/DiamondSword.png");
+	myNoHelmetSwing.loadFromFile("Textures/Player/NoHelmetSwing.png");
+	myIronHelmetSwing.loadFromFile("Textures/Player/IronHelmetSwing.png");
+	myDiamondHelmetSwing.loadFromFile("Textures/Player/DiamondHelmetSwing.png");
+	myNoArmorSwing.loadFromFile("Textures/Player/NoArmorSwing.png");
+	myIronArmorSwing.loadFromFile("Textures/Player/IronArmorSwing.png");
+	myDiamondArmorSwing.loadFromFile("Textures/Player/DiamondArmorSwing.png");
+	myStoneSwordSwing.loadFromFile("Textures/Player/StoneSwordSwing.png");
+	myIronSwordSwing.loadFromFile("Textures/Player/IronSwordSwing.png");
+	myDiamondSwordSwing.loadFromFile("Textures/Player/DiamondSwordSwing.png");
+	myNoHelmetThrow.loadFromFile("Textures/Player/NoHelmetThrow.png");
+	myIronHelmetThrow.loadFromFile("Textures/Player/IronHelmetThrow.png");
+	myDiamondHelmetThrow.loadFromFile("Textures/Player/DiamondHelmetThrow.png");
+	myNoArmorThrow.loadFromFile("Textures/Player/NoArmorThrow.png");
+	myIronArmorThrow.loadFromFile("Textures/Player/IronArmorThrow.png");
+	myDiamondArmorThrow.loadFromFile("Textures/Player/DiamondArmorThrow.png");
+#pragma endregion
 
 	myBodyVisual = Visual(myNoArmor, tempRotation, { tempScale, tempScale }, { tempXOrigin * myNoArmor.getSize().x, tempYOrigin * myNoArmor.getSize().y });
-	myHeadVisual = Visual(myNoHelmet, tempRotation, { tempScale, tempScale }, { tempXOrigin * myNoHelmet.getSize().x, tempYOrigin* myNoHelmet.getSize().y });
-	myWeaponVisual = Visual(myBasicSword, tempRotation, { tempScale, tempScale }, { tempXOrigin * myBasicSword.getSize().x, tempYOrigin * myBasicSword.getSize().y });
+	myHeadVisual = Visual(myNoHelmet, tempRotation, { tempScale, tempScale }, { tempXOrigin * myNoHelmet.getSize().x, tempYOrigin * myNoHelmet.getSize().y });
+	myWeaponVisual = Visual(myStoneSword, tempRotation, { tempScale, tempScale }, { tempXOrigin * myStoneSword.getSize().x, tempYOrigin * myStoneSword.getSize().y });
 }
 
 Player::~Player()
@@ -34,48 +68,95 @@ Player::~Player()
 
 void Player::Update(const float& someDelta)
 {
+
+#pragma region Movement
+
 	Vector2 tempMove;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-	{
-		tempMove += Vector2(-1, 0);
-		//tempMove += Vector2(-mySpeed * someDelta, 0);
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-	{
-		tempMove += Vector2(1, 0);
-		//tempMove += Vector2(mySpeed * someDelta, 0);
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	if (in::getWDown())
 	{
 		tempMove += Vector2(0, -1);
-		//tempMove += Vector2(0, -mySpeed * someDelta);
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	if (in::getADown())
+	{
+		tempMove += Vector2(-1, 0);
+	}
+
+	if (in::getSDown())
 	{
 		tempMove += Vector2(0, 1);
-		//tempMove += Vector2(0, mySpeed * someDelta);
 	}
 
-	tempMove *= (mySpeed * someDelta);
+	if (in::getDDown())
+	{
+		tempMove += Vector2(1, 0);
+	}
+
+	tempMove.Normalize();
+
+	if (in::getSpacePressed() && !myIsDodging)
+	{
+		myIsDodging = true;
+		myDodgeTimer = 0;
+		myDodgeDirection = tempMove;
+		myIsInvincible = true;
+		myHeadVisual.SetColor(sf::Color(255, 255, 255, 100));
+		myBodyVisual.SetColor(sf::Color(255, 255, 255, 100));
+		myWeaponVisual.SetColor(sf::Color(255, 255, 255, 100));
+	}
+
+	if (myIsDodging)
+	{
+		tempMove = myDodgeDirection * myDodgeSpeed * someDelta;
+
+		myDodgeTimer += someDelta;
+
+		if (myDodgeTimer >= myDodgeInvincibilityTime)
+		{
+			myIsInvincible = false;
+			myHeadVisual.SetColor(sf::Color(255, 255, 255, 255));
+			myBodyVisual.SetColor(sf::Color(255, 255, 255, 255));
+			myWeaponVisual.SetColor(sf::Color(255, 255, 255, 255));
+		}
+
+		if (myDodgeTimer >= myDodgeTime)
+		{
+			myIsDodging = false;
+			myHeadVisual.SetColor(sf::Color(255, 255, 255, 255));
+			myBodyVisual.SetColor(sf::Color(255, 255, 255, 255));
+			myWeaponVisual.SetColor(sf::Color(255, 255, 255, 255));
+		}
+	}
+	else
+	{
+		tempMove *= (mySpeed * someDelta);
+	}
 
 	RequestMove(tempMove);
 
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+#pragma endregion
+
+#pragma region Swing
+
+	if (in::getM1Pressed() && !myBodyVisual.GetAnimationOn())
 	{
 		myBodyVisual.PlayAnimationOnce(Animation(myNoArmorSwing, 3, mySwordSwingSpeed));
 		myHeadVisual.PlayAnimationOnce(Animation(myNoHelmetSwing, 3, mySwordSwingSpeed));
-		myWeaponVisual.PlayAnimationOnce(Animation(myBasicSwordSwing, 3, mySwordSwingSpeed));
+		myWeaponVisual.PlayAnimationOnce(Animation(myStoneSwordSwing, 3, mySwordSwingSpeed));
 	}
+
+#pragma endregion
+
+#pragma region Rotate player
 
 	Vector2 tempPlayerToMouse = Vector2(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y) - myPosition;
 	float tempRotation = 90 + atan2(tempPlayerToMouse.y, tempPlayerToMouse.x) * 180 / M_PI;
 	myBodyVisual.SetRotation(tempRotation);
 	myHeadVisual.SetRotation(tempRotation);
 	myWeaponVisual.SetRotation(tempRotation);
+
+#pragma endregion
 
 	myBodyVisual.Update(someDelta);
 	myHeadVisual.Update(someDelta);

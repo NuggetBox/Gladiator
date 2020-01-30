@@ -3,7 +3,7 @@
 
 #define _USE_MATH_DEFINES
 
-#include "GameObject.h"	
+#include "GameObject.h"
 #include <cmath>
 
 class Player : public GameObject
@@ -20,16 +20,30 @@ private:
 	float mySpeed;
 	float mySwordSwingSpeed;
 
+	float myDodgeTime;
+	float myDodgeInvincibilityTime;
+	float myDodgeTimer;
+	float myDodgeSpeed;
+	bool myIsDodging;
+	Vector2 myDodgeDirection;
+	bool myIsInvincible;
+	int myInvincibilityAlpha;
+
 	Visual myBodyVisual;
 	Visual myHeadVisual;
 	Visual myWeaponVisual;
 
-	sf::Texture myNoArmor;
-	sf::Texture myNoHelmet;
-	sf::Texture myBasicSword;
-	sf::Texture myNoArmorSwing;
-	sf::Texture myNoHelmetSwing;
-	sf::Texture myBasicSwordSwing;
+	sf::Texture
+		myNoHelmetIdle, myIronHelmetIdle, myDiamondHelmetIdle,
+		myNoArmorIdle, myIronArmorIdle, myDiamonArmorIdle,
+		myNoHelmet, myIronHelmet, myDiamondHelmet,
+		myNoArmor, myIronArmor, myDiamondArmor,
+		myStoneSword, myIronSword, myDiamondSword,
+		myNoHelmetSwing, myIronHelmetSwing, myDiamondHelmetSwing,
+		myNoArmorSwing, myIronArmorSwing, myDiamondArmorSwing,
+		myStoneSwordSwing, myIronSwordSwing, myDiamondSwordSwing,
+		myNoHelmetThrow, myIronHelmetThrow, myDiamondHelmetThrow,
+		myNoArmorThrow, myIronArmorThrow, myDiamondArmorThrow;
 };
 
 #endif
