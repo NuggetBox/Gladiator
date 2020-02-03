@@ -12,6 +12,7 @@ public:
 	~Boss();
 
 	void Update(const float& someDelta) override;
+	void Draw(sf::RenderWindow& aWindow) override;
 
 	virtual void Ultimate();
 
