@@ -44,6 +44,10 @@ private:
 		myStoneSwordSwing, myIronSwordSwing, myDiamondSwordSwing,
 		myNoHelmetThrow, myIronHelmetThrow, myDiamondHelmetThrow,
 		myNoArmorThrow, myIronArmorThrow, myDiamondArmorThrow;
+
+	sf::SoundBuffer myDodgeSound;
+
+	sf::Sound mySound;
 };
 
 #endif

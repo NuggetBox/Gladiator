@@ -23,6 +23,8 @@ Player::Player()
 	float tempScale = 5;
 	float tempRotation = 0;
 
+	myDodgeSound.loadFromFile("Dodge.wav");
+
 #pragma region Load textures
 	myNoHelmetIdle.loadFromFile("Textures/Player/NoHelmetIdle.png");
 	myIronHelmetIdle.loadFromFile("Textures/Player/IronHelmetIdle.png");
@@ -95,7 +97,7 @@ void Player::Update(const float& someDelta)
 
 	tempMove.Normalize();
 
-	if (in::getSpacePressed() && !myIsDodging)
+	if (in::getSpacePressed() && !myIsDodging && tempMove != Vector2(0,0))
 	{
 		myIsDodging = true;
 		myDodgeTimer = 0;
@@ -104,6 +106,9 @@ void Player::Update(const float& someDelta)
 		myHeadVisual.SetColor(sf::Color(255, 255, 255, 100));
 		myBodyVisual.SetColor(sf::Color(255, 255, 255, 100));
 		myWeaponVisual.SetColor(sf::Color(255, 255, 255, 100));
+
+		mySound.setBuffer(myDodgeSound);
+		mySound.play();
 	}
 
 	if (myIsDodging)
