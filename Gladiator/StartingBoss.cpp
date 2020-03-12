@@ -28,10 +28,12 @@ void StartingBoss::Attack(bool aNear)
 {
 	switch (aNear)
 	{
-	case 0:
+	case true:
+		myRay.Cast(Vector2(1,1), Vector2(1,1), 10, myGameobjects);
+
 		
 		break;
-	case 1:
+	case false:
 
 		break;
 	}
