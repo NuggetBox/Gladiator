@@ -18,7 +18,9 @@ Vector2::~Vector2()
 
 void Vector2::Normalize()
 {
-	
+	float length = _CMATH_::sqrtf(x * x + y * y);
+	x /= length;
+	y /= length;
 }
 
 float Vector2::Length()
