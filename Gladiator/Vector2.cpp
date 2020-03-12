@@ -18,7 +18,15 @@ Vector2::~Vector2()
 
 void Vector2::Normalize()
 {
-	
+	float length = _CMATH_::sqrtf(x * x + y * y);
+	x /= length;
+	y /= length;
+
+	return;
+
+	float angle = _CMATH_::atan2f(y, x);
+	x = _CMATH_::cosf(angle);
+	y = _CMATH_::sin(angle);
 }
 
 float Vector2::Length()
