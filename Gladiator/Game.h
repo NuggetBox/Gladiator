@@ -3,6 +3,7 @@
 
 #include "GameInfo.h"
 #include "Player.h"
+#include "StartingBoss.h"
 
 class Game
 {

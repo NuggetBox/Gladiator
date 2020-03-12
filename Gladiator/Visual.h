@@ -1,8 +1,8 @@
 #ifndef VISUAL_HEADER
 #define VISUAL_HEADER
 
-#include "Animation.h"
 #include "Vector2.h"
+#include "Animation.h"
 
 class Visual
 {

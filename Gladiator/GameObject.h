@@ -3,6 +3,7 @@
 
 #include "Visual.h"
 #include "Input.h"
+#include <SFML/Audio.hpp>
 
 class GameObject
 {

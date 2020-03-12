@@ -3,7 +3,7 @@
 
 #define _USE_MATH_DEFINES
 
-#include "GameObject.h"	
+#include "GameObject.h"
 #include <cmath>
 
 class Player : public GameObject
@@ -44,6 +44,10 @@ private:
 		myStoneSwordSwing, myIronSwordSwing, myDiamondSwordSwing,
 		myNoHelmetThrow, myIronHelmetThrow, myDiamondHelmetThrow,
 		myNoArmorThrow, myIronArmorThrow, myDiamondArmorThrow;
+
+	sf::SoundBuffer myDodgeSound;
+
+	sf::Sound mySound;
 };
 
 #endif
