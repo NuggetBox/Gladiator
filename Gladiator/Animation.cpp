@@ -1,8 +1,8 @@
 #include "Animation.h"
 
-Animation::Animation(sf::Texture aTexture, int aNumberOfFrames, float aLengthInSec)
+Animation::Animation(sf::Texture someTextures, int aNumberOfFrames, float aLengthInSec)
 {
-	myTexture = aTexture;
+	myTexture = someTextures;
 	myNumberOfFrames = aNumberOfFrames;
 	myLength = aLengthInSec;
 	myTimer = 0;

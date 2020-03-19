@@ -16,9 +16,9 @@ Game::Game()
 	myGameObjects.push_back(new GameObject({ 1000, 500 }, tempTexture, 0, 5, 0, 0));
 }
 
-
 Game::~Game()
 {
+	
 
 }
 
@@ -53,14 +53,14 @@ std::vector<GameObject*> Game::SortByLayer(std::vector<GameObject*> someGameObje
 	{
 		tempNoErrors = true;
 
-		for (int i = 0; 1 + i < someGameObjects.size(); ++i)
+		for (int i = 0; 1.0f + i < someGameObjects.size(); ++i)
 		{
-			if (someGameObjects[i]->GetLayer() > someGameObjects[1 + i]->GetLayer())
+			if (someGameObjects[i]->GetLayer() > someGameObjects[1.0f + i]->GetLayer())
 			{
 				tempNoErrors = false;
 
-				GameObject* tempGameObject = someGameObjects[1 + i];
-				someGameObjects[1 + i] = someGameObjects[i];
+				GameObject* tempGameObject = someGameObjects[1.0f + i];
+				someGameObjects[1.0f + i] = someGameObjects[i];
 				someGameObjects[i] = tempGameObject;
 			}
 		}

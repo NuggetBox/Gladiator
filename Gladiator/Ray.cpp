@@ -9,7 +9,8 @@ Ray::Ray()
 
 Ray::~Ray()
 {
-
+	delete(myObjectHit);
+	myObjectHit = NULL;
 }
 
 Ray Ray::Cast(float anAngle, Vector2 anOrigin, std::vector<GameObject*> someValidGameObjects)
@@ -32,15 +33,40 @@ Ray Ray::Cast(Vector2 aDirection, Vector2 anOrigin, float aMaxLength, std::vecto
 	return Calculate(aDirection, anOrigin, aMaxLength, someValidGameObjects);
 }
 
+float Ray::GetLength()
+{
+	return myLength;
+}
+
+Vector2 Ray::GetHitPosition()
+{
+	return myHitPosition;
+}
+
+GameObject* Ray::GetObjectHit()
+{
+	return myObjectHit;
+}
+
+bool Ray::GetHit()
+{
+	return myHit;
+}
+
+std::vector<GameObject*> Ray::GetAllObjectsHit()
+{
+	return myAllObjectsHit;
+}
+
 Ray Ray::Calculate(Vector2 aDirection, Vector2 anOrigin, float aMaxLength, std::vector<GameObject*> someGameObjects)
 {
 	myLength = 0;
 	myHit = false;
-	bool tempGoingRight = aDirection.x > 0;
 	float x = aDirection.x;
 	float y = aDirection.y;
+	if (x == 0) { x += 0.00001; }
+	bool tempGoingRight = x > 0;
 	float k = y / x;
-	if (x == 0) { k += 0.00001; }
 	float m = y - k * x;
 
 	for (int i = 0; i < someGameObjects.size(); ++i)

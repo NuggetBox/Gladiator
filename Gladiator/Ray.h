@@ -15,6 +15,12 @@ public:
 	Ray Cast(float anAngle, Vector2 anOrigin, float aMaxLength, std::vector<GameObject*> someValidGameObjects);
 	Ray Cast(Vector2 aDirection, Vector2 anOrigin, float aMaxLength, std::vector<GameObject*> someValidGameObjects);
 
+	float GetLength();
+	Vector2 GetHitPosition();
+	GameObject* GetObjectHit();
+	bool GetHit();
+	std::vector<GameObject*> GetAllObjectsHit();
+
 private:
 	Ray Calculate(Vector2 aDirection, Vector2 anOrigin, float aMaxLength, std::vector<GameObject*> someGameObjects);
 
