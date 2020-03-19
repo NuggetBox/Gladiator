@@ -2,10 +2,13 @@
 #define INPUT_HEADER
 
 #include <SFML/Graphics.hpp>
+#include "Vector2.h"
 
 namespace in
 {
-	void update();
+	void update(sf::RenderWindow &aRenderWindow);
+
+	Vector2 getMousePos();
 
 	bool getWDown();
 	bool getWPressed();

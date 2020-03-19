@@ -4,6 +4,8 @@ namespace in
 {
 	namespace
 	{
+		Vector2 myWindowOffset = Vector2(0, 0);
+
 		bool myWWasDownLastFrame = false;
 		bool myAWasDownLastFrame = false;
 		bool mySWasDownLastFrame = false;
@@ -13,8 +15,10 @@ namespace in
 		bool myM2WasDownLastFrame = false;
 	}
 
-	void update()
+	void update(sf::RenderWindow &aRenderWindow)
 	{
+		myWindowOffset = Vector2(aRenderWindow.getPosition().x, aRenderWindow.getPosition().y);
+
 		if (getWDown()) { myWWasDownLastFrame = true; }
 		else { myWWasDownLastFrame = false; }
 		if (getADown()) { myAWasDownLastFrame = true; }
@@ -30,6 +34,8 @@ namespace in
 		if (getM2Down()) { myM2WasDownLastFrame = true; }
 		else { myM2WasDownLastFrame = false; }
 	}
+
+	Vector2 getMousePos() { return Vector2(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y) - myWindowOffset; }
 
 	bool getWDown() { return sf::Keyboard::isKeyPressed(sf::Keyboard::W); }
 	bool getWPressed() { return (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !myWWasDownLastFrame); }

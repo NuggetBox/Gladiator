@@ -150,7 +150,7 @@ void Player::Update(const float& someDelta)
 
 #pragma region Rotate player
 
-	Vector2 tempPlayerToMouse = Vector2(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y) - myPosition;
+	Vector2 tempPlayerToMouse = in::getMousePos() - myPosition;
 	float tempRotation = 90 + atan2(tempPlayerToMouse.y, tempPlayerToMouse.x) * 180 / M_PI;
 	myBodyVisual.SetRotation(tempRotation);
 	myHeadVisual.SetRotation(tempRotation);
