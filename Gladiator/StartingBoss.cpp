@@ -5,6 +5,7 @@ StartingBoss::StartingBoss()
 	myPlayer = gameInfo::getPlayer();
 	mySpeed = 100;
 	myVisual = Visual();
+	myHitRadius = 10;
 }
 
 void StartingBoss::Update(const float& someDelta)
@@ -28,11 +29,14 @@ void StartingBoss::Attack(bool aNear)
 {
 	switch (aNear)
 	{
-	case 0:
-		
-		break;
-	case 1:
+	case true:
 
+		break;
+	case false:
+		if (myPosition.Distance(myPlayer->GetPosition()) < (myHitRadius + myPlayer->GetHitRadius()))
+		{
+
+		}
 		break;
 	}
 }
@@ -44,11 +48,11 @@ void StartingBoss::Ultimate()
 
 void StartingBoss::Idle()
 {
-	if (myPlayer->GetPosition().Distance(myPosition) < 100)
+	if (myPosition.Distance(myPlayer->GetPosition()) < 100)
 	{
 		myPosition = myMove * mySpeed;
 	}
-	if (myPlayer->GetPosition().Distance(myPosition) > 100)
+	if (myPosition.Distance(myPlayer->GetPosition()) > 100)
 	{
 
 	}
@@ -61,5 +65,5 @@ void StartingBoss::Draw(sf::RenderWindow& aWindow)
 
 StartingBoss::~StartingBoss()
 {
-
+	delete(myPlayer);
 }
