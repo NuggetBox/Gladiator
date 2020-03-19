@@ -2,6 +2,8 @@
 
 Player::Player()
 {
+	myCharacterType = PlayerType;
+
 	mySpeed = 250;
 	mySwordSwingSpeed = 0.2f;
 	myLayer = 10;

@@ -21,7 +21,7 @@ public:
 	float GetHitAngle();
 	float GetHitRange();
 
-private:
+protected:
 	CharacterType myCharacterType;
 
 	int myHealth;

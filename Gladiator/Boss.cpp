@@ -3,6 +3,7 @@
 
 Boss::Boss()
 {
+	myCharacterType = BossType;
 	myPlayer = gameInfo::getPlayer();
 }
 
