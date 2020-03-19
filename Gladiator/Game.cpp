@@ -16,7 +16,6 @@ Game::Game()
 	myGameObjects.push_back(new GameObject({ 1000, 500 }, tempTexture, 0, 5, 0, 0));
 }
 
-
 Game::~Game()
 {
 
@@ -42,6 +41,11 @@ void Game::Draw(sf::RenderWindow& aWindow)
 	{
 		myGameObjects[i]->Draw(aWindow);
 	}
+}
+
+void RequestHit(Player* aPlayer, float aHitAngle, float aHitRange)
+{
+
 }
 
 std::vector<GameObject*> Game::SortByLayer(std::vector<GameObject*> someGameObjects)
