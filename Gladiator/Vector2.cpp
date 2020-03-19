@@ -18,7 +18,13 @@ Vector2::~Vector2()
 
 void Vector2::Normalize()
 {
-	
+	float length = std::sqrtf(x * x + y * y);
+
+	if (length != 0)
+	{
+		x /= length;
+		y /= length;
+	}
 }
 
 float Vector2::Length()

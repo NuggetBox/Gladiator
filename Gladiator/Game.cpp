@@ -5,8 +5,9 @@ Game::Game()
 	gameInfo::setGameObjects(&myGameObjects);
 
 	Player* tempPlayer = new Player();
-	StartingBoss* tempBoss = new StartingBoss();
 	gameInfo::setPlayer(tempPlayer);
+
+	StartingBoss* tempBoss = new StartingBoss();
 	myGameObjects.push_back(tempPlayer);
 	myGameObjects.push_back(tempBoss);
 
