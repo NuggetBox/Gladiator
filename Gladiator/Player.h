@@ -1,21 +1,53 @@
 #ifndef PLAYER_HEADER
 #define PLAYER_HEADER
 
-#include <SFML/Graphics.hpp>
+#define _USE_MATH_DEFINES
 
-class Player
+#include "GameObject.h"
+#include <cmath>
+
+class Player : public GameObject
 {
 public:
 	Player();
 	~Player();
 
-	void Init(const sf::Texture& aTexture);
+	void Update(const float& someDelta) override;
 
-	bool Update(const float& someDelta);
-	void Draw(sf::RenderWindow& aWindow);
+	void Draw(sf::RenderWindow& aWindow) override;
+
 private:
-	sf::Sprite mySprite;
 	float mySpeed;
+	float mySwordSwingSpeed;
+
+	float myDodgeTime;
+	float myDodgeInvincibilityTime;
+	float myDodgeTimer;
+	float myDodgeSpeed;
+	bool myIsDodging;
+	Vector2 myDodgeDirection;
+	bool myIsInvincible;
+	int myInvincibilityAlpha;
+
+	Visual myBodyVisual;
+	Visual myHeadVisual;
+	Visual myWeaponVisual;
+
+	sf::Texture
+		myNoHelmetIdle, myIronHelmetIdle, myDiamondHelmetIdle,
+		myNoArmorIdle, myIronArmorIdle, myDiamonArmorIdle,
+		myNoHelmet, myIronHelmet, myDiamondHelmet,
+		myNoArmor, myIronArmor, myDiamondArmor,
+		myStoneSword, myIronSword, myDiamondSword,
+		myNoHelmetSwing, myIronHelmetSwing, myDiamondHelmetSwing,
+		myNoArmorSwing, myIronArmorSwing, myDiamondArmorSwing,
+		myStoneSwordSwing, myIronSwordSwing, myDiamondSwordSwing,
+		myNoHelmetThrow, myIronHelmetThrow, myDiamondHelmetThrow,
+		myNoArmorThrow, myIronArmorThrow, myDiamondArmorThrow;
+
+	sf::SoundBuffer myDodgeSound;
+
+	sf::Sound mySound;
 };
 
 #endif

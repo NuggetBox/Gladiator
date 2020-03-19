@@ -1,6 +1,8 @@
 #ifndef VECTOR2_H
 #define VECTOR2_H
 
+#include <cmath>
+
 class Vector2
 {
 public:
@@ -11,6 +13,7 @@ public:
 	void Normalize();
 	float Length();
 	float LengthSquared();
+	float Distance(Vector2 b);
 
 	Vector2 operator-() const;
 	Vector2 operator+(const Vector2& b) const;
