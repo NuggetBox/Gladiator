@@ -19,5 +19,5 @@ void Boss::Ultimate()
 
 Boss::~Boss()
 {
-
+	delete(myPlayer);
 }

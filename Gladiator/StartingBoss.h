@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Boss.h"
+#include "Ray.h"
+
 
 class StartingBoss : public Boss
 {
@@ -19,5 +21,8 @@ public:
 private:
 	Vector2 myMove;
 	float mySpeed;
+	Ray myRay;
+	std::vector<GameObject*> myGameobjects;
+
 };
 
