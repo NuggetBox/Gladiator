@@ -6,7 +6,7 @@
 class Animation
 {
 public:
-	Animation(sf::Texture aTextures, int aNumberOfFrames, float aLengthInSec);
+	Animation(sf::Texture someTextures, int aNumberOfFrames, float aLengthInSec);
 	Animation();
 	~Animation();
 
