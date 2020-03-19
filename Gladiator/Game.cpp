@@ -16,7 +16,6 @@ Game::Game()
 	myGameObjects.push_back(new GameObject({ 1000, 500 }, tempTexture, 0, 5, 0, 0));
 }
 
-
 Game::~Game()
 {
 
