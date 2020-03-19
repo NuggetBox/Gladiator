@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "Game.h"
+#include "Vector2.h"
 
 int main()
 {
@@ -20,7 +21,7 @@ int main()
 				window.close();
 		}
 
-		if (tempGame.Update(tempDelta.asSeconds()) == false)					  //Här uppdaterar vi vår App och skickar in Delta Time som sekunder.
+		if (tempGame.Update(tempDelta.asSeconds(), window) == false)					  //Här uppdaterar vi vår App och skickar in Delta Time som sekunder.
 		{
 			return 0;
 		}

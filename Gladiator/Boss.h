@@ -1,11 +1,11 @@
 #ifndef BOSS_HEADER
 #define BOSS_HEADER
 
-#include "Enemy.h"
-#include "Player.h"
 #include "GameInfo.h"
+#include "Enemy.h"
 
-class Boss : public Enemy
+class Boss 
+	: public Enemy
 {
 public:
 	Boss();

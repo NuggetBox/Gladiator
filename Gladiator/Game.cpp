@@ -1,3 +1,4 @@
+#include <SFML/Graphics.hpp>
 #include "Game.h"
 
 Game::Game()
@@ -22,14 +23,14 @@ Game::~Game()
 
 }
 
-bool Game::Update(const float& someDelta)
+bool Game::Update(const float& someDelta, sf::RenderWindow &aRenderWindow)
 {
 	for (int i = 0; i < myGameObjects.size(); ++i)
 	{
 		myGameObjects[i]->Update(someDelta);
 	}
 
-	in::update();
+	in::update(aRenderWindow);
 
 	return true;
 }

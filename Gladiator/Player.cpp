@@ -7,7 +7,6 @@ Player::Player()
 	myLayer = 10;
 	myPosition = { 1000, 500 };
 	myHitRadius = 10;
-	myIsPlayer = true;
 
 	myDodgeTime = 0.1f;
 	myDodgeInvincibilityTime = 0.08f;
@@ -151,7 +150,7 @@ void Player::Update(const float& someDelta)
 
 #pragma region Rotate player
 
-	Vector2 tempPlayerToMouse = Vector2(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y) - myPosition;
+	Vector2 tempPlayerToMouse = in::getMousePos() - myPosition;
 	float tempRotation = 90 + atan2(tempPlayerToMouse.y, tempPlayerToMouse.x) * 180 / M_PI;
 	myBodyVisual.SetRotation(tempRotation);
 	myHeadVisual.SetRotation(tempRotation);

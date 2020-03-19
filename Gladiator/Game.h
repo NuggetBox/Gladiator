@@ -11,7 +11,7 @@ public:
 	Game();
 	~Game();
 
-	bool Update(const float& someDelta);
+	bool Update(const float& someDelta, sf::RenderWindow &aRenderWindow);
 	void Draw(sf::RenderWindow& aWindow);
 
 private:
