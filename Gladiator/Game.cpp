@@ -43,6 +43,11 @@ void Game::Draw(sf::RenderWindow& aWindow)
 	}
 }
 
+void RequestHit(Player* aPlayer, float aHitAngle, float aHitRange)
+{
+
+}
+
 std::vector<GameObject*> Game::SortByLayer(std::vector<GameObject*> someGameObjects)
 {
 	bool tempFinished = false;
