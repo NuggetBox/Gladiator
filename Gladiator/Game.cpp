@@ -18,7 +18,7 @@ Game::Game()
 
 Game::~Game()
 {
-
+	
 }
 
 bool Game::Update(const float& someDelta)

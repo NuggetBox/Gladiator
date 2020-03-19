@@ -30,9 +30,7 @@ protected:
 	int myLayer;
 	float myHitRadius;
 
-	bool myIsPlayer;
-	bool myIsBoss;
-	bool myIsEnemy;
+	bool myIsCharacter;
 };
 
 #endif

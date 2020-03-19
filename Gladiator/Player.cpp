@@ -7,7 +7,6 @@ Player::Player()
 	myLayer = 10;
 	myPosition = { 1000, 500 };
 	myHitRadius = 10;
-	myIsPlayer = true;
 
 	myDodgeTime = 0.1f;
 	myDodgeInvincibilityTime = 0.08f;
