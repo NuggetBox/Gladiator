@@ -2,6 +2,7 @@
 #define GAME_HEADER
 
 #include "GameInfo.h"
+#include "Enemy.h"
 #include "Player.h"
 #include "StartingBoss.h"
 

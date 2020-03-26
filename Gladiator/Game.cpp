@@ -12,6 +12,9 @@ Game::Game()
 	myGameObjects.push_back(tempPlayer);
 	myGameObjects.push_back(tempBoss);
 
+	Enemy* tempEnemy = new Enemy();
+	myGameObjects.push_back(tempEnemy);
+
 	sf::Texture tempTexture;
 	tempTexture.loadFromFile("Textures/Sand.png");
 	myGameObjects.push_back(new GameObject({ 1000, 500 }, tempTexture, 0, 5, 0, 0));
