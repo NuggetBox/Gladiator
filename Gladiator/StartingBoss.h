@@ -4,6 +4,7 @@
 
 #include "Boss.h"
 #include "Ray.h"
+#include "GameInfo.h"
 
 enum States
 {
@@ -32,6 +33,7 @@ private:
 	Vector2 myMove, myScale, myOrigin;
 	float mySpeed, myRotation;
 	float myStunTimer, myIdleTimer;
+	int myHits;
 	Ray myRay;
 	std::vector<GameObject*> myGameobjects;
 	bool myAttackBool;

@@ -18,7 +18,7 @@ StartingBoss::StartingBoss()
 
 void StartingBoss::Update(const float& someDelta)
 {
-	myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
+	//myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
 
 	Vector2 tempDir = myPlayer->GetPosition() - myPosition;
 	myRotation = 90 + atan2(tempDir.y, tempDir.x) * 180 / M_PI;
@@ -35,6 +35,7 @@ void StartingBoss::Update(const float& someDelta)
 		Attack(someDelta);
 		break;
 	case States::Stuck:
+		myVisual.SetColor(sf::Color(255, 255, 0, 255));
 		myStunTimer -= 1 * someDelta;
 		if (myStunTimer <= 0)
 		{
@@ -46,7 +47,8 @@ void StartingBoss::Update(const float& someDelta)
 
 void StartingBoss::Attack(const float& someDelta)
 {
-	mySpeed = 500;
+	myVisual.SetColor(sf::Color(0,255,255,255));
+	mySpeed = 50;
 	myMove *= (mySpeed * someDelta);
 
 	if (myPosition.Distance(myPlayer->GetPosition()) < myHitRadius)
@@ -55,6 +57,19 @@ void StartingBoss::Attack(const float& someDelta)
 	}
 
 	RequestMove(myMove);
+
+	if (gameInfo::getOutOfBounds(myPosition+myMove, myHitRadius)) 
+	{
+		if (myHits == 3) 
+		{
+			myBossStates = States::Stuck;
+			myStunTimer = 20;
+			myHits = 0;
+		}
+		myHits++;
+		myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
+		myMove.Normalize();
+	}
 }
 
 void StartingBoss::Ultimate()
@@ -64,10 +79,11 @@ void StartingBoss::Ultimate()
 
 void StartingBoss::Idle(const float& someDelta)
 {
-	mySpeed = 100;
-	if (myPosition.Distance(Vector2(960,540)) > 100) 
+	myVisual.SetColor(sf::Color(255, 0, 255, 255));
+	mySpeed = 1;
+	if (myPosition.Distance(Vector2(960,540)) > 10) 
 	{
-		myIdleTimer = 300;
+		myIdleTimer = 10;
 		myMove = Vector2(960 - myPosition.x, 540 - myPosition.y);
 
 		myMove *= (someDelta * mySpeed);
@@ -79,6 +95,8 @@ void StartingBoss::Idle(const float& someDelta)
 		myIdleTimer -= 1 * someDelta;
 		if (myIdleTimer <= 0) {
 			myBossStates = States::Charging;
+			myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
+			myMove.Normalize();
 		}
 	}
 }
