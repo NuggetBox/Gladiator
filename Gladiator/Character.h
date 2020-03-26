@@ -5,7 +5,7 @@
 
 enum CharacterType { PlayerType, EnemyType, BossType };
 
-class Character :
+class Character : 
 	public GameObject
 {
 public:
@@ -22,6 +22,9 @@ public:
 	float GetHitRange();
 
 protected:
+	bool RequestMove(Vector2 aMovement);
+	void RequestHit(CharacterType aCharacterType);
+
 	CharacterType myCharacterType;
 
 	int myHealth;

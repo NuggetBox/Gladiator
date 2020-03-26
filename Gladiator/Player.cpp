@@ -143,8 +143,11 @@ void Player::Update(const float& someDelta)
 
 #pragma endregion
 
+	// Swing
 	if (in::getM1Pressed() && !myBodyVisual.GetAnimationOn())
 	{
+		
+
 		myBodyVisual.PlayAnimationOnce(Animation(myNoArmorSwing, 3, mySwordSwingSpeed));
 		myHeadVisual.PlayAnimationOnce(Animation(myNoHelmetSwing, 3, mySwordSwingSpeed));
 		myWeaponVisual.PlayAnimationOnce(Animation(myStoneSwordSwing, 3, mySwordSwingSpeed));
