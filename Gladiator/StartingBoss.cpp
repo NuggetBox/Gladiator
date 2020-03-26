@@ -2,8 +2,9 @@
 
 StartingBoss::StartingBoss()
 {
+	myBossStates = States::Idle;
 	myPlayer = gameInfo::getPlayer();
-	mySpeed = 100;
+	mySpeed = 100.0f;
 	myPosition = Vector2(800,500);
 	myScale = Vector2(5,5);
 	myLayer = 11;
@@ -24,33 +25,36 @@ void StartingBoss::Update(const float& someDelta)
 
 	myVisual.SetRotation(myRotation);
 
-	if (myPlayer->GetPosition().Distance(myPosition) < 100)
+
+	switch (myBossStates)
 	{
-		Attack(true);
-	}
-	if (myPlayer->GetPosition().Distance(myPosition) > 100)
-	{
-		Attack(false);
-	}
-
-	Idle();
-}
-
-void StartingBoss::Attack(bool aNear)
-{
-	switch (aNear)
-	{
-	case true:
-
-
+	case States::Idle:
+		Idle(someDelta);
 		break;
-	case false:
-		if (myPosition.Distance(myPlayer->GetPosition()) < (myHitRadius + myPlayer->GetHitRadius()))
+	case States::Charging:
+		Attack(someDelta);
+		break;
+	case States::Stuck:
+		myStunTimer -= 1 * someDelta;
+		if (myStunTimer <= 0)
 		{
-
+			myBossStates = States::Idle;
 		}
 		break;
 	}
+}
+
+void StartingBoss::Attack(const float& someDelta)
+{
+	mySpeed = 500;
+	myMove *= (mySpeed * someDelta);
+
+	if (myPosition.Distance(myPlayer->GetPosition()) < myHitRadius)
+	{
+		myPlayer->TakeDamage(10);
+	}
+
+	RequestMove(myMove);
 }
 
 void StartingBoss::Ultimate()
@@ -58,15 +62,24 @@ void StartingBoss::Ultimate()
 
 }
 
-void StartingBoss::Idle()
+void StartingBoss::Idle(const float& someDelta)
 {
-	if (myPosition.Distance(myPlayer->GetPosition()) < 100)
+	mySpeed = 100;
+	if (myPosition.Distance(Vector2(960,540)) > 100) 
 	{
-		myPosition = myMove * mySpeed;
-	}
-	if (myPosition.Distance(myPlayer->GetPosition()) > 100)
-	{
+		myIdleTimer = 300;
+		myMove = Vector2(960 - myPosition.x, 540 - myPosition.y);
 
+		myMove *= (someDelta * mySpeed);
+
+		RequestMove(myMove);
+	}
+	else
+	{
+		myIdleTimer -= 1 * someDelta;
+		if (myIdleTimer <= 0) {
+			myBossStates = States::Charging;
+		}
 	}
 }
 
@@ -77,5 +90,6 @@ void StartingBoss::Draw(sf::RenderWindow& aWindow)
 
 StartingBoss::~StartingBoss()
 {
+	myPlayer = NULL;
 	delete(myPlayer);
 }
