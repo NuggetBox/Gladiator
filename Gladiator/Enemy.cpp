@@ -3,7 +3,7 @@
 
 Enemy::Enemy()
 {
-
+	myCharacterType = EnemyType;
 }
 
 void Enemy::Attack(bool aNear)

@@ -2,10 +2,10 @@
 #define BOSS_HEADER
 
 #include "GameInfo.h"
-#include "Enemy.h"
+#include "Character.h"
 
 class Boss 
-	: public Enemy
+	: public Character
 {
 public:
 	Boss();
