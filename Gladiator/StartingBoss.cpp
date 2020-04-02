@@ -49,7 +49,7 @@ void StartingBoss::Attack(const float& someDelta)
 {
 	myVisual.SetColor(sf::Color(0,255,255,255));
 	mySpeed = 150;
-	myMove *= (mySpeed * someDelta);
+	myMove *= mySpeed * someDelta;
 
 	if (myPosition.Distance(myPlayer->GetPosition()) < myHitRadius)
 	{
