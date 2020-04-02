@@ -9,6 +9,8 @@ Player::Player()
 	myLayer = 10;
 	myPosition = { 1000, 500 };
 	myHitRadius = 10;
+	myMaxHealth = 30;
+	myHealth = myMaxHealth;
 
 	myDodgeTime = 0.1f;
 	myDodgeInvincibilityTime = 0.08f;

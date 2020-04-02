@@ -4,6 +4,8 @@ StartingBoss::StartingBoss()
 {
 	myBossStates = States::Idle;
 	myCharacterType = CharacterType::BossType;
+	myMaxHealth = 100;
+	myHealth = myMaxHealth;
 	myPlayer = gameInfo::getPlayer();
 	mySpeed = 100.0f;
 	myChargeSpeed = 500;
@@ -61,7 +63,7 @@ void StartingBoss::Attack(const float& someDelta)
 		if (myHits == 3) 
 		{
 			myBossStates = States::Stuck;
-			myStunTimer = 20;
+			myStunTimer = 10;
 			myHits = 0;
 		}
 		else 
@@ -69,8 +71,8 @@ void StartingBoss::Attack(const float& someDelta)
 			myHits++;
 			myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
 			myMove.Normalize();
-			myMove *= (myChargeSpeed * someDelta);
 			myRotation = 90 + atan2(myMove.y, myMove.x) * 180 / M_PI;
+			myMove *= (myChargeSpeed * someDelta);
 		}
 
 	}
@@ -103,6 +105,7 @@ void StartingBoss::Idle(const float& someDelta)
 			myBossStates = States::Charging;
 			myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
 			myMove.Normalize();
+			myRotation = 90 + atan2(myMove.y, myMove.x) * 180 / M_PI;
 			myMove *= (myChargeSpeed * someDelta);
 		}
 	}
