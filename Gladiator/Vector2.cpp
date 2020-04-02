@@ -37,9 +37,9 @@ float Vector2::LengthSquared()
 
 float Vector2::Angle()
 {
-	float ok = atan2f(y, x);
-	ok *= 180 / M_PI;
-	return ok;
+	float tempAngle = atan2f(y, x);
+	tempAngle *= 180 / M_PI;
+	return tempAngle;
 }
 
 float Vector2::Distance(Vector2 b)

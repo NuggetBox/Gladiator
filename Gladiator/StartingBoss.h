@@ -30,7 +30,7 @@ public:
 	void Ultimate() override;
 
 private:
-	Vector2 myMove, myScale, myOrigin;
+	Vector2 myMove;
 	float mySpeed, myChargeSpeed, myRotation;
 	float myStunTimer, myIdleTimer;
 	int myHits;
