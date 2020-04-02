@@ -65,11 +65,14 @@ bool Character::RequestHit(CharacterType anAllyCharacterType)
 					if (abs(diff) < myHitAngle)
 					{
 						// It's a hit
+						return true;
 					}
 				}
 			}
 		}
 	}
+
+	return false;
 }
 
 CharacterType Character::GetCharacterType()
