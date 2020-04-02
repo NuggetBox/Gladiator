@@ -3,8 +3,10 @@
 StartingBoss::StartingBoss()
 {
 	myBossStates = States::Idle;
+	myCharacterType = CharacterType::BossType;
 	myPlayer = gameInfo::getPlayer();
 	mySpeed = 100.0f;
+	myChargeSpeed = 500;
 	myPosition = Vector2(800,500);
 	myScale = Vector2(5,5);
 	myLayer = 11;
@@ -20,8 +22,6 @@ void StartingBoss::Update(const float& someDelta)
 {
 	//myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
 
-	Vector2 tempDir = myPlayer->GetPosition() - myPosition;
-	myRotation = 90 + atan2(myMove.y, myMove.x) * 180 / M_PI;
 
 	myVisual.SetRotation(myRotation);
 
@@ -48,7 +48,6 @@ void StartingBoss::Update(const float& someDelta)
 void StartingBoss::Attack(const float& someDelta)
 {
 	myVisual.SetColor(sf::Color(0,255,255,255));
-	mySpeed = 200;
 
 	if (myPosition.Distance(myPlayer->GetPosition()) < myHitRadius)
 	{
@@ -65,10 +64,15 @@ void StartingBoss::Attack(const float& someDelta)
 			myStunTimer = 20;
 			myHits = 0;
 		}
-		myHits++;
-		myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
-		myMove.Normalize();
-		myMove *= (mySpeed * someDelta);
+		else 
+		{
+			myHits++;
+			myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
+			myMove.Normalize();
+			myMove *= (myChargeSpeed * someDelta);
+			myRotation = 90 + atan2(myMove.y, myMove.x) * 180 / M_PI;
+		}
+
 	}
 }
 
@@ -83,6 +87,8 @@ void StartingBoss::Idle(const float& someDelta)
 	mySpeed = 1;
 	if (myPosition.Distance(Vector2(960,540)) > 10) 
 	{
+		Vector2 tempDir = myPlayer->GetPosition() - myPosition;
+		myRotation = 90 + atan2(tempDir.y, tempDir.x) * 180 / M_PI;
 		myIdleTimer = 1;
 		myMove = Vector2(960 - myPosition.x, 540 - myPosition.y);
 
@@ -97,8 +103,7 @@ void StartingBoss::Idle(const float& someDelta)
 			myBossStates = States::Charging;
 			myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
 			myMove.Normalize();
-			mySpeed = 200;
-			myMove *= (mySpeed * someDelta);
+			myMove *= (myChargeSpeed * someDelta);
 		}
 	}
 }
