@@ -22,8 +22,6 @@ StartingBoss::StartingBoss()
 
 void StartingBoss::Update(const float& someDelta)
 {
-	//myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
-
 
 	myVisual.SetRotation(myRotation);
 
@@ -69,7 +67,7 @@ void StartingBoss::Attack(const float& someDelta)
 		else 
 		{
 			myHits++;
-			myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
+			myMove = myPlayer->GetPosition() - myPosition;
 			myMove.Normalize();
 			myRotation = 90 + atan2(myMove.y, myMove.x) * 180 / M_PI;
 			myMove *= (myChargeSpeed * someDelta);
@@ -104,7 +102,7 @@ void StartingBoss::Idle(const float& someDelta)
 		myIdleTimer -= 1 * someDelta;
 		if (myIdleTimer <= 0) {
 			myBossStates = States::Charging;
-			myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
+			myMove = myPlayer->GetPosition() - myPosition;
 			myMove.Normalize();
 			myRotation = 90 + atan2(myMove.y, myMove.x) * 180 / M_PI;
 			myMove *= (myChargeSpeed * someDelta);
