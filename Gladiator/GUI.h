@@ -7,6 +7,7 @@
 class GUI
 {
 public:
+	GUI(sf::Texture aTexture, Vector2 aPosition, Vector2 aScale, sf::String aTextString, int aTextSize, Vector2 aTextPosition);
 	GUI();
 	~GUI();
 
@@ -15,8 +16,6 @@ public:
 	void Draw(sf::RenderWindow& aWindow);
 
 	int GetLayer();
-
-	Vector2 GetPosition();
 
 private:
 	bool* myBoolToChange;
@@ -29,27 +28,27 @@ private:
 	int myLayer;
 
 	sf::Texture myTexture;
-	Vector2 myPosition;
-	float myRotation;
-	Vector2 myOrigin;
-	Vector2 myScale;
-	sf::Color myColor;
+	Vector2 myPosition = { 0,0 };
+	float myRotation = 0;
+	Vector2 myOrigin = { 0,0 };
+	Vector2 myScale = { 1,1 };
+	sf::Color myColor = sf::Color(255, 255, 255, 255);
 	sf::IntRect myTextureRect;
 
-	sf::String myTextString;
-	int myTextCharacterSize;
+	sf::String myTextString = "Sample Text";
+	int myTextCharacterSize = 12;
 	sf::Font myTextFont;
-	sf::Uint32 myTextStyle;
-	sf::Color myTextFillColor;
-	sf::Color myTextOutlineColor;
-	float myTextOutlineThickness;
-	float myTextLetterSpacing;
-	float myTextLineSpacing;
-	Vector2 myTextPosition;
-	float myTextRotation;
-	Vector2 myTextOrigin;
-	Vector2 myTextScale;
-	sf::Color myTextColor;
+	sf::Uint32 myTextStyle = sf::Text::Regular;
+	sf::Color myTextFillColor = sf::Color(255, 255, 255, 255);
+	sf::Color myTextOutlineColor = sf::Color(255, 255, 255, 255);
+	float myTextOutlineThickness = 0;
+	float myTextLetterSpacing = 1;
+	float myTextLineSpacing = 1;
+	Vector2 myTextPosition = { 0,0 };
+	float myTextRotation = 0;
+	Vector2 myTextOrigin = { 0,0 };
+	Vector2 myTextScale = { 1,1 };
+	//sf::Color myTextColor = sf::Color(255, 255, 255, 255);
 };
 
 #endif

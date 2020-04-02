@@ -5,6 +5,7 @@
 #include "Enemy.h"
 #include "Player.h"
 #include "StartingBoss.h"
+#include "GUI.h"
 
 class Game
 {
@@ -18,7 +19,11 @@ public:
 private:
 	std::vector<GameObject*> myGameObjects;
 
+	std::vector<GUI*> myGUI;
+
 	std::vector<GameObject*> SortByLayer(std::vector<GameObject*> someGameObjects);
+
+	std::vector<GUI*> SortByLayer(std::vector<GUI*> someGUI);
 };
 
 #endif
