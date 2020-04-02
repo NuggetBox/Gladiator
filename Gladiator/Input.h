@@ -34,25 +34,3 @@ namespace in
 }
 
 #endif
-
-/*#ifndef KEY_HEADER
-#define KEY_HEADER
-
-class Key
-{
-public:
-	Key(sf::Keyboard::Key aKey);
-	~Key();
-
-	void Update();
-
-	bool GetDown();
-	bool GetPressed();
-	bool GetReleased();
-
-private:
-	sf::Keyboard::Key myKey;
-	bool myWasDownLastFrame = false;
-};
-
-#endif*/

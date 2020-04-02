@@ -21,7 +21,7 @@ void StartingBoss::Update(const float& someDelta)
 	//myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
 
 	Vector2 tempDir = myPlayer->GetPosition() - myPosition;
-	myRotation = 90 + atan2(tempDir.y, tempDir.x) * 180 / M_PI;
+	myRotation = 90 + atan2(myMove.y, myMove.x) * 180 / M_PI;
 
 	myVisual.SetRotation(myRotation);
 
@@ -48,8 +48,7 @@ void StartingBoss::Update(const float& someDelta)
 void StartingBoss::Attack(const float& someDelta)
 {
 	myVisual.SetColor(sf::Color(0,255,255,255));
-	mySpeed = 150;
-	myMove *= mySpeed * someDelta;
+	mySpeed = 200;
 
 	if (myPosition.Distance(myPlayer->GetPosition()) < myHitRadius)
 	{
@@ -69,6 +68,7 @@ void StartingBoss::Attack(const float& someDelta)
 		myHits++;
 		myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
 		myMove.Normalize();
+		myMove *= (mySpeed * someDelta);
 	}
 }
 
@@ -97,6 +97,8 @@ void StartingBoss::Idle(const float& someDelta)
 			myBossStates = States::Charging;
 			myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
 			myMove.Normalize();
+			mySpeed = 200;
+			myMove *= (mySpeed * someDelta);
 		}
 	}
 }
