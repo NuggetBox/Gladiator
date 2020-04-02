@@ -21,6 +21,9 @@ Game::Game()
 	sf::Texture tempTexture;
 	tempTexture.loadFromFile("Textures/Sand.png");
 	myGameObjects.push_back(new GameObject({ 1000, 500 }, tempTexture, 0, 5, 0, 0));
+
+	tempTexture.loadFromFile("Textures/gmod.png");
+	myGUI.push_back(new GUI(tempTexture, { 100,100 }, { 10,10 }, "Hej Benjamin och Alvin", 24, { 100, 200 }));
 }
 
 Game::~Game()
@@ -45,6 +48,11 @@ bool Game::Update(const float& someDelta, sf::RenderWindow &aRenderWindow)
 		}
 	}
 
+	for (int i = 0; i < myGUI.size(); ++i)
+	{
+		myGUI[i]->Update(someDelta);
+	}
+
 	in::update(aRenderWindow);
 
 	return true;
@@ -57,6 +65,13 @@ void Game::Draw(sf::RenderWindow& aWindow)
 	for (int i = 0; i < myGameObjects.size(); ++i)
 	{
 		myGameObjects[i]->Draw(aWindow);
+	}
+
+	myGUI = SortByLayer(myGUI);
+
+	for (int i = 0; i < myGUI.size(); ++i)
+	{
+		myGUI[i]->Draw(aWindow);
 	}
 }
 
@@ -93,4 +108,34 @@ std::vector<GameObject*> Game::SortByLayer(std::vector<GameObject*> someGameObje
 	}
 
 	return someGameObjects;
+}
+
+std::vector<GUI*> Game::SortByLayer(std::vector<GUI*> someGUI)
+{
+	bool tempFinished = false;
+	bool tempNoErrors;
+
+	while (!tempFinished)
+	{
+		tempNoErrors = true;
+
+		for (int i = 0; 1.0f + i < someGUI.size(); ++i)
+		{
+			if (someGUI[i]->GetLayer() > someGUI[1.0f + i]->GetLayer())
+			{
+				tempNoErrors = false;
+
+				GUI* tempGUI = someGUI[1.0f + i];
+				someGUI[1.0f + i] = someGUI[i];
+				someGUI[i] = tempGUI;
+			}
+		}
+
+		if (tempNoErrors)
+		{
+			tempFinished = true;
+		}
+	}
+
+	return someGUI;
 }

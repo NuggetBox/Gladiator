@@ -22,8 +22,6 @@ StartingBoss::StartingBoss()
 
 void StartingBoss::Update(const float& someDelta)
 {
-	//myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
-
 
 	myVisual.SetRotation(myRotation);
 
