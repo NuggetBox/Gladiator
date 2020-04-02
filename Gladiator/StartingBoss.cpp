@@ -71,7 +71,7 @@ void StartingBoss::Attack(const float& someDelta)
 			myHits++;
 			myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
 			myMove.Normalize();
-			myRotation = 90 + atan2(myMove.y, myMove.x) * 180 / M_PI;
+			myRotation = 90 + atan2f(myMove.y, myMove.x) * 180 / M_PI;
 			myMove *= (myChargeSpeed * someDelta);
 		}
 
@@ -90,7 +90,7 @@ void StartingBoss::Idle(const float& someDelta)
 	if (myPosition.Distance(Vector2(960,540)) > 10) 
 	{
 		Vector2 tempDir = myPlayer->GetPosition() - myPosition;
-		myRotation = 90 + atan2(tempDir.y, tempDir.x) * 180 / M_PI;
+		myRotation = 90 + atan2f(tempDir.y, tempDir.x) * 180 / M_PI;
 		myIdleTimer = 1;
 		myMove = Vector2(960 - myPosition.x, 540 - myPosition.y);
 
@@ -101,11 +101,12 @@ void StartingBoss::Idle(const float& someDelta)
 	else
 	{
 		myIdleTimer -= 1 * someDelta;
+
 		if (myIdleTimer <= 0) {
 			myBossStates = States::Charging;
 			myMove = Vector2(myPlayer->GetPosition().x - myPosition.x, myPlayer->GetPosition().y - myPosition.y);
 			myMove.Normalize();
-			myRotation = 90 + atan2(myMove.y, myMove.x) * 180 / M_PI;
+			myRotation = 90 + atan2f(myMove.y, myMove.x) * 180 / M_PI;
 			myMove *= (myChargeSpeed * someDelta);
 		}
 	}

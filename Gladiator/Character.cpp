@@ -102,7 +102,7 @@ int Character::GetSpeed()
 
 bool Character::TakeDamage(int someDamage)
 {
-	myHealth -= myDamage;
+	myHealth -= someDamage;
 
 	if (myHealth <= 0)
 	{

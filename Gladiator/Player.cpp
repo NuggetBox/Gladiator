@@ -11,6 +11,7 @@ Player::Player() : Character()
 	myHitRadius = 10;
 	myMaxHealth = 30;
 	myHealth = myMaxHealth;
+	myDamage = 10;
 
 	myDodgeTime = 0.1f;
 	myDodgeInvincibilityTime = 0.08f;
