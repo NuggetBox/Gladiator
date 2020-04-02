@@ -25,7 +25,7 @@ public:
 
 protected:
 	bool RequestMove(Vector2 aMovement);
-	bool RequestHit(CharacterType anAllyCharacterType);
+	void RequestHit(CharacterType anAllyCharacterType);
 
 	CharacterType myCharacterType;
 

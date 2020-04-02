@@ -12,8 +12,11 @@ Game::Game()
 	myGameObjects.push_back(tempPlayer);
 	myGameObjects.push_back(tempBoss);
 
-	Enemy* tempEnemy = new Enemy();
-	myGameObjects.push_back(tempEnemy);
+	for (int i = 0; i < 50; ++i)
+	{
+		Enemy* tempEnemy = new Enemy();
+		myGameObjects.push_back(tempEnemy);
+	}
 
 	sf::Texture tempTexture;
 	tempTexture.loadFromFile("Textures/Sand.png");
@@ -30,7 +33,16 @@ bool Game::Update(const float& someDelta, sf::RenderWindow &aRenderWindow)
 {
 	for (int i = 0; i < myGameObjects.size(); ++i)
 	{
-		myGameObjects[i]->Update(someDelta);
+		GameObject* tempObject = myGameObjects[i];
+		
+		if (tempObject->imFuckingDead)
+		{
+			myGameObjects.erase(myGameObjects.begin() + i);
+		}
+		else
+		{
+			tempObject->Update(someDelta);
+		}
 	}
 
 	in::update(aRenderWindow);
