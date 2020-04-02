@@ -37,6 +37,11 @@ float Vector2::LengthSquared()
 	return x * x + y * y;
 }
 
+float Vector2::Angle()
+{
+	return atan2f(y, x);
+}
+
 float Vector2::Distance(Vector2 b)
 {
 	return (*this - b).Length();

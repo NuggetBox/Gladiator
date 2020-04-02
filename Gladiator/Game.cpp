@@ -1,3 +1,4 @@
+#include <SFML/Graphics.hpp>
 #include "Game.h"
 
 Game::Game()
@@ -11,6 +12,9 @@ Game::Game()
 	myGameObjects.push_back(tempPlayer);
 	myGameObjects.push_back(tempBoss);
 
+	Enemy* tempEnemy = new Enemy();
+	myGameObjects.push_back(tempEnemy);
+
 	sf::Texture tempTexture;
 	tempTexture.loadFromFile("Textures/Sand.png");
 	myGameObjects.push_back(new GameObject({ 1000, 500 }, tempTexture, 0, 5, 0, 0));
@@ -22,14 +26,14 @@ Game::~Game()
 
 }
 
-bool Game::Update(const float& someDelta)
+bool Game::Update(const float& someDelta, sf::RenderWindow &aRenderWindow)
 {
 	for (int i = 0; i < myGameObjects.size(); ++i)
 	{
 		myGameObjects[i]->Update(someDelta);
 	}
 
-	in::update();
+	in::update(aRenderWindow);
 
 	return true;
 }

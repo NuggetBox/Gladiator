@@ -21,18 +21,15 @@ public:
 	Vector2 GetPosition();
 
 	float GetHitRadius();
+	bool GetIsCharacter();
 
 protected:
-	void RequestMove(Vector2 aMovement);
-
 	Visual myVisual;
 	Vector2 myPosition;
 	int myLayer;
 	float myHitRadius;
 
-	bool myIsPlayer;
-	bool myIsBoss;
-	bool myIsEnemy;
+	bool myIsCharacter;
 };
 
 #endif

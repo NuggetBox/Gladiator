@@ -1,9 +1,10 @@
 #ifndef ENEMY_HEADER
 #define ENEMY_HEADER
 
-#include "GameObject.h"
+#include "Character.h"
 
-class Enemy : public GameObject
+class Enemy 
+	: public Character
 {
 public:
 	Enemy();

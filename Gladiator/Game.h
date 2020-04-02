@@ -2,6 +2,7 @@
 #define GAME_HEADER
 
 #include "GameInfo.h"
+#include "Enemy.h"
 #include "Player.h"
 #include "StartingBoss.h"
 
@@ -11,7 +12,7 @@ public:
 	Game();
 	~Game();
 
-	bool Update(const float& someDelta);
+	bool Update(const float& someDelta, sf::RenderWindow &aRenderWindow);
 	void Draw(sf::RenderWindow& aWindow);
 
 private:

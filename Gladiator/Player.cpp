@@ -2,12 +2,13 @@
 
 Player::Player()
 {
+	myCharacterType = PlayerType;
+
 	mySpeed = 250;
 	mySwordSwingSpeed = 0.2f;
 	myLayer = 10;
 	myPosition = { 1000, 500 };
 	myHitRadius = 10;
-	myIsPlayer = true;
 
 	myDodgeTime = 0.1f;
 	myDodgeInvincibilityTime = 0.08f;
@@ -142,8 +143,11 @@ void Player::Update(const float& someDelta)
 
 #pragma endregion
 
+	// Swing
 	if (in::getM1Pressed() && !myBodyVisual.GetAnimationOn())
 	{
+		
+
 		myBodyVisual.PlayAnimationOnce(Animation(myNoArmorSwing, 3, mySwordSwingSpeed));
 		myHeadVisual.PlayAnimationOnce(Animation(myNoHelmetSwing, 3, mySwordSwingSpeed));
 		myWeaponVisual.PlayAnimationOnce(Animation(myStoneSwordSwing, 3, mySwordSwingSpeed));
@@ -151,11 +155,12 @@ void Player::Update(const float& someDelta)
 
 #pragma region Rotate player
 
-	Vector2 tempPlayerToMouse = Vector2(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y) - myPosition;
+	Vector2 tempPlayerToMouse = in::getMousePos() - myPosition;
 	float tempRotation = 90 + atan2(tempPlayerToMouse.y, tempPlayerToMouse.x) * 180 / M_PI;
 	myBodyVisual.SetRotation(tempRotation);
 	myHeadVisual.SetRotation(tempRotation);
 	myWeaponVisual.SetRotation(tempRotation);
+	myVisual.SetRotation(tempRotation);
 
 #pragma endregion
 

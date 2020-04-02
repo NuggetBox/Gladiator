@@ -3,10 +3,11 @@
 
 #define _USE_MATH_DEFINES
 
-#include "GameObject.h"
+#include "Character.h"
 #include <cmath>
 
-class Player : public GameObject
+class Player 
+	: public Character
 {
 public:
 	Player();
