@@ -48,7 +48,7 @@ void StartingBoss::Update(const float& someDelta)
 void StartingBoss::Attack(const float& someDelta)
 {
 	myVisual.SetColor(sf::Color(0,255,255,255));
-	mySpeed = 50;
+	mySpeed = 150;
 	myMove *= (mySpeed * someDelta);
 
 	if (myPosition.Distance(myPlayer->GetPosition()) < myHitRadius)
@@ -58,7 +58,7 @@ void StartingBoss::Attack(const float& someDelta)
 
 	RequestMove(myMove);
 
-	if (gameInfo::getOutOfBounds(myPosition+myMove, myHitRadius)) 
+	if (gameInfo::getOutOfBounds((myPosition + myMove), myHitRadius)) 
 	{
 		if (myHits == 3) 
 		{
@@ -83,7 +83,7 @@ void StartingBoss::Idle(const float& someDelta)
 	mySpeed = 1;
 	if (myPosition.Distance(Vector2(960,540)) > 10) 
 	{
-		myIdleTimer = 10;
+		myIdleTimer = 1;
 		myMove = Vector2(960 - myPosition.x, 540 - myPosition.y);
 
 		myMove *= (someDelta * mySpeed);
