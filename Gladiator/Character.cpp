@@ -97,6 +97,11 @@ int Character::GetSpeed()
 	return mySpeed;
 }
 
+void Character::TakeDamage(int someDamage)
+{
+	myHealth -= myDamage;
+}
+
 float Character::GetHitAngle()
 {
 	return myHitAngle;

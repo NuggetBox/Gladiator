@@ -18,6 +18,7 @@ public:
 	int GetHealth();
 	int GetDamage();
 	int GetSpeed();
+	void TakeDamage(int someDamage);
 
 	float GetHitAngle();
 	float GetHitRange();
