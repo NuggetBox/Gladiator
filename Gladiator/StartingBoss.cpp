@@ -87,10 +87,11 @@ void StartingBoss::Idle(const float& someDelta)
 {
 	myVisual.SetColor(sf::Color(255, 0, 255, 255));
 	mySpeed = 1;
+	Vector2 tempDir = myPlayer->GetPosition() - myPosition;
+	myRotation = 90 + atan2(tempDir.y, tempDir.x) * 180 / M_PI;
 	if (myPosition.Distance(Vector2(960,540)) > 10) 
 	{
-		Vector2 tempDir = myPlayer->GetPosition() - myPosition;
-		myRotation = 90 + atan2(tempDir.y, tempDir.x) * 180 / M_PI;
+
 		myIdleTimer = 1;
 		myMove = Vector2(960 - myPosition.x, 540 - myPosition.y);
 
