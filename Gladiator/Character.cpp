@@ -4,6 +4,7 @@
 Character::Character()
 {
 	myCharacterType = PlayerType;
+	myIsCharacter = true;
 	myHealth = 0;
 	myDamage = 0;
 	mySpeed = 0;
@@ -64,6 +65,8 @@ bool Character::RequestHit(CharacterType anAllyCharacterType)
 
 					if (abs(diff) < myHitAngle)
 					{
+						tempCharacter->TakeDamage(myDamage);
+						myPosition = Vector2(1, 1);
 						// It's a hit
 						return true;
 					}
@@ -100,9 +103,18 @@ int Character::GetSpeed()
 	return mySpeed;
 }
 
-void Character::TakeDamage(int someDamage)
+bool Character::TakeDamage(int someDamage)
 {
 	myHealth -= myDamage;
+
+	if (myHealth <= 0)
+	{
+		myHealth = 0;
+		// TODO: Dead
+		return true;
+	}
+
+	return false;
 }
 
 float Character::GetHitAngle()
