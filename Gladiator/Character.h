@@ -18,14 +18,14 @@ public:
 	int GetHealth();
 	int GetDamage();
 	int GetSpeed();
-	void TakeDamage(int someDamage);
+	bool TakeDamage(int someDamage);
 
 	float GetHitAngle();
 	float GetHitRange();
 
 protected:
 	bool RequestMove(Vector2 aMovement);
-	bool RequestHit(CharacterType anAllyCharacterType);
+	void RequestHit(CharacterType anAllyCharacterType);
 
 	CharacterType myCharacterType;
 

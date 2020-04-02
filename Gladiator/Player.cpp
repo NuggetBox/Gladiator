@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player()
+Player::Player() : Character()
 {
 	myCharacterType = PlayerType;
 
@@ -9,6 +9,8 @@ Player::Player()
 	myLayer = 10;
 	myPosition = { 1000, 500 };
 	myHitRadius = 10;
+	myMaxHealth = 30;
+	myHealth = myMaxHealth;
 
 	myDodgeTime = 0.1f;
 	myDodgeInvincibilityTime = 0.08f;
@@ -18,6 +20,7 @@ Player::Player()
 	myDodgeDirection = { 0, 0 };
 	myIsInvincible = false;
 	myInvincibilityAlpha = 100;
+	imFuckingDead = false;
 
 	float tempXOrigin = 0.5f;
 	float tempYOrigin = 0.7f;
@@ -146,7 +149,7 @@ void Player::Update(const float& someDelta)
 	// Swing
 	if (in::getM1Pressed() && !myBodyVisual.GetAnimationOn())
 	{
-		
+		RequestHit(PlayerType);
 
 		myBodyVisual.PlayAnimationOnce(Animation(myNoArmorSwing, 3, mySwordSwingSpeed));
 		myHeadVisual.PlayAnimationOnce(Animation(myNoHelmetSwing, 3, mySwordSwingSpeed));

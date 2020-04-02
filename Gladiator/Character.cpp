@@ -4,11 +4,13 @@
 Character::Character()
 {
 	myCharacterType = PlayerType;
+	myIsCharacter = true;
+	myMaxHealth = 0;
 	myHealth = 0;
 	myDamage = 0;
 	mySpeed = 0;
-	myHitAngle = 0;
-	myHitRange = 0;
+	myHitAngle = 45;
+	myHitRange = 500;
 }
 
 Character::~Character()
@@ -42,12 +44,12 @@ bool Character::RequestMove(Vector2 aMovement)
 	return false;
 }
 
-bool Character::RequestHit(CharacterType anAllyCharacterType)
+void Character::RequestHit(CharacterType anAllyCharacterType)
 {
 	std::vector<GameObject*>* tempGameObjects = gameInfo::getGameObjects();
 
 	bool tempFriendly = anAllyCharacterType == PlayerType;
-
+	
 	for (GameObject* g : *tempGameObjects)
 	{
 		if (g->GetIsCharacter())
@@ -56,23 +58,21 @@ bool Character::RequestHit(CharacterType anAllyCharacterType)
 				
 			if (tempFriendly && tempCharacter->GetCharacterType() != PlayerType || !tempFriendly && tempCharacter->GetCharacterType() == PlayerType)
 			{
-				Vector2 dir = myPosition - tempCharacter->GetPosition();
+				Vector2 dir = tempCharacter->GetPosition() - myPosition;
 
 				if (dir.Length() < myHitRange)
 				{
-					float diff = myVisual.GetRotation() - dir.Angle();
+					float diff = myVisual.GetRotation() - dir.Angle() - 90;
 
-					if (abs(diff) < myHitAngle)
+					if (abs(diff) < myHitAngle || abs(diff) + myHitAngle > 360)
 					{
+						tempCharacter->TakeDamage(myDamage);
 						// It's a hit
-						return true;
 					}
 				}
 			}
 		}
 	}
-
-	return false;
 }
 
 CharacterType Character::GetCharacterType()
@@ -100,9 +100,19 @@ int Character::GetSpeed()
 	return mySpeed;
 }
 
-void Character::TakeDamage(int someDamage)
+bool Character::TakeDamage(int someDamage)
 {
 	myHealth -= myDamage;
+
+	if (myHealth <= 0)
+	{
+		myHealth = 0;
+		imFuckingDead = true;
+		// TODO: Dead
+		return true;
+	}
+
+	return false;
 }
 
 float Character::GetHitAngle()

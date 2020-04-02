@@ -31,7 +31,7 @@ public:
 
 private:
 	Vector2 myMove, myScale, myOrigin;
-	float mySpeed, myRotation;
+	float mySpeed, myChargeSpeed, myRotation;
 	float myStunTimer, myIdleTimer;
 	int myHits;
 	Ray myRay;

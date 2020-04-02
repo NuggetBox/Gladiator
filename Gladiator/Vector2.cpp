@@ -18,12 +18,10 @@ Vector2::~Vector2()
 
 void Vector2::Normalize()
 {
-	float length = std::sqrtf(x * x + y * y);
-
-	if (length != 0)
+	if (Length() != 0)
 	{
-		x /= length;
-		y /= length;
+		x /= Length();
+		y /= Length();
 	}
 }
 
@@ -39,7 +37,9 @@ float Vector2::LengthSquared()
 
 float Vector2::Angle()
 {
-	return atan2f(y, x);
+	float ok = atan2f(y, x);
+	ok *= 180 / M_PI;
+	return ok;
 }
 
 float Vector2::Distance(Vector2 b)
