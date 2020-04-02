@@ -42,17 +42,32 @@ bool Character::RequestMove(Vector2 aMovement)
 	return false;
 }
 
-void Character::RequestHit(CharacterType aCharacterType)
+bool Character::RequestHit(CharacterType anAllyCharacterType)
 {
 	std::vector<GameObject*>* tempGameObjects = gameInfo::getGameObjects();
+
+	bool tempFriendly = anAllyCharacterType == PlayerType;
 
 	for (GameObject* g : *tempGameObjects)
 	{
 		if (g->GetIsCharacter())
 		{
 			Character* tempCharacter = (Character*)g;
+				
+			if (tempFriendly && tempCharacter->GetCharacterType() != PlayerType || !tempFriendly && tempCharacter->GetCharacterType() == PlayerType)
+			{
+				Vector2 dir = myPosition - tempCharacter->GetPosition();
 
-			//if (tempCharacter->GetCharacterType() != aCharacterType)
+				if (dir.Length() < myHitRange)
+				{
+					float diff = myVisual.GetRotation() - dir.Angle();
+
+					if (abs(diff) < myHitAngle)
+					{
+						// It's a hit
+					}
+				}
+			}
 		}
 	}
 }
@@ -60,6 +75,11 @@ void Character::RequestHit(CharacterType aCharacterType)
 CharacterType Character::GetCharacterType()
 {
 	return myCharacterType;
+}
+
+float Character::GetHealthRatio()
+{
+	return myHealth / myMaxHealth;
 }
 
 int Character::GetHealth()

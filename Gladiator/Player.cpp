@@ -160,6 +160,7 @@ void Player::Update(const float& someDelta)
 	myBodyVisual.SetRotation(tempRotation);
 	myHeadVisual.SetRotation(tempRotation);
 	myWeaponVisual.SetRotation(tempRotation);
+	myVisual.SetRotation(tempRotation);
 
 #pragma endregion
 

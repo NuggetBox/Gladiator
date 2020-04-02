@@ -14,6 +14,7 @@ public:
 
 	CharacterType GetCharacterType();
 
+	float GetHealthRatio();
 	int GetHealth();
 	int GetDamage();
 	int GetSpeed();
@@ -23,10 +24,11 @@ public:
 
 protected:
 	bool RequestMove(Vector2 aMovement);
-	void RequestHit(CharacterType aCharacterType);
+	bool RequestHit(CharacterType anAllyCharacterType);
 
 	CharacterType myCharacterType;
 
+	int myMaxHealth;
 	int myHealth;
 	int myDamage;
 	int mySpeed;
