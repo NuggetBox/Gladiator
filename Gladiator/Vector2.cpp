@@ -49,6 +49,15 @@ float Vector2::Distance(Vector2 b)
 	return (*this - b).Length();
 }
 
+Vector2 Vector2::Rotate(float angle)
+{
+	angle *= (M_PI / 180);
+	Vector2 tempResult = Vector2(x * cos(angle) - y * sin(angle), x * sin(angle) + y * cos(angle));
+	x = tempResult.x;
+	y = tempResult.y;
+	return tempResult;
+}
+
 // Operators
 Vector2 Vector2::operator-() const
 {
