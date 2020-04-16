@@ -27,11 +27,10 @@ public:
 
 	void Attack(const float& someDelta);
 	void Idle(const float& someDelta);
-	void Ultimate() override;
 
 private:
 	Vector2 myMove;
-	float mySpeed, myChargeSpeed, myRotation;
+	float mySpeed, myChargeSpeed, myRotation, myOriginalHealth;
 	float myStunTimer, myIdleTimer;
 	int myHits;
 	Ray myRay;
