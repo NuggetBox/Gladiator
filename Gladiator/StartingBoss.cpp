@@ -18,13 +18,12 @@ StartingBoss::StartingBoss()
 	myHitRadius = 10;
 	myHits = 0;
 	myAttackBool = false;
+	myIsInvincible = true;
 }
 
 void StartingBoss::Update(const float& someDelta)
 {
-
 	myVisual.SetRotation(myRotation);
-
 
 	switch (myBossStates)
 	{
@@ -35,6 +34,7 @@ void StartingBoss::Update(const float& someDelta)
 		Attack(someDelta);
 		break;
 	case States::Stuck:
+		myIsInvincible = false;
 		myVisual.SetColor(sf::Color(255, 255, 0, 255));
 		myStunTimer -= 1 * someDelta;
 		if (myHealth <= (myOriginalHealth-(myMaxHealth/3))) 
@@ -44,6 +44,7 @@ void StartingBoss::Update(const float& someDelta)
 		if (myStunTimer <= 0)
 		{
 			myBossStates = States::Idle;
+			myIsInvincible = true;
 		}
 		break;
 	}

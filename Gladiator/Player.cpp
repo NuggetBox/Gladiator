@@ -14,7 +14,7 @@ Player::Player() : Character()
 	myDamage = 10;
 
 	myDodgeTime = 0.1f;
-	myDodgeInvincibilityTime = 0.08f;
+	myDodgeInvincibilityTime = 0.08f; 
 	myDodgeTimer = 0;
 	myDodgeSpeed = 1000;
 	myIsDodging = false;

@@ -18,7 +18,7 @@ Enemy::Enemy()
 	
 	sf::Texture tempTex;
 	tempTex.loadFromFile("Textures/gmod.png");
-
+	myIsInvincible = false;
 	//myVisual = Visual(tempTex, 0, Vector2(10, 10), Vector2(0, 0));
 
 	myVisual = Visual(tempTex, 0, { 10, 10 }, { 0.5f * tempTex.getSize().x, 0.5f * tempTex.getSize().y });
