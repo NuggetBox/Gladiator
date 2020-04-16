@@ -23,6 +23,8 @@ public:
 	float GetHitAngle();
 	float GetHitRange();
 
+	bool GetIsInvincible();
+
 protected:
 	bool RequestMove(Vector2 aMovement);
 	void RequestHit(CharacterType anAllyCharacterType);
@@ -36,6 +38,8 @@ protected:
 	
 	float myHitAngle;
 	float myHitRange;
+
+	bool myIsInvincible;
 };
 
 #endif
