@@ -17,6 +17,7 @@ public:
 	float LengthSquared();
 	float Angle();
 	float Distance(Vector2 b);
+	Vector2 Rotate(float angle);
 
 	Vector2 operator-() const;
 	Vector2 operator+(const Vector2& b) const;
