@@ -54,7 +54,6 @@ void StartingBoss::Attack(const float& someDelta)
 		myPlayer->TakeDamage(10);
 	}*/
 
-	RequestMove(myMove);
 
 	if (gameInfo::getOutOfBounds((myPosition + myMove), myHitRadius))
 	{
@@ -72,6 +71,11 @@ void StartingBoss::Attack(const float& someDelta)
 			myRotation = 90 + myMove.Angle();
 			myMove *= (myChargeSpeed * someDelta);
 		}
+
+	}
+	else
+	{
+		RequestMove(myMove);
 
 	}
 }

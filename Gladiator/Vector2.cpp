@@ -18,10 +18,12 @@ Vector2::~Vector2()
 
 void Vector2::Normalize()
 {
-	if (Length() != 0)
+	float tempLength = Length();
+
+	if (tempLength != 0)
 	{
-		x /= Length();
-		y /= Length();
+		x /= tempLength;
+		y /= tempLength;
 	}
 }
 
