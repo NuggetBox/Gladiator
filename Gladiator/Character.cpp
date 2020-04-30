@@ -64,7 +64,7 @@ void Character::RequestHit(CharacterType anAllyCharacterType)
 
 					if (dir.Length() < myHitRange)
 					{
-						float diff = myVisual.GetRotation() - dir.Angle() - 90;
+						float diff = myVisual.GetRotation() - dir.Angle();
 
 						if (abs(diff) < myHitAngle || abs(diff) + myHitAngle > 360)
 						{
