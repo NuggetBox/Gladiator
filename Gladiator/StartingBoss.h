@@ -1,4 +1,5 @@
-#pragma once
+#ifndef STARTINGBOSS_H
+#define STARTINGBOSS_H
 
 #define _USE_MATH_DEFINES
 
@@ -41,3 +42,4 @@ private:
 	States myBossStates;
 };
 
+#endif
