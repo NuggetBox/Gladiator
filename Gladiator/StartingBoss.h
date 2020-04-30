@@ -31,12 +31,10 @@ public:
 
 private:
 	Vector2 myMove;
-	float mySpeed, myChargeSpeed, myRotation, myOriginalHealth;
+	int myChargeSpeed;
+	float myRotation, myOriginalHealth;
 	float myStunTimer, myIdleTimer;
 	int myHits;
-	Ray myRay;
-	std::vector<GameObject*> myGameobjects;
-	bool myAttackBool;
 	sf::Texture myTexture;
 	States myBossStates;
 };

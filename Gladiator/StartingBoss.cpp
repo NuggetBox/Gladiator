@@ -7,7 +7,7 @@ StartingBoss::StartingBoss()
 	myMaxHealth = 120;
 	myHealth = myMaxHealth;
 	myPlayer = gameInfo::getPlayer();
-	mySpeed = 100.0f;
+	mySpeed = 100;
 	myChargeSpeed = 500;
 	myPosition = Vector2(800,500);
 	myLayer = 11;
@@ -17,7 +17,6 @@ StartingBoss::StartingBoss()
 	myVisual = Visual(myTexture, myRotation, { 5, 5 }, { 0.5f * myTexture.getSize().x, 0.5f * myTexture.getSize().y });
 	myHitRadius = 10;
 	myHits = 0;
-	myAttackBool = false;
 	myIsInvincible = true;
 }
 

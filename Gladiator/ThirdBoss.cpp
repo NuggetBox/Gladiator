@@ -10,4 +10,12 @@ ThirdBoss::~ThirdBoss()
 
 }
 
-void SecondBoss::Update()
+void ThirdBoss::Update(const float& someDelta)
+{
+
+}
+
+void ThirdBoss::Draw(sf::RenderWindow& aWindow)
+{
+	
+}
