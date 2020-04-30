@@ -5,8 +5,10 @@ SecondBoss::SecondBoss()
 	myMove = Vector2(0,0);
 	mySpeed = 300;
 	myRotation = 0;
-	myOriginalHealth = 240;
+	myMaxHealth = 240;
 	myHealth = myOriginalHealth;
+	myPosition = Vector2(800, 500);
+
 }
 
 SecondBoss::~SecondBoss() 
