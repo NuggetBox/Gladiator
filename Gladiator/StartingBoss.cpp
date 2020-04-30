@@ -74,7 +74,7 @@ void StartingBoss::Attack(const float& someDelta)
 			myHits++;
 			myMove = (myPlayer->GetPosition() - myPosition);
 			myMove.Normalize();
-			myRotation = 90 + myMove.Angle();
+			myRotation = myMove.Angle();
 			myMove *= (myChargeSpeed * someDelta);
 		}
 
@@ -90,7 +90,7 @@ void StartingBoss::Idle(const float& someDelta)
 {
 	myVisual.SetColor(sf::Color(255, 0, 255, 255));
 	Vector2 tempDir = (myPlayer->GetPosition() - myPosition);
-	myRotation = 90 + tempDir.Angle();
+	myRotation = tempDir.Angle();
 	if (myPosition.Distance(Vector2(960,540)) > 10) 
 	{
 		myIdleTimer = 1;
@@ -107,7 +107,7 @@ void StartingBoss::Idle(const float& someDelta)
 			myBossStates = States::Charging;
 			myMove = (myPlayer->GetPosition() - myPosition);
 			myMove.Normalize();
-			myRotation = 90 + myMove.Angle();
+			myRotation = myMove.Angle();
 			myMove *= (myChargeSpeed * someDelta);
 		}
 	}
