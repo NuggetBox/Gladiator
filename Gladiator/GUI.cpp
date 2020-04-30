@@ -12,6 +12,19 @@ GUI::GUI(sf::Texture aTexture, Vector2 aPosition, Vector2 aScale, sf::String aTe
 	myTextFont.loadFromFile("Gameplay.ttf");
 }
 
+GUI::GUI(sf::Texture aTexture, Vector2 aPosition, Vector2 aScale, sf::String aTextString, int aTextSize, Vector2 aTextPosition, bool* aBoolToChange)
+{
+	myTexture = aTexture;
+	myPosition = aPosition;
+	myScale = aScale;
+	myTextureRect = sf::IntRect(0, 0, myTexture.getSize().x, myTexture.getSize().y);
+	myTextString = aTextString;
+	myTextCharacterSize = aTextSize;
+	myTextPosition = aTextPosition;
+	myTextFont.loadFromFile("Gameplay.ttf");
+	myBoolToChange = aBoolToChange;
+}
+
 GUI::GUI()
 {
 	myTexture.loadFromFile("Textures/gmod.png");
@@ -24,9 +37,34 @@ GUI::~GUI()
 {
 }
 
+void GUI::SetPosition(Vector2 aPosition)
+{
+	myPosition = aPosition;
+}
+
+void GUI::SetOrigin(Vector2 anOrigin)
+{
+	myOrigin = anOrigin;
+}
+
+void GUI::SetScale(Vector2 aScale)
+{
+	myScale = aScale;
+}
+
+void GUI::SetText(sf::String aTextString)
+{
+	myTextString = aTextString;
+}
+
 void GUI::Update(const float& someDelta)
 {
+	
+}
 
+bool MouseAbove()
+{
+	return true;
 }
 
 void GUI::Draw(sf::RenderWindow& aWindow)
