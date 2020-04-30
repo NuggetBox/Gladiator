@@ -18,10 +18,12 @@ Vector2::~Vector2()
 
 void Vector2::Normalize()
 {
-	if (Length() != 0)
+	float tempLength = Length();
+
+	if (tempLength != 0)
 	{
-		x /= Length();
-		y /= Length();
+		x /= tempLength;
+		y /= tempLength;
 	}
 }
 
@@ -45,6 +47,15 @@ float Vector2::Angle()
 float Vector2::Distance(Vector2 b)
 {
 	return (*this - b).Length();
+}
+
+Vector2 Vector2::Rotate(float angle)
+{
+	angle *= (M_PI / 180);
+	Vector2 tempResult = Vector2(x * cos(angle) - y * sin(angle), x * sin(angle) + y * cos(angle));
+	x = tempResult.x;
+	y = tempResult.y;
+	return tempResult;
 }
 
 // Operators

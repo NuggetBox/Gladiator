@@ -27,7 +27,7 @@ private:
 	float myDodgeSpeed;
 	bool myIsDodging;
 	Vector2 myDodgeDirection;
-	bool myIsInvincible;
+	
 	int myInvincibilityAlpha;
 
 	Visual myBodyVisual;

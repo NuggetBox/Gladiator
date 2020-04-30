@@ -56,18 +56,21 @@ void Character::RequestHit(CharacterType anAllyCharacterType)
 		{
 			Character* tempCharacter = (Character*)g;
 				
-			if (tempFriendly && tempCharacter->GetCharacterType() != PlayerType || !tempFriendly && tempCharacter->GetCharacterType() == PlayerType)
+			if (!tempCharacter->GetIsInvincible())
 			{
-				Vector2 dir = tempCharacter->GetPosition() - myPosition;
-
-				if (dir.Length() < myHitRange)
+				if (tempFriendly && tempCharacter->GetCharacterType() != PlayerType || !tempFriendly && tempCharacter->GetCharacterType() == PlayerType)
 				{
-					float diff = myVisual.GetRotation() - dir.Angle() - 90;
+					Vector2 dir = tempCharacter->GetPosition() - myPosition;
 
-					if (abs(diff) < myHitAngle || abs(diff) + myHitAngle > 360)
+					if (dir.Length() < myHitRange)
 					{
-						tempCharacter->TakeDamage(myDamage);
-						// It's a hit
+						float diff = myVisual.GetRotation() - dir.Angle();
+
+						if (abs(diff) < myHitAngle || abs(diff) + myHitAngle > 360)
+						{
+							tempCharacter->TakeDamage(myDamage);
+							// It's a hit
+						}
 					}
 				}
 			}
@@ -123,4 +126,9 @@ float Character::GetHitAngle()
 float Character::GetHitRange()
 {
 	return myHitRange;
+}
+
+bool Character::GetIsInvincible()
+{
+	return myIsInvincible;
 }

@@ -13,8 +13,6 @@ public:
 
 	void Update(const float& someDelta) override;
 
-	virtual void Ultimate();
-
 protected:
 	Player* myPlayer;
 

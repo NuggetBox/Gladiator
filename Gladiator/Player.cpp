@@ -14,7 +14,7 @@ Player::Player() : Character()
 	myDamage = 10;
 
 	myDodgeTime = 0.1f;
-	myDodgeInvincibilityTime = 0.08f;
+	myDodgeInvincibilityTime = 0.08f; 
 	myDodgeTimer = 0;
 	myDodgeSpeed = 1000;
 	myIsDodging = false;
@@ -160,7 +160,7 @@ void Player::Update(const float& someDelta)
 #pragma region Rotate player
 
 	Vector2 tempPlayerToMouse = in::getMousePos() - myPosition;
-	float tempRotation = 90 + atan2(tempPlayerToMouse.y, tempPlayerToMouse.x) * 180 / M_PI;
+	float tempRotation = atan2(tempPlayerToMouse.y, tempPlayerToMouse.x) * 180 / M_PI;
 	myBodyVisual.SetRotation(tempRotation);
 	myHeadVisual.SetRotation(tempRotation);
 	myWeaponVisual.SetRotation(tempRotation);
