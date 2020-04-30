@@ -3,6 +3,12 @@
 
 #include "Boss.h"
 
+enum Phases 
+{
+	Chariot,
+	Gladiator
+};
+
 class SecondBoss : public Boss
 {
 public:
@@ -21,7 +27,7 @@ private:
 	Vector2 myMove;
 	float mySpeed, myChargeSpeed, myRotation, myOriginalHealth;
 	float myStunTimer, myIdleTimer;
-
+	Phases myPhase;
 };
 
 #endif
