@@ -31,7 +31,8 @@ public:
 
 private:
 	Vector2 myMove;
-	float myChargeSpeed, myRotation, myOriginalHealth;
+	int myChargeSpeed;
+	float myRotation, myOriginalHealth;
 	float myStunTimer, myIdleTimer;
 	int myHits;
 	sf::Texture myTexture;

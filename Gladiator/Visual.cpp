@@ -43,7 +43,7 @@ void Visual::Draw(sf::RenderWindow& aWindow, Vector2 aPosition)
 	sf::Sprite tempSprite;
 	sf::Texture tempTexture = GetTexture();
 	tempSprite.setTexture(tempTexture);
-	tempSprite.setRotation(myRotation);
+	tempSprite.setRotation(myRotation + 90);
 	tempSprite.setOrigin(myOrigin.x, myOrigin.y);
 	tempSprite.setScale(myScale.x, myScale.y);
 	tempSprite.setPosition(aPosition.x, aPosition.y);
