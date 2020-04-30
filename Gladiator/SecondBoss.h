@@ -18,7 +18,9 @@ public:
 	void Idle(const float& someDelta);
 
 private:
-
+	Vector2 myMove;
+	float mySpeed, myChargeSpeed, myRotation, myOriginalHealth;
+	float myStunTimer, myIdleTimer;
 
 };
 

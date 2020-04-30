@@ -40,6 +40,7 @@ void StartingBoss::Update(const float& someDelta)
 		if (myHealth <= (myOriginalHealth-(myMaxHealth/3))) 
 		{
 			myBossStates = States::Idle;
+			myIsInvincible = true;
 		}
 		if (myStunTimer <= 0)
 		{

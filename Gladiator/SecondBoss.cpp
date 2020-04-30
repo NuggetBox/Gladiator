@@ -2,7 +2,11 @@
 
 SecondBoss::SecondBoss() 
 {
-
+	myMove = Vector2(0,0);
+	mySpeed = 300;
+	myRotation = 0;
+	myOriginalHealth = 240;
+	myHealth = myOriginalHealth;
 }
 
 SecondBoss::~SecondBoss() 
