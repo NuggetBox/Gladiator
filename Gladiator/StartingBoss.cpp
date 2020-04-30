@@ -4,7 +4,7 @@ StartingBoss::StartingBoss()
 {
 	myBossStates = States::Idle;
 	myCharacterType = CharacterType::BossType;
-	myMaxHealth = 100;
+	myMaxHealth = 120;
 	myHealth = myMaxHealth;
 	myPlayer = gameInfo::getPlayer();
 	mySpeed = 100.0f;
@@ -37,6 +37,11 @@ void StartingBoss::Update(const float& someDelta)
 		myIsInvincible = false;
 		myVisual.SetColor(sf::Color(255, 255, 0, 255));
 		myStunTimer -= 1 * someDelta;
+		if (myHealth <= (myOriginalHealth-(myMaxHealth/3))) 
+		{
+			myBossStates = States::Idle;
+			myIsInvincible = true;
+		}
 		if (myStunTimer <= 0)
 		{
 			myBossStates = States::Idle;
@@ -50,10 +55,10 @@ void StartingBoss::Attack(const float& someDelta)
 {
 	myVisual.SetColor(sf::Color(0,255,255,255));
 
-	/*if (myPosition.Distance(myPlayer->GetPosition()) < myHitRadius)
+	if (myPosition.Distance(myPlayer->GetPosition()) < myHitRadius)
 	{
 		myPlayer->TakeDamage(10);
-	}*/
+	}
 
 
 	if (gameInfo::getOutOfBounds((myPosition + myMove), myHitRadius))
@@ -61,13 +66,14 @@ void StartingBoss::Attack(const float& someDelta)
 		if (myHits == 3) 
 		{
 			myBossStates = States::Stuck;
-			myStunTimer = 10;
+			myOriginalHealth = myHealth;
+			myStunTimer = 1;
 			myHits = 0;
 		}
 		else 
 		{
 			myHits++;
-			myMove = myPlayer->GetPosition() - myPosition;
+			myMove = (myPlayer->GetPosition() - myPosition);
 			myMove.Normalize();
 			myRotation = 90 + myMove.Angle();
 			myMove *= (myChargeSpeed * someDelta);
@@ -81,15 +87,10 @@ void StartingBoss::Attack(const float& someDelta)
 	}
 }
 
-void StartingBoss::Ultimate()
-{
-
-}
-
 void StartingBoss::Idle(const float& someDelta)
 {
 	myVisual.SetColor(sf::Color(255, 0, 255, 255));
-	Vector2 tempDir = myPlayer->GetPosition() - myPosition;
+	Vector2 tempDir = (myPlayer->GetPosition() - myPosition);
 	myRotation = 90 + tempDir.Angle();
 	if (myPosition.Distance(Vector2(960,540)) > 10) 
 	{
@@ -105,7 +106,7 @@ void StartingBoss::Idle(const float& someDelta)
 		myIdleTimer -= 1 * someDelta;
 		if (myIdleTimer <= 0) {
 			myBossStates = States::Charging;
-			myMove = myPlayer->GetPosition() - myPosition;
+			myMove = (myPlayer->GetPosition() - myPosition);
 			myMove.Normalize();
 			myRotation = 90 + myMove.Angle();
 			myMove *= (myChargeSpeed * someDelta);

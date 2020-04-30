@@ -5,6 +5,23 @@
 
 class SecondBoss : public Boss
 {
+public:
+
+
+	SecondBoss();
+	~SecondBoss();
+
+	void Update(const float& someDelta) override;
+	void Draw(sf::RenderWindow& aWindow) override;
+
+	void Attack(const float& someDelta);
+	void Idle(const float& someDelta);
+
+private:
+	Vector2 myMove;
+	float mySpeed, myChargeSpeed, myRotation, myOriginalHealth;
+	float myStunTimer, myIdleTimer;
+
 };
 
 #endif
