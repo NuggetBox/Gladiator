@@ -71,7 +71,7 @@ void GUI::Update(const float& someDelta)
 
 bool GUI::MouseAbove()
 {
-	if (sf::Mouse::getPosition().x > myPosition.x && sf::Mouse::getPosition().y > myPosition.y)
+	if (in::getMousePos().x > myPosition.x && in::getMousePos().y > myPosition.y)
 	{
 		return true;
 	}
