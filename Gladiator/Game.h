@@ -24,6 +24,8 @@ private:
 	std::vector<GameObject*> SortByLayer(std::vector<GameObject*> someGameObjects);
 
 	std::vector<GUI*> SortByLayer(std::vector<GUI*> someGUI);
+
+	GUI* myCrosshair;
 };
 
 #endif
