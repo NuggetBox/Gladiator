@@ -76,16 +76,21 @@ void GUI::Update(const float& someDelta)
 {
 	if (MouseAbove())
 	{
-		if (myHasEffect && in::getM1Released())
+		if (in::getM1Released())
 		{
-			if (*myBoolToChange) { *myBoolToChange = false; }
-			else { *myBoolToChange = true; }
+			if (myHasEffect)
+			{
+				if (*myBoolToChange) { *myBoolToChange = false; }
+				else { *myBoolToChange = true; }
+			}
 
-			if (mySelfDestruct) { myIsDead = true; }
-
-			myColor = sf::Color(255, 100, 100, 255);
+			if (mySelfDestruct)
+			{
+				myIsDead = true;
+			}
 		}
-		else if (in::getM1Down())
+
+		if (in::getM1Down())
 		{
 			myColor = sf::Color(255, 50, 50, 255);
 		}

@@ -19,7 +19,7 @@ Game::Game()
 	myGameObjects.push_back(new GameObject({ 1000, 500 }, tempTexture, 0, 5, 0, 0));
 
 	tempTexture.loadFromFile("Textures/gmod.png");
-	myGUI.push_back(new GUI(tempTexture, { 100, 100 }, { 10,10 }, "Hej Benjamin och Alvin", 24, { 100, 200 }));
+	myGUI.push_back(new GUI(tempTexture, { 900, 320 }, { 10,5 }, "You have to win in the gladiator tournament\n				to get the gay vaccine.", 40, { 400, 200 }, true));
 
 	//myCrosshair = new GUI(tempTexture, Vector2(0,0), Vector2(1,1), "", 1, Vector2(0,0));
 	//myGUI.push_back(myCrosshair);
@@ -37,15 +37,13 @@ bool Game::Update(const float& someDelta, sf::RenderWindow &aRenderWindow)
 
 	for (int i = 0; i < myGameObjects.size(); ++i)
 	{
-		GameObject* tempObject = myGameObjects[i];
-		
-		if (tempObject->imFuckingDead)
+		if (myGameObjects[i]->imFuckingDead)
 		{
 			myGameObjects.erase(myGameObjects.begin() + i);
 		}
 		else
 		{
-			tempObject->Update(someDelta);
+			myGameObjects[i]->Update(someDelta);
 		}
 	}
 
