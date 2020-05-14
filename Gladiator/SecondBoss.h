@@ -25,9 +25,10 @@ public:
 
 private:
 	Vector2 myMove;
-	float mySpeed, myChargeSpeed, myRotation, myOriginalHealth;
-	float myStunTimer, myIdleTimer;
+	float mySpeed, myRotation, myOriginalHealth;
+	float myIdleTimer, myRotateTimer;
 	Phases myPhase;
+	sf::Texture myTexture;
 };
 
 #endif

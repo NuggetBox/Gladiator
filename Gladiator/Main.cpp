@@ -8,7 +8,8 @@ int main()
 	Game tempGame;
 
 	sf::Clock tempClock;														  //Här skapar vi en klocka, denna kommer användas för Delta Time.
-	sf::Time tempDelta;															  //Här skapar vi en Time, detta är den som kommer ge oss delta time.
+	sf::Time tempDelta;
+															  //Här skapar vi en Time, detta är den som kommer ge oss delta time.
 
 	while (window.isOpen())
 	{
@@ -21,7 +22,14 @@ int main()
 				window.close();
 		}
 
-		if (tempGame.Update(tempDelta.asSeconds(), window) == false)					  //Här uppdaterar vi vår App och skickar in Delta Time som sekunder.
+		float tempDeltaTime = tempDelta.asSeconds();
+
+		//if (tempDeltaTime == 0) 
+		//{
+		//	tempDeltaTime = 1;
+		//}
+
+		if (tempGame.Update(tempDeltaTime, window) == false)					  //Här uppdaterar vi vår App och skickar in Delta Time som sekunder.
 		{
 			return 0;
 		}
