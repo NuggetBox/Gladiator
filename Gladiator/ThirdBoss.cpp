@@ -9,7 +9,7 @@ ThirdBoss::ThirdBoss()
 	mySpeed = 150;
 	myPosition = Vector2(800, 500);
 	myLayer = 12;
-	myTexture.loadFromFile("Textures/Boss/netguy.png");
+	myTexture.loadFromFile("Textures/Boss/treudd.png");
 	//myVisual = Visual(myTexture, myRotation, myScale, myOrigin);
 	myVisual = Visual(myTexture, 0, { 5, 5 }, { 0.5f * myTexture.getSize().x, 0.5f * myTexture.getSize().y });
 	myHitRadius = 30;
@@ -41,6 +41,7 @@ void ThirdBoss::Update(const float& someDelta)
 			RequestMove(tempMove);
 		}
 
+		myVisual.SetRotation((myPosition - myPlayer->GetPosition()).Angle());
 
 		break;
 
