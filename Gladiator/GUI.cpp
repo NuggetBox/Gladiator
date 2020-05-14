@@ -59,12 +59,24 @@ void GUI::SetText(sf::String aTextString)
 
 void GUI::Update(const float& someDelta)
 {
-	
+	if (MouseAbove())
+	{
+		myColor = sf::Color(255, 100, 100, 255);
+	}
+	else
+	{
+		myColor = sf::Color(255, 255, 255, 255);
+	}
 }
 
-bool MouseAbove()
+bool GUI::MouseAbove()
 {
-	return true;
+	if (in::getMousePos().x > myPosition.x && in::getMousePos().y > myPosition.y)
+	{
+		return true;
+	}
+
+	return false;
 }
 
 void GUI::Draw(sf::RenderWindow& aWindow)
