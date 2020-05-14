@@ -35,7 +35,8 @@ namespace in
 		else { myM2WasDownLastFrame = false; }
 	}
 
-	Vector2 getMousePos() { return Vector2(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y) - myWindowOffset; }
+	// -7 och -30 beror på en konstig offset på muspositionen som verkade bero på SFML.
+	Vector2 getMousePos() { return Vector2(sf::Mouse::getPosition().x - 7, sf::Mouse::getPosition().y - 30) - myWindowOffset; }
 
 	bool getWDown() { return sf::Keyboard::isKeyPressed(sf::Keyboard::W); }
 	bool getWPressed() { return (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !myWWasDownLastFrame); }
