@@ -5,6 +5,7 @@
 #include "Enemy.h"
 #include "Player.h"
 #include "StartingBoss.h"
+#include "SecondBoss.h"
 #include "GUI.h"
 
 class Game

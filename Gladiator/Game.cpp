@@ -8,15 +8,9 @@ Game::Game()
 	Player* tempPlayer = new Player();
 	gameInfo::setPlayer(tempPlayer);
 
-	Boss* tempBoss = new StartingBoss();
+	SecondBoss* tempBoss = new SecondBoss();
 	myGameObjects.push_back(tempPlayer);
 	myGameObjects.push_back(tempBoss);
-
-	for (int i = 0; i < 50; ++i)
-	{
-		Enemy* tempEnemy = new Enemy();
-		myGameObjects.push_back(tempEnemy);
-	}
 
 	sf::Texture tempTexture;
 	tempTexture.loadFromFile("Textures/Sand.png");
