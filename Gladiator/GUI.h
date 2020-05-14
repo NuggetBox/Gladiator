@@ -8,6 +8,8 @@ class GUI
 {
 public:
 	GUI(sf::Texture aTexture, Vector2 aPosition, Vector2 aScale, sf::String aTextString, int aTextSize, Vector2 aTextPosition);
+	//GUI(sf::Texture aTexture, Vector2 aPosition, Vector2 aScale, sf::String aTextString, int aTextSize, Vector2 aTextPosition, sf::String* aTextToCopy);
+	GUI(sf::Texture aTexture, Vector2 aPosition, Vector2 aScale, sf::String aTextString, int aTextSize, Vector2 aTextPosition, bool* myBoolToChange);
 	GUI();
 	~GUI();
 
@@ -17,8 +19,17 @@ public:
 
 	int GetLayer();
 
+	void SetPosition(Vector2 aPosition);
+	void SetOrigin(Vector2 anOrigin);
+	void SetScale(Vector2 aScale);
+	void SetText(sf::String aTextString);
+
 private:
+	bool MouseAbove();
+
 	bool* myBoolToChange;
+
+	//sf::String* myTextToCopy;
 
 	bool myImageVisible;
 	bool myTextVisible;

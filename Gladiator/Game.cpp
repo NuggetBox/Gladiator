@@ -8,7 +8,7 @@ Game::Game()
 	Player* tempPlayer = new Player();
 	gameInfo::setPlayer(tempPlayer);
 
-	StartingBoss* tempBoss = new StartingBoss();
+	Boss* tempBoss = new StartingBoss();
 	myGameObjects.push_back(tempPlayer);
 	myGameObjects.push_back(tempBoss);
 	ThirdBoss* tempThird = new ThirdBoss();
