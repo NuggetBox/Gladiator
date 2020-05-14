@@ -4,7 +4,7 @@
 #include "GameInfo.h"
 #include "Character.h"
 
-class Boss 
+class Boss
 	: public Character
 {
 public:
@@ -15,7 +15,7 @@ public:
 
 protected:
 	Player* myPlayer;
-
+	sf::Texture myTexture;
 };
 
 #endif
