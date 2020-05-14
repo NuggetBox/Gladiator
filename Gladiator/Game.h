@@ -27,7 +27,7 @@ private:
 
 	std::vector<GUI*> SortByLayer(std::vector<GUI*> someGUI);
 
-	GUI* myCrosshair;
+	//GUI* myCrosshair;
 };
 
 #endif
