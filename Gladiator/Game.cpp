@@ -21,19 +21,19 @@ Game::Game()
 	tempTexture.loadFromFile("Textures/gmod.png");
 	myGUI.push_back(new GUI(tempTexture, { 100, 100 }, { 10,10 }, "Hej Benjamin och Alvin", 24, { 100, 200 }));
 
-	myCrosshair = new GUI(tempTexture, Vector2(0,0), Vector2(1,1), "", 1, Vector2(0,0));
-	myGUI.push_back(myCrosshair);
+	//myCrosshair = new GUI(tempTexture, Vector2(0,0), Vector2(1,1), "", 1, Vector2(0,0));
+	//myGUI.push_back(myCrosshair);
 }
 
 Game::~Game()
 {
 	
-
 }
 
 bool Game::Update(const float& someDelta, sf::RenderWindow &aRenderWindow)
 {
-	myCrosshair->SetPosition(in::getMousePos());
+	
+
 
 	for (int i = 0; i < myGameObjects.size(); ++i)
 	{
@@ -51,7 +51,14 @@ bool Game::Update(const float& someDelta, sf::RenderWindow &aRenderWindow)
 
 	for (int i = 0; i < myGUI.size(); ++i)
 	{
-		myGUI[i]->Update(someDelta);
+		if (myGUI[i]->GetDead())
+		{
+			myGUI.erase(myGUI.begin() + i);
+		}
+		else
+		{
+			myGUI[i]->Update(someDelta);
+		}
 	}
 
 	in::update(aRenderWindow);

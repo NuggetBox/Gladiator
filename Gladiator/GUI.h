@@ -8,8 +8,9 @@ class GUI
 {
 public:
 	GUI(sf::Texture aTexture, Vector2 aPosition, Vector2 aScale, sf::String aTextString, int aTextSize, Vector2 aTextPosition);
-	//GUI(sf::Texture aTexture, Vector2 aPosition, Vector2 aScale, sf::String aTextString, int aTextSize, Vector2 aTextPosition, sf::String* aTextToCopy);
-	GUI(sf::Texture aTexture, Vector2 aPosition, Vector2 aScale, sf::String aTextString, int aTextSize, Vector2 aTextPosition, bool* myBoolToChange);
+	GUI(sf::Texture aTexture, Vector2 aPosition, Vector2 aScale, sf::String aTextString, int aTextSize, Vector2 aTextPosition, bool aSelfDestruct);
+	GUI(sf::Texture aTexture, Vector2 aPosition, Vector2 aScale, sf::String aTextString, int aTextSize, Vector2 aTextPosition, bool* aBoolToChange);
+	GUI(sf::Texture aTexture, Vector2 aPosition, Vector2 aScale, sf::String aTextString, int aTextSize, Vector2 aTextPosition, bool* aBoolToChange, bool aSelfDestruct);
 	GUI();
 	~GUI();
 
@@ -18,6 +19,7 @@ public:
 	void Draw(sf::RenderWindow& aWindow);
 
 	int GetLayer();
+	bool GetDead();
 
 	void SetPosition(Vector2 aPosition);
 	void SetOrigin(Vector2 anOrigin);
@@ -25,18 +27,22 @@ public:
 	void SetText(sf::String aTextString);
 
 private:
+	void Init(sf::Texture aTexture, Vector2 aPosition, Vector2 aScale, sf::String aTextString, int aTextSize, Vector2 aTextPosition);
+
 	bool MouseAbove();
 
 	bool* myBoolToChange;
-
-	//sf::String* myTextToCopy;
+	bool myHasEffect;
 
 	bool myImageVisible;
 	bool myTextVisible;
 	
 	bool myIsClickable;
+	bool mySelfDestruct;
 
 	int myLayer;
+
+	bool myIsDead;
 
 	sf::Texture myTexture;
 	Vector2 myPosition = { 0,0 };
