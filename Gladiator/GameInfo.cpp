@@ -16,6 +16,11 @@ namespace gameInfo
 		return aNewPosition.Distance(myArenaCenter) + aHitBoxRadius > myArenaRadius;
 	}
 
+	Vector2 getArenaCenter()
+	{
+		return myArenaCenter;
+	}
+
 	std::vector<GameObject*>* getGameObjects()
 	{
 		return myGameObjects;

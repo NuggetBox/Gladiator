@@ -9,11 +9,12 @@ ThirdBoss::ThirdBoss()
 	mySpeed = 150;
 	myPosition = Vector2(800, 500);
 	myLayer = 12;
-	myTexture.loadFromFile("Textures/Boss/lion.png");
+	myTexture.loadFromFile("Textures/Boss/netguy.png");
 	//myVisual = Visual(myTexture, myRotation, myScale, myOrigin);
 	myVisual = Visual(myTexture, 0, { 5, 5 }, { 0.5f * myTexture.getSize().x, 0.5f * myTexture.getSize().y });
 	myHitRadius = 30;
-	myIsInvincible = true;
+	myIsInvincible = false;
+	myState = MoveForThrow;
 }
 
 ThirdBoss::~ThirdBoss()
@@ -24,7 +25,27 @@ ThirdBoss::~ThirdBoss()
 
 void ThirdBoss::Update(const float& someDelta) 
 {
+	Vector2 tempMove = myPlayer->GetPosition() - gameInfo::getArenaCenter();
 
+	switch (myState)
+	{
+	case MoveForThrow:
+		tempMove *= -500;
+		RequestMove(tempMove);
+		break;
+
+	case Throwing:
+
+		break;
+
+	case MoveForAttack:
+
+		break;
+
+	case Attacking:
+
+		break;
+	}
 }
 
 void ThirdBoss::Draw(sf::RenderWindow& aWindow)

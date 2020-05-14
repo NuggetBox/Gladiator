@@ -9,6 +9,8 @@ namespace gameInfo
 {
 	bool getOutOfBounds(Vector2 aNewPosition, float aHitBoxRadius);
 
+	Vector2 getArenaCenter();
+
 	std::vector<GameObject*>* getGameObjects();
 
 	Player* getPlayer();
