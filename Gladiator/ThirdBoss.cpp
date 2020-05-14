@@ -25,13 +25,23 @@ ThirdBoss::~ThirdBoss()
 
 void ThirdBoss::Update(const float& someDelta) 
 {
-	Vector2 tempMove = myPlayer->GetPosition() - gameInfo::getArenaCenter();
+	Vector2 tempMove;
 
 	switch (myState)
 	{
 	case MoveForThrow:
-		tempMove *= -500;
-		RequestMove(tempMove);
+		tempMove = (myPlayer->GetPosition() - gameInfo::getArenaCenter()) * -1;
+		tempMove += gameInfo::getArenaCenter();
+		tempMove -= myPosition;
+
+		if (tempMove.Length() > 5)
+		{
+			tempMove.Normalize();
+			tempMove *= (mySpeed * someDelta);
+			RequestMove(tempMove);
+		}
+
+
 		break;
 
 	case Throwing:
