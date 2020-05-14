@@ -11,6 +11,8 @@ Game::Game()
 	StartingBoss* tempBoss = new StartingBoss();
 	myGameObjects.push_back(tempPlayer);
 	myGameObjects.push_back(tempBoss);
+	ThirdBoss* tempThird = new ThirdBoss();
+	myGameObjects.push_back(tempThird);
 
 	for (int i = 0; i < 50; ++i)
 	{

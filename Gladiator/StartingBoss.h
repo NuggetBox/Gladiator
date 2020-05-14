@@ -5,7 +5,6 @@
 
 #include "Boss.h"
 #include "Ray.h"
-#include "GameInfo.h"
 
 enum States
 {
@@ -18,8 +17,6 @@ class StartingBoss : public Boss
 {
 
 public:
-
-
 	StartingBoss();
 	~StartingBoss();
 
@@ -35,7 +32,6 @@ private:
 	float myRotation, myOriginalHealth;
 	float myStunTimer, myIdleTimer;
 	int myHits;
-	sf::Texture myTexture;
 	States myBossStates;
 };
 
