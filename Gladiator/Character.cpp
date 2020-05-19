@@ -10,12 +10,27 @@ Character::Character()
 	myDamage = 0;
 	mySpeed = 0;
 	myHitAngle = 45;
-	myHitRange = 500;
+	myHitRange = 150;
+	myIsTakingDamage = 0;
 }
 
 Character::~Character()
 {
 
+}
+
+void Character::CharacterUpdate(const float& someDelta)
+{
+	if (myIsTakingDamage > 0)
+	{
+		myVisual.SetColor(sf::Color(255, 100, 100, 255));
+		myIsTakingDamage -= someDelta;
+	}
+	else
+	{
+		myVisual.SetColor(sf::Color(255, 255, 255, 255));
+		myIsTakingDamage = 0;
+	}
 }
 
 bool Character::RequestMove(Vector2 aMovement)
@@ -29,7 +44,7 @@ bool Character::RequestMove(Vector2 aMovement)
 		return true;
 	}
 
-	for (GameObject* g : *tempGameObjects)
+	/*for (GameObject* g : *tempGameObjects)
 	{
 		if (g->GetHitRadius() != 0 && g != this && !g->GetIsCharacter())
 		{
@@ -38,7 +53,7 @@ bool Character::RequestMove(Vector2 aMovement)
 				return true;
 			}
 		}
-	}
+	}*/
 
 	myPosition = tempDestination;
 	return false;
@@ -106,12 +121,12 @@ int Character::GetSpeed()
 bool Character::TakeDamage(int someDamage)
 {
 	myHealth -= someDamage;
+	myIsTakingDamage = 0.5f;
 
 	if (myHealth <= 0)
 	{
 		myHealth = 0;
 		imFuckingDead = true;
-		// TODO: Dead
 		return true;
 	}
 

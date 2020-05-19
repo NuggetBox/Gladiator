@@ -146,6 +146,7 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Ray.cpp" />
     <ClCompile Include="SecondBoss.cpp" />
+    <ClCompile Include="Spear.cpp" />
     <ClCompile Include="StartingBoss.cpp" />
     <ClCompile Include="ThirdBoss.cpp" />
     <ClCompile Include="Visual.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="SecondBoss.h" />
+    <ClInclude Include="Spear.h" />
     <ClInclude Include="StartingBoss.h" />
     <ClInclude Include="ThirdBoss.h" />
     <ClInclude Include="Visual.h" />

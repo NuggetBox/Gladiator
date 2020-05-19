@@ -12,6 +12,8 @@ public:
 	Character();
 	~Character();
 
+	void CharacterUpdate(const float& someDelta);
+
 	CharacterType GetCharacterType();
 
 	float GetHealthRatio();
@@ -38,6 +40,7 @@ protected:
 	
 	float myHitAngle;
 	float myHitRange;
+	float myIsTakingDamage;
 
 	bool myIsInvincible;
 };

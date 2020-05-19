@@ -40,4 +40,9 @@ namespace gameInfo
 	{
 		myPlayer = aPlayerPointer;
 	}
+
+	void addGameObject(GameObject* aGameObject)
+	{
+		myGameObjects->push_back(aGameObject);
+	}
 }

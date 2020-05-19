@@ -18,6 +18,8 @@ namespace gameInfo
 	void setGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects);
 
 	void setPlayer(Player* aPointerToPlayer);
+
+	void addGameObject(GameObject* aGameObject);
 }
 
 #endif

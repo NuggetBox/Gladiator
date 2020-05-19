@@ -1,6 +1,5 @@
 #include "GameObject.h"
 
-
 GameObject::GameObject(Vector2 aPosition, sf::Texture aTexture, float aRotation, float aScale, int aLayer, float aHitBox)
 {
 	myPosition = aPosition;

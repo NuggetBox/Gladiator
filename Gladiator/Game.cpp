@@ -44,6 +44,13 @@ bool Game::Update(const float& someDelta, sf::RenderWindow &aRenderWindow)
 		else
 		{
 			myGameObjects[i]->Update(someDelta);
+
+			if (myGameObjects[i]->GetIsCharacter())
+			{
+				Character* tempCharacter = (Character*)myGameObjects[i];
+
+				tempCharacter->CharacterUpdate(someDelta);
+			}
 		}
 	}
 
@@ -79,11 +86,6 @@ void Game::Draw(sf::RenderWindow& aWindow)
 	{
 		myGUI[i]->Draw(aWindow);
 	}
-}
-
-void RequestHit(Player* aPlayer, float aHitAngle, float aHitRange)
-{
-
 }
 
 std::vector<GameObject*> Game::SortByLayer(std::vector<GameObject*> someGameObjects)
