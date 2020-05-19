@@ -98,6 +98,11 @@ sf::Texture Visual::GetTexture()
 	return myTexture;
 }
 
+Animation Visual::GetAnimation()
+{
+	return myAnimation;
+}
+
 float Visual::GetRotation()
 {
 	return myRotation;

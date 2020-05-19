@@ -24,12 +24,18 @@ private:
 
 	Spear* mySpear;
 
-	sf::Texture mySpearTexture, myNoSpearTexture, myAimingTexture;
+	sf::Texture
+		mySpearTexture, myNoSpearTexture, 
+		myAimingTexture, myStabTexture;
+
+	int myRegularSpeed, myPickupSpeed;
 
 	float
 		myMoveTime, myMoveTimer,
 		myAimTime, myAimTimer,
 		myPickupTime, myPickupTimer;
+
+	bool myDealtDamage;
 };
 
 #endif

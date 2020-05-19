@@ -6,24 +6,29 @@ ThirdBoss::ThirdBoss()
 	myMaxHealth = 100;
 	myHealth = myMaxHealth;
 	myPlayer = gameInfo::getPlayer();
-	mySpeed = 150;
+	myRegularSpeed = 150;
+	myPickupSpeed = 300;
+	mySpeed = myRegularSpeed;
 	myPosition = Vector2(800, 500);
 	myLayer = 12;
 	mySpearTexture.loadFromFile("Textures/Boss/treudd.png");
 	myNoSpearTexture.loadFromFile("Textures/Boss/nospear.png");
 	myAimingTexture.loadFromFile("Textures/Boss/throwing.png");
+	myStabTexture.loadFromFile("Textures/Boss/stabanimation.png");
 	//myVisual = Visual(myTexture, myRotation, myScale, myOrigin);
 	myVisual = Visual(mySpearTexture, 0, { 5, 5 }, { 0.5f * mySpearTexture.getSize().x, 0.5f * mySpearTexture.getSize().y });
 	myHitRadius = 30;
 	myIsInvincible = false;
 	myState = Moving;
+	myDamage = 10;
 
 	myMoveTime = 3.5f;
 	myMoveTimer = 0;
 	myAimTime = 2;
 	myAimTimer = 0;
-	myPickupTime = 0.3f;
+	myPickupTime = 0.75f;
 	myPickupTimer = 0;
+	myDealtDamage = false;
 }
 
 ThirdBoss::~ThirdBoss()
@@ -45,22 +50,43 @@ void ThirdBoss::Update(const float& someDelta)
 		tempMove = (myPlayer->GetPosition() - gameInfo::getArenaCenter()) * -1;
 		tempMove += gameInfo::getArenaCenter();
 		tempMove -= myPosition;
-		myIsInvincible = true;
-
-		if (tempMove.Length() > 5)
-		{
-			tempMove.Normalize();
-			tempMove *= (mySpeed * someDelta);
-			RequestMove(tempMove);
-		}
 
 		myMoveTimer += someDelta;
 
-		if (myMoveTimer >= myMoveTime)
+		if ((myPlayer->GetPosition() - myPosition).Length() < 200)
 		{
-			myMoveTimer = 0;
-			myState = Aiming;
-			myVisual.SetTexture(myAimingTexture);
+			if (!myVisual.GetAnimationOn())
+			{
+				myVisual.PlayAnimationOnce(Animation(myStabTexture, 2, 1));
+				myDealtDamage = false;
+			}
+			else
+			{
+				if (myVisual.GetAnimation().GetAnimationCompletion() >= 0.5f && !myDealtDamage)
+				{
+					myDealtDamage = true;
+					myPlayer->TakeDamage(myDamage);
+				}
+			}
+		}
+		else
+		{
+			if (tempMove.Length() > 5)
+			{
+				myVisual.StopAnimation();
+				tempMove.Normalize();
+				tempMove *= (mySpeed * someDelta);
+				RequestMove(tempMove);
+			}
+
+			myVisual.StopAnimation();
+
+			if (myMoveTimer >= myMoveTime)
+			{
+				myMoveTimer = 0;
+				myState = Aiming;
+				myVisual.SetTexture(myAimingTexture);
+			}
 		}
 
 		myVisual.SetRotation((myPosition - myPlayer->GetPosition()).Angle());
@@ -69,7 +95,6 @@ void ThirdBoss::Update(const float& someDelta)
 
 	case Aiming:
 		tempMove = Vector2(0, 0);
-		myIsInvincible = true;
 		myAimTimer += someDelta;
 
 		if (myAimTimer >= myAimTime)
@@ -89,7 +114,7 @@ void ThirdBoss::Update(const float& someDelta)
 
 	case Pickup:
 		tempMove = mySpear->GetPosition() - myPosition;
-		myIsInvincible = false;
+		mySpeed = myPickupSpeed;
 		if (tempMove.Length() > 50)
 		{
 			tempMove.Normalize();
@@ -106,12 +131,15 @@ void ThirdBoss::Update(const float& someDelta)
 				myVisual.SetTexture(mySpearTexture);
 				mySpear->imFuckingDead = true;
 				mySpear = NULL;
+				mySpeed = myRegularSpeed;
 				myState = Moving;
 			}
 		}
 
 		break;
 	}
+
+	myVisual.Update(someDelta);
 }
 
 void ThirdBoss::Draw(sf::RenderWindow& aWindow)

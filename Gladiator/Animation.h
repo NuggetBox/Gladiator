@@ -17,6 +17,7 @@ public:
 	void Stop();
 
 	bool GetIsPlaying();
+	float GetAnimationCompletion();
 
 	sf::Texture GetTexture();
 
