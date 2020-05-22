@@ -1,25 +1,36 @@
 #include "Spear.h"
 
-Spear::Spear(bool anIsPlayer, Vector2 aDir) {
-	myHitRadius = 3;
+Spear::Spear(bool anIsPlayer, Vector2 aDir, Vector2 aStartPos) 
+{
+	myHitRadius = 20;
 	myIsPlayer = anIsPlayer;
+	imFuckingDead = false;
 	myDir = aDir;
+	mySpeed = 1000;
+	myDamage = 5;
+	myTexture.loadFromFile("Textures/spear.png");
+	myLayer = 11;
+	myPosition = aStartPos;
+	myVisual = Visual(myTexture, myDir.Angle() + 180, { 3.0f, 3.0f }, { 0.5f * myTexture.getSize().x, 0.5f * myTexture.getSize().y });
+
 }
 
-Spear::~Spear() {
+Spear::~Spear() 
+{
 
 }
 
-void Spear::Update(const float& someDelta) {
-
+void Spear::Update(const float& someDelta) 
+{
+	myDir.Normalize();
 	myDir *= (mySpeed * someDelta);
 	RequestMove(myDir);
-
-	RequestHit(myIsPlayer);
+	
 }
 
-void Spear::Draw(sf::RenderWindow& aWindow) {
-
+void Spear::Draw(sf::RenderWindow& aWindow) 
+{
+	myVisual.Draw(aWindow,myPosition);
 }
 
 Vector2 Spear::GetDir() {
@@ -32,27 +43,28 @@ void Spear::SetDir(Vector2 aDir) {
 
 void Spear::RequestMove(Vector2 aMovement)
 {
-	Vector2 tempDestination = myPosition + aMovement;
+	myPosition += aMovement;
+
+	RequestHit(myIsPlayer);
 
 	std::vector<GameObject*>* tempGameObjects = gameInfo::getGameObjects();
 
-	if (gameInfo::getOutOfBounds(tempDestination, myHitRadius))
+	if (gameInfo::getOutOfBounds(myPosition, myHitRadius))
 	{
 		imFuckingDead = true;
 	}
 
-	for (GameObject* g : *tempGameObjects)
-	{
-		if (g->GetHitRadius() != 0 && g != this && !g->GetIsCharacter())
-		{
-			if (tempDestination.Distance(g->GetPosition()) < myHitRadius + g->GetHitRadius())
-			{
-				imFuckingDead;
-			}
-		}
-	}
+	//for (GameObject* g : *tempGameObjects)
+	//{
+	//	if (g->GetHitRadius() != 0 && g != this && !g->GetIsCharacter())
+	//	{
+	//		if (tempDestination.Distance(g->GetPosition()) < myHitRadius + g->GetHitRadius())
+	//		{
+	//			imFuckingDead = true;
+	//		}
+	//	}
+	//}
 
-	myPosition = tempDestination;
 }
 
 void Spear::RequestHit(bool anIsPlayer)
@@ -74,8 +86,8 @@ void Spear::RequestHit(bool anIsPlayer)
 					if (dir.Length() < myHitRadius)
 					{
 						tempCharacter->TakeDamage(myDamage);
-						// It's a hit
-						
+						imFuckingDead = true;
+						// It's a hit	
 					}
 				}
 			}

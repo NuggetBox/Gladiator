@@ -6,11 +6,12 @@
 #include "Character.h"
 #include "GameInfo.h"
 
+
 class Spear : public GameObject
 {
 public:
 
-	Spear(bool anIsPlayer, Vector2 aDir);
+	Spear(bool anIsPlayer, Vector2 aDir, Vector2 aStartPos);
 	~Spear();
 
 	Vector2 GetDir();
@@ -27,6 +28,7 @@ private:
 	Vector2 myDir;
 	float mySpeed, myDamage;
 	bool myIsPlayer;
+	sf::Texture myTexture;
 };
 
 #endif

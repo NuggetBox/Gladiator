@@ -11,8 +11,8 @@ Game::Game()
 	SecondBoss* tempBoss = new SecondBoss();
 	myGameObjects.push_back(tempPlayer);
 	myGameObjects.push_back(tempBoss);
-	ThirdBoss* tempThird = new ThirdBoss();
-	myGameObjects.push_back(tempThird);
+	//ThirdBoss* tempThird = new ThirdBoss();
+	//myGameObjects.push_back(tempThird);
 
 	sf::Texture tempTexture;
 	tempTexture.loadFromFile("Textures/Sand.png");
