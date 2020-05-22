@@ -198,5 +198,5 @@ void Player::Draw(sf::RenderWindow& aWindow)
 	for (int i = 0; i < mySpears.size(); i++)
 	{
 		mySpears[i]->Draw(aWindow);
-	}w
+	}
 }
