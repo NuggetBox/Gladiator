@@ -35,7 +35,7 @@ void SecondBoss::Update(const float& someDelta)
 		myMove.Normalize();
 		myRotation = myMove.Angle();
 		myMove *= (mySpeed * someDelta);
-		RequestMove(myMove);		
+		RequestMove(myMove);
 	}
 	else
 	{
@@ -57,3 +57,4 @@ void SecondBoss::Idle(const float& someDelta)
 {
 
 }
+
