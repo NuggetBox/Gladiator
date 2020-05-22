@@ -27,6 +27,7 @@ Game::Game()
 	tempTexture.loadFromFile("Textures/gmod.png");
 	myGUI.push_back(new GUI(tempTexture, { 900, 320 }, { 10,5 }, "You have to win in the gladiator tournament\n				to get the gay vaccine.", 40, { 400, 200 }, true));*/
 
+	myLevel = 1;
 	BattleBossOne();
 }
 
@@ -37,20 +38,38 @@ Game::~Game()
 
 bool Game::Update(const float& someDelta, sf::RenderWindow &aRenderWindow)
 {
-	// Boss has been killed
-	if (gameInfo::getBossIsDead())
+	// Player has been killed
+	if (conditionsInfo::getPlayerIsDead())
 	{
-		gameInfo::setBossIsDead(false);
+		conditionsInfo::setPlayerIsDead(false);
 
 		sf::Texture tempTexture;
 		tempTexture.loadFromFile("Textures/Ok.png");
-		myGUI.push_back(new GUI(tempTexture, { 900, 320 }, { 10, 5 }, "Congratulations! You Win!", 40, { 400, 200 }, gameInfo::getWinButtonBool(), true));
+		myGUI.push_back(new GUI(tempTexture, { 900, 500 }, { 5, 5 }, "Game Over", 60, { 800, 300 }, conditionsInfo::getLoseButtonBool(), true));
+	}
+
+	// Lose button pressed
+	if (conditionsInfo::getLoseButtonPressed())
+	{
+		conditionsInfo::setLoseButton(false);
+
+		aRenderWindow.close();
+	}
+
+	// Boss has been killed
+	if (conditionsInfo::getBossIsDead())
+	{
+		conditionsInfo::setBossIsDead(false);
+
+		sf::Texture tempTexture;
+		tempTexture.loadFromFile("Textures/Ok.png");
+		myGUI.push_back(new GUI(tempTexture, { 900, 500 }, { 5, 5 }, "			Congratulations! You Win! \nYou earned enough gold to buy three items.", 40, { 800, 300 }, conditionsInfo::getWinButtonBool(), true));
 	}
 
 	// Win button pressed
-	if (gameInfo::getWinButtonPressed())
+	if (conditionsInfo::getWinButtonPressed())
 	{
-		gameInfo::setWinButton(false);
+		conditionsInfo::setWinButton(false);
 
 		myGameObjects.clear();
 	}

@@ -8,6 +8,7 @@
 #include "SecondBoss.h"
 #include "ThirdBoss.h"
 #include "GUI.h"
+#include "ConditionsInfo.h"
 
 class Game
 {
@@ -19,6 +20,8 @@ public:
 	void Draw(sf::RenderWindow& aWindow);
 
 private:
+
+	int myLevel;
 
 	void BattleBossOne();
 	void BattleBossTwo();
@@ -33,11 +36,6 @@ private:
 	std::vector<GameObject*> SortByLayer(std::vector<GameObject*> someGameObjects);
 
 	std::vector<GUI*> SortByLayer(std::vector<GUI*> someGUI);
-
-	float myDelayTime = 2;
-	float myDelayTimer;
-
-	//GUI* myCrosshair;
 };
 
 #endif

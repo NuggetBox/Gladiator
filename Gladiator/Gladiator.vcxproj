@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Boss3Spear.cpp" />
+    <ClCompile Include="ConditionsInfo.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="GMath.cpp" />
     <ClCompile Include="GUI.cpp" />
@@ -164,6 +165,7 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Boss3Spear.h" />
+    <ClInclude Include="ConditionsInfo.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="GMath.h" />
     <ClInclude Include="GUI.h" />

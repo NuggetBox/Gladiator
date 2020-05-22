@@ -30,6 +30,8 @@ Player::Player() : Character()
 
 	myDodgeSound.loadFromFile("Dodge.wav");
 
+	myHealthBarTexture.loadFromFile("Textures/White.png");
+
 #pragma region Load textures
 	myNoHelmetIdle.loadFromFile("Textures/Player/NoHelmetIdle.png");
 	myIronHelmetIdle.loadFromFile("Textures/Player/IronHelmetIdle.png");
@@ -199,4 +201,30 @@ void Player::Draw(sf::RenderWindow& aWindow)
 	//{
 	//	mySpears[i]->Draw(aWindow);
 	//}
+
+
+	sf::Sprite tempSprite;
+	sf::Texture tempTexture;
+
+	// Red bar
+	tempTexture = myHealthBarTexture;
+	tempSprite.setTexture(tempTexture);
+	tempSprite.setRotation(0);
+	tempSprite.setOrigin({ myHealthBarTexture.getSize().x * 0.5f, myHealthBarTexture.getSize().y * 0.5f });
+	tempSprite.setScale(40, 6);
+	tempSprite.setPosition(aWindow.getSize().x * 0.5f, aWindow.getSize().y * 0.9f);
+	tempSprite.setColor(sf::Color(255, 0, 0, 255));
+	tempSprite.setTextureRect(sf::IntRect(0, 0, myHealthBarTexture.getSize().x, myHealthBarTexture.getSize().y));
+	aWindow.draw(tempSprite);
+
+	// Green bar
+	tempTexture = myHealthBarTexture;
+	tempSprite.setTexture(tempTexture);
+	tempSprite.setRotation(0);
+	tempSprite.setOrigin( { myHealthBarTexture.getSize().x * 0.5f, myHealthBarTexture.getSize().y * 0.5f } );
+	tempSprite.setScale(40 * ((float)myHealth / (float)myMaxHealth), 6);
+	tempSprite.setPosition(aWindow.getSize().x * 0.5f, aWindow.getSize().y * 0.9f);
+	tempSprite.setColor(sf::Color(0, 255, 0, 255));
+	tempSprite.setTextureRect(sf::IntRect(0, 0, myHealthBarTexture.getSize().x, myHealthBarTexture.getSize().y));
+	aWindow.draw(tempSprite);
 }

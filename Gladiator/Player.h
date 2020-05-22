@@ -37,6 +37,8 @@ private:
 	Visual myHeadVisual;
 	Visual myWeaponVisual;
 
+	sf::Texture myHealthBarTexture;
+
 	//std::vector<Spear*> mySpears;
 
 	sf::Texture

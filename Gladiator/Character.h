@@ -2,6 +2,7 @@
 #define CHARACTER_HEADER
 
 #include "GameObject.h"
+#include "ConditionsInfo.h"
 
 class Character : 
 	public GameObject

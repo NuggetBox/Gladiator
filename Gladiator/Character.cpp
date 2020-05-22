@@ -125,12 +125,17 @@ bool Character::TakeDamage(int someDamage)
 	if (myHealth <= 0)
 	{
 		myHealth = 0;
-		imFuckingDead = true;
 
-		if (!myIsPlayer)
+		if (!myIsPlayer && !imFuckingDead)
 		{
-			gameInfo::setBossIsDead(true);
+			conditionsInfo::setBossIsDead(true);
 		}
+		else if (myIsPlayer && !imFuckingDead)
+		{
+			conditionsInfo::setPlayerIsDead(true);
+		}
+
+		imFuckingDead = true;
 
 		return true;
 	}
