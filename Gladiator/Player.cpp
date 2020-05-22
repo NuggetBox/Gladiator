@@ -70,27 +70,27 @@ Player::Player() : Character()
 
 Player::~Player()
 {
-	//for (int i = 0; i < mySpears.size(); i++)
-	//{
-	//	mySpears[i] = NULL;
-	//	delete(mySpears[i]);
-	//}
+	for (int i = 0; i < mySpears.size(); i++)
+	{
+		mySpears[i] = NULL;
+		delete(mySpears[i]);
+	}
 }
 
 void Player::Update(const float& someDelta)
 {
 
-	//for (int i = 0; i < mySpears.size(); i++)
-	//{
-	//	if (mySpears[i]->imFuckingDead == true)
-	//	{
-	//		mySpears.erase(mySpears.begin() + i);
-	//	}
-	//	else
-	//	{
-	//		mySpears[i]->Update(someDelta);
-	//	}
-	//}
+	for (int i = 0; i < mySpears.size(); i++)
+	{
+		if (mySpears[i]->imFuckingDead == true)
+		{
+			mySpears.erase(mySpears.begin() + i);
+		}
+		else
+		{
+			mySpears[i]->Update(someDelta);
+		}
+	}
 
 #pragma region Movement
 
@@ -166,7 +166,7 @@ void Player::Update(const float& someDelta)
 
 	if (in::getM2Pressed() && !myBodyVisual.GetAnimationOn()) 
 	{
-		//mySpears.push_back(new Spear(true, (in::getMousePos() - myPosition), myPosition));
+		mySpears.push_back(new Spear(true, (in::getMousePos() - myPosition), myPosition));
 		myBodyVisual.PlayAnimationOnce(Animation(myNoArmorThrow, 3, 0.2f));
 		myHeadVisual.PlayAnimationOnce(Animation(myNoHelmetThrow, 3, 0.2f));
 	}
@@ -195,8 +195,8 @@ void Player::Draw(sf::RenderWindow& aWindow)
 	myBodyVisual.Draw(aWindow, myPosition);
 	myHeadVisual.Draw(aWindow, myPosition);
 	myWeaponVisual.Draw(aWindow, myPosition);
-	//for (int i = 0; i < mySpears.size(); i++)
-	//{
-	//	mySpears[i]->Draw(aWindow);
-	//}
+	for (int i = 0; i < mySpears.size(); i++)
+	{
+		mySpears[i]->Draw(aWindow);
+	}w
 }

@@ -1,4 +1,4 @@
-#ifndef SPEAR__HEADER
+#ifndef SPEAR_HEADER
 #define SPEAR_HEADER
 
 #include "Character.h"
