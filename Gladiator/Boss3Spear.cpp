@@ -1,7 +1,7 @@
-#include "Boss2Spear.h"
+#include "Boss3Spear.h"
 #include "GameInfo.h"
 
-Boss2Spear::Boss2Spear(Vector2 aPosition, Vector2 someMovement)
+Boss3Spear::Boss3Spear(Vector2 aPosition, Vector2 someMovement)
 {
 	imFuckingDead = false;
 	myPosition = aPosition;
@@ -16,12 +16,12 @@ Boss2Spear::Boss2Spear(Vector2 aPosition, Vector2 someMovement)
 	myIsStuck = false;
 }
 
-Boss2Spear::~Boss2Spear()
+Boss3Spear::~Boss3Spear()
 {
 
 }
 
-void Boss2Spear::Update(const float& someDelta)
+void Boss3Spear::Update(const float& someDelta)
 {
 	if (TryMove(myMovement * someDelta) || myIsStuck)
 	{
@@ -35,12 +35,12 @@ void Boss2Spear::Update(const float& someDelta)
 	}
 }
 
-void Boss2Spear::Draw(sf::RenderWindow& aWindow)
+void Boss3Spear::Draw(sf::RenderWindow& aWindow)
 {
 	myVisual.Draw(aWindow, myPosition);
 }
 
-bool Boss2Spear::TryMove(Vector2 someMovement)
+bool Boss3Spear::TryMove(Vector2 someMovement)
 {
 	std::vector<GameObject*>* tempGameObjects = gameInfo::getGameObjects();
 

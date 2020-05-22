@@ -3,12 +3,12 @@
 
 #include "Character.h"
 
-class Boss2Spear :
+class Boss3Spear :
 	public GameObject
 {
 public:
-	Boss2Spear(Vector2 aPosition, Vector2 someMovement);
-	~Boss2Spear();
+	Boss3Spear(Vector2 aPosition, Vector2 someMovement);
+	~Boss3Spear();
 
 	void Update(const float& someDelta) override;
 	void Draw(sf::RenderWindow& aWindow) override;

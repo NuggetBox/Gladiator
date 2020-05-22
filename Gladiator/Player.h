@@ -7,6 +7,8 @@
 #include "Spear.h"
 #include <cmath>
 
+class Spear;
+
 class Player 
 	: public Character
 {

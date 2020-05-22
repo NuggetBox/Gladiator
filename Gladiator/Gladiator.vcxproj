@@ -140,7 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
-    <ClCompile Include="Boss2Spear.cpp" />
+    <ClCompile Include="Boss3Spear.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="GMath.cpp" />
     <ClCompile Include="GUI.cpp" />
@@ -163,7 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
-    <ClInclude Include="Boss2Spear.h" />
+    <ClInclude Include="Boss3Spear.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="GMath.h" />
     <ClInclude Include="GUI.h" />

@@ -72,7 +72,7 @@
     <ClCompile Include="Spear.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Boss2Spear.cpp">
+    <ClCompile Include="Boss3Spear.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PlayerInfo.cpp">
@@ -134,7 +134,7 @@
     <ClInclude Include="Spear.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Boss2Spear.h">
+    <ClInclude Include="Boss3Spear.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PlayerInfo.h">
