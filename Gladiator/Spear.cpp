@@ -1,73 +1,96 @@
 #include "Spear.h"
-#include "GameInfo.h"
 
-Spear::Spear(Vector2 aPosition, Vector2 someMovement)
+Spear::Spear(bool anIsPlayer, Vector2 aDir, Vector2 aStartPos) 
 {
+	myHitRadius = 20;
+	myIsPlayer = anIsPlayer;
 	imFuckingDead = false;
-	myPosition = aPosition;
-	myTexture.loadFromFile("Textures/spear.png");
-	myVisual = Visual(myTexture, 0, Vector2(5, 5), Vector2(myTexture.getSize().x * 0.5f, myTexture.getSize().y * 0.5f));
-	myLayer = 20;
-	myHitRadius = 15;
-	myIsCharacter = false;
+	myDir = aDir;
 	mySpeed = 1000;
-	myMovement = someMovement * mySpeed;
-	myDamage = 15;
-	myIsStuck = false;
+	myDamage = 5;
+	myTexture.loadFromFile("Textures/spear.png");
+	myLayer = 11;
+	myPosition = aStartPos;
+	myVisual = Visual(myTexture, myDir.Angle() + 180, { 3.0f, 3.0f }, { 0.5f * myTexture.getSize().x, 0.5f * myTexture.getSize().y });
+
 }
 
-Spear::~Spear()
+Spear::~Spear() 
 {
 
 }
 
-void Spear::Update(const float& someDelta)
+void Spear::Update(const float& someDelta) 
 {
-	if (TryMove(myMovement * someDelta) || myIsStuck)
+	myDir.Normalize();
+	myDir *= (mySpeed * someDelta);
+	RequestMove(myDir);
+	
+}
+
+void Spear::Draw(sf::RenderWindow& aWindow) 
+{
+	myVisual.Draw(aWindow,myPosition);
+}
+
+Vector2 Spear::GetDir() {
+	return myDir;
+}
+
+void Spear::SetDir(Vector2 aDir) {
+	myDir = aDir;
+}
+
+void Spear::RequestMove(Vector2 aMovement)
+{
+	myPosition += aMovement;
+
+	RequestHit(myIsPlayer);
+
+	std::vector<GameObject*>* tempGameObjects = gameInfo::getGameObjects();
+
+	if (gameInfo::getOutOfBounds(myPosition, myHitRadius))
 	{
-		myIsStuck = true;
-		myMovement = Vector2(0, 0);
+		imFuckingDead = true;
 	}
-	else
-	{
-		myPosition += myMovement * someDelta;
-		myVisual.SetRotation(myMovement.Angle() + 180);
-	}
+
+	//for (GameObject* g : *tempGameObjects)
+	//{
+	//	if (g->GetHitRadius() != 0 && g != this && !g->GetIsCharacter())
+	//	{
+	//		if (tempDestination.Distance(g->GetPosition()) < myHitRadius + g->GetHitRadius())
+	//		{
+	//			imFuckingDead = true;
+	//		}
+	//	}
+	//}
+
 }
 
-void Spear::Draw(sf::RenderWindow& aWindow)
-{
-	myVisual.Draw(aWindow, myPosition);
-}
-
-bool Spear::TryMove(Vector2 someMovement)
+void Spear::RequestHit(bool anIsPlayer)
 {
 	std::vector<GameObject*>* tempGameObjects = gameInfo::getGameObjects();
 
-	if (gameInfo::getOutOfBounds(myPosition + someMovement, myHitRadius))
-	{
-		return true;
-	}
-
 	for (GameObject* g : *tempGameObjects)
 	{
-		if (g != this && g->GetIsCharacter())
+		if (g->GetIsCharacter())
 		{
 			Character* tempCharacter = (Character*)g;
 
-			if (tempCharacter->GetIsPlayer())
+			if (!tempCharacter->GetIsInvincible())
 			{
-				if (!myIsStuck)
+				if (anIsPlayer && !tempCharacter->GetIsPlayer() || !anIsPlayer && tempCharacter->GetIsPlayer())
 				{
-					if ((myPosition - tempCharacter->GetPosition()).Length() < myHitRadius + tempCharacter->GetHitRadius())
+					Vector2 dir = tempCharacter->GetPosition() - myPosition;
+
+					if (dir.Length() < myHitRadius)
 					{
 						tempCharacter->TakeDamage(myDamage);
-						return true;
+						imFuckingDead = true;
+						// It's a hit	
 					}
 				}
 			}
 		}
 	}
-
-	return false;
 }

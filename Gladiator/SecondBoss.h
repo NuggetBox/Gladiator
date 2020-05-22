@@ -2,12 +2,7 @@
 #define SECONDBOSS_HEADER
 
 #include "Boss.h"
-
-enum Phases 
-{
-	Chariot,
-	Gladiator
-};
+#include "Spear.h"
 
 class SecondBoss : public Boss
 {
@@ -26,8 +21,8 @@ public:
 private:
 	Vector2 myMove;
 	float mySpeed, myRotation, myOriginalHealth;
-	float myIdleTimer, myRotateTimer;
-	Phases myPhase;
+	float myAttackTimer, myAttackOriginalValueTimer;
+	std::vector<Spear*> mySpears;
 	sf::Texture myTexture;
 };
 

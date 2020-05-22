@@ -2,7 +2,7 @@
 #define THIRDBOSS_H
 
 #include "Boss.h"
-#include "Spear.h"
+#include "Boss2Spear.h"
 
 enum ThirdBossStates
 {
@@ -22,7 +22,7 @@ public:
 private:
 	ThirdBossStates myState;
 
-	Spear* mySpear;
+	Boss2Spear* mySpear;
 
 	sf::Texture
 		mySpearTexture, myNoSpearTexture, 

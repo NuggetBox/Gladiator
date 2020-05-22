@@ -4,6 +4,7 @@
 #define _USE_MATH_DEFINES
 
 #include "Character.h"
+//#include "Spear.h"
 #include <cmath>
 
 class Player 
@@ -33,6 +34,8 @@ private:
 	Visual myBodyVisual;
 	Visual myHeadVisual;
 	Visual myWeaponVisual;
+
+	//std::vector<Spear*> mySpears;
 
 	sf::Texture
 		myNoHelmetIdle, myIronHelmetIdle, myDiamondHelmetIdle,

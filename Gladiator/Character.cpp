@@ -12,6 +12,7 @@ Character::Character()
 	myHitAngle = 45;
 	myHitRange = 150;
 	myIsTakingDamage = 0;
+	myIsInvincible = false;
 }
 
 Character::~Character()
