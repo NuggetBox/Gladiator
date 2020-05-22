@@ -2,7 +2,7 @@
 
 ThirdBoss::ThirdBoss()
 {
-	myCharacterType = CharacterType::BossType;
+	myIsPlayer = false;
 	myMaxHealth = 100;
 	myHealth = myMaxHealth;
 	myPlayer = gameInfo::getPlayer();

@@ -3,7 +3,7 @@
 
 Character::Character()
 {
-	myCharacterType = PlayerType;
+	myIsPlayer = false;
 	myIsCharacter = true;
 	myMaxHealth = 0;
 	myHealth = 0;
@@ -59,12 +59,10 @@ bool Character::RequestMove(Vector2 aMovement)
 	return false;
 }
 
-void Character::RequestHit(CharacterType anAllyCharacterType)
+void Character::RequestHit(bool anIsPlayer)
 {
 	std::vector<GameObject*>* tempGameObjects = gameInfo::getGameObjects();
 
-	bool tempFriendly = anAllyCharacterType == PlayerType;
-	
 	for (GameObject* g : *tempGameObjects)
 	{
 		if (g->GetIsCharacter())
@@ -73,7 +71,7 @@ void Character::RequestHit(CharacterType anAllyCharacterType)
 				
 			if (!tempCharacter->GetIsInvincible())
 			{
-				if (tempFriendly && tempCharacter->GetCharacterType() != PlayerType || !tempFriendly && tempCharacter->GetCharacterType() == PlayerType)
+				if (anIsPlayer && !tempCharacter->GetIsPlayer() || !anIsPlayer && tempCharacter->GetIsPlayer())
 				{
 					Vector2 dir = tempCharacter->GetPosition() - myPosition;
 
@@ -93,9 +91,9 @@ void Character::RequestHit(CharacterType anAllyCharacterType)
 	}
 }
 
-CharacterType Character::GetCharacterType()
+bool Character::GetIsPlayer()
 {
-	return myCharacterType;
+	return myIsPlayer;
 }
 
 float Character::GetHealthRatio()

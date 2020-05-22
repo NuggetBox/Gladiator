@@ -3,7 +3,7 @@
 SecondBoss::SecondBoss() 
 {
 	myMove = Vector2(1,0);
-	myCharacterType = CharacterType::BossType;
+	myIsPlayer = false;
 	myPhase = Phases::Chariot;
 	mySpeed = 300;
 	myRotation = 0;
