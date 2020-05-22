@@ -10,7 +10,7 @@ class Spear : public GameObject
 {
 public:
 
-	Spear(CharacterType aCharactertype, Vector2 aDir);
+	Spear(bool anIsPlayer, Vector2 aDir);
 	~Spear();
 
 	Vector2 GetDir();
@@ -26,7 +26,7 @@ public:
 private:
 	Vector2 myDir;
 	float mySpeed, myDamage;
-	CharacterType myCharactertype;
+	bool myIsPlayer;
 };
 
 #endif
