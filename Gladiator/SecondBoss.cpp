@@ -9,7 +9,7 @@ SecondBoss::SecondBoss()
 	myMaxHealth = 240;
 	myHealth = myMaxHealth;
 	myLayer = 11;
-	myPlayer = gameInfo::getPlayer();
+	myPlayer = playerInfo::getPlayer();
 	myAttackOriginalValueTimer = 1.3f;
 	myAttackTimer = myAttackOriginalValueTimer;
 	myPosition = Vector2(960, 150);

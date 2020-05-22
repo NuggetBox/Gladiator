@@ -3,7 +3,7 @@
 Boss::Boss()
 {
 	myIsPlayer = false;
-	myPlayer = gameInfo::getPlayer();
+	myPlayer = playerInfo::getPlayer();
 }
 
 void Boss::Update(const float& someDelta)

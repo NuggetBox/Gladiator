@@ -100,7 +100,7 @@ void Game::BattleBossOne()
 
 	// Player
 	Player* tempPlayer = new Player();
-	gameInfo::setPlayer(tempPlayer);
+	playerInfo::setPlayer(tempPlayer);
 	myGameObjects.push_back(tempPlayer);
 
 	// First boss
@@ -117,7 +117,7 @@ void Game::BattleBossTwo()
 
 	// Player
 	Player* tempPlayer = new Player();
-	gameInfo::setPlayer(tempPlayer);
+	playerInfo::setPlayer(tempPlayer);
 	myGameObjects.push_back(tempPlayer);
 
 	// Second boss
@@ -134,7 +134,7 @@ void Game::BattleBossThree()
 
 	// Player
 	Player* tempPlayer = new Player();
-	gameInfo::setPlayer(tempPlayer);
+	playerInfo::setPlayer(tempPlayer);
 	myGameObjects.push_back(tempPlayer);
 
 	// Third boss

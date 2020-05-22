@@ -6,7 +6,7 @@ StartingBoss::StartingBoss()
 	myIsPlayer = false;
 	myMaxHealth = 120;
 	myHealth = myMaxHealth;
-	myPlayer = gameInfo::getPlayer();
+	myPlayer = playerInfo::getPlayer();
 	mySpeed = 100;
 	myChargeSpeed = 500;
 	myPosition = Vector2(800,500);

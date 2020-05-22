@@ -4,7 +4,6 @@
 #include "Character.h"
 #include "GameInfo.h"
 
-
 class Spear : public GameObject
 {
 public:

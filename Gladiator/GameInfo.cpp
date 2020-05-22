@@ -6,7 +6,7 @@ namespace gameInfo
 	{
 		std::vector<GameObject*>* myGameObjects;
 
-		Player* myPlayer;
+		//Player* myPlayer;
 		float myArenaRadius = 1080 * 0.5f - 50;
 		Vector2 myArenaCenter = Vector2(1920.0f * 0.5f, 1080.0f * 0.5f);
 		bool myBossIsDead = false;
@@ -28,20 +28,20 @@ namespace gameInfo
 		return myGameObjects;
 	}
 
-	Player* getPlayer()
+	/*Player* getPlayer()
 	{
 		return myPlayer;
-	}
+	}*/
 
 	void setGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects)
 	{
 		myGameObjects = aPointerToTheGameObjects;
 	}
 
-	void setPlayer(Player* aPlayerPointer)
+	/*void setPlayer(Player* aPlayerPointer)
 	{
 		myPlayer = aPlayerPointer;
-	}
+	}*/
 
 	void addGameObject(GameObject* aGameObject)
 	{
