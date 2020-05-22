@@ -3,19 +3,34 @@
 
 Character::Character()
 {
-	myCharacterType = PlayerType;
+	myIsPlayer = false;
 	myIsCharacter = true;
 	myMaxHealth = 0;
 	myHealth = 0;
 	myDamage = 0;
 	mySpeed = 0;
 	myHitAngle = 45;
-	myHitRange = 500;
+	myHitRange = 150;
+	myIsTakingDamage = 0;
 }
 
 Character::~Character()
 {
 
+}
+
+void Character::CharacterUpdate(const float& someDelta)
+{
+	if (myIsTakingDamage > 0)
+	{
+		myVisual.SetColor(sf::Color(255, 100, 100, 255));
+		myIsTakingDamage -= someDelta;
+	}
+	else
+	{
+		myVisual.SetColor(sf::Color(255, 255, 255, 255));
+		myIsTakingDamage = 0;
+	}
 }
 
 bool Character::RequestMove(Vector2 aMovement)
@@ -29,7 +44,7 @@ bool Character::RequestMove(Vector2 aMovement)
 		return true;
 	}
 
-	for (GameObject* g : *tempGameObjects)
+	/*for (GameObject* g : *tempGameObjects)
 	{
 		if (g->GetHitRadius() != 0 && g != this && !g->GetIsCharacter())
 		{
@@ -38,18 +53,16 @@ bool Character::RequestMove(Vector2 aMovement)
 				return true;
 			}
 		}
-	}
+	}*/
 
 	myPosition = tempDestination;
 	return false;
 }
 
-void Character::RequestHit(CharacterType anAllyCharacterType)
+void Character::RequestHit(bool anIsPlayer)
 {
 	std::vector<GameObject*>* tempGameObjects = gameInfo::getGameObjects();
 
-	bool tempFriendly = anAllyCharacterType == PlayerType;
-	
 	for (GameObject* g : *tempGameObjects)
 	{
 		if (g->GetIsCharacter())
@@ -58,7 +71,7 @@ void Character::RequestHit(CharacterType anAllyCharacterType)
 				
 			if (!tempCharacter->GetIsInvincible())
 			{
-				if (tempFriendly && tempCharacter->GetCharacterType() != PlayerType || !tempFriendly && tempCharacter->GetCharacterType() == PlayerType)
+				if (anIsPlayer && !tempCharacter->GetIsPlayer() || !anIsPlayer && tempCharacter->GetIsPlayer())
 				{
 					Vector2 dir = tempCharacter->GetPosition() - myPosition;
 
@@ -78,9 +91,9 @@ void Character::RequestHit(CharacterType anAllyCharacterType)
 	}
 }
 
-CharacterType Character::GetCharacterType()
+bool Character::GetIsPlayer()
 {
-	return myCharacterType;
+	return myIsPlayer;
 }
 
 float Character::GetHealthRatio()
@@ -106,12 +119,12 @@ int Character::GetSpeed()
 bool Character::TakeDamage(int someDamage)
 {
 	myHealth -= someDamage;
+	myIsTakingDamage = 0.5f;
 
 	if (myHealth <= 0)
 	{
 		myHealth = 0;
 		imFuckingDead = true;
-		// TODO: Dead
 		return true;
 	}
 

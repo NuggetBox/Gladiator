@@ -24,6 +24,7 @@ public:
 	void SetTextureRect(sf::IntRect aTextureRect);
 
 	sf::Texture GetTexture();
+	Animation GetAnimation();
 	float GetRotation();
 	Vector2 GetScale();
 	Vector2 GetOrigin();

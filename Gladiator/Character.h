@@ -3,8 +3,6 @@
 
 #include "GameObject.h"
 
-enum CharacterType { PlayerType, EnemyType, BossType };
-
 class Character : 
 	public GameObject
 {
@@ -12,7 +10,9 @@ public:
 	Character();
 	~Character();
 
-	CharacterType GetCharacterType();
+	void CharacterUpdate(const float& someDelta);
+
+	bool GetIsPlayer();
 
 	float GetHealthRatio();
 	int GetHealth();
@@ -27,9 +27,9 @@ public:
 
 protected:
 	bool RequestMove(Vector2 aMovement);
-	void RequestHit(CharacterType anAllyCharacterType);
+	void RequestHit(bool anIsPlayer);
 
-	CharacterType myCharacterType;
+	bool myIsPlayer;
 
 	int myMaxHealth;
 	int myHealth;
@@ -38,6 +38,7 @@ protected:
 	
 	float myHitAngle;
 	float myHitRange;
+	float myIsTakingDamage;
 
 	bool myIsInvincible;
 };

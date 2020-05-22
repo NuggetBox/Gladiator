@@ -3,7 +3,7 @@
 StartingBoss::StartingBoss()
 {
 	myBossStates = States::Idle;
-	myCharacterType = CharacterType::BossType;
+	myIsPlayer = false;
 	myMaxHealth = 120;
 	myHealth = myMaxHealth;
 	myPlayer = gameInfo::getPlayer();

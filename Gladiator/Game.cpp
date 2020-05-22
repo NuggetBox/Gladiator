@@ -20,9 +20,6 @@ Game::Game()
 
 	tempTexture.loadFromFile("Textures/gmod.png");
 	myGUI.push_back(new GUI(tempTexture, { 900, 320 }, { 10,5 }, "You have to win in the gladiator tournament\n				to get the gay vaccine.", 40, { 400, 200 }, true));
-
-	//myCrosshair = new GUI(tempTexture, Vector2(0,0), Vector2(1,1), "", 1, Vector2(0,0));
-	//myGUI.push_back(myCrosshair);
 }
 
 Game::~Game()
@@ -44,6 +41,13 @@ bool Game::Update(const float& someDelta, sf::RenderWindow &aRenderWindow)
 		else
 		{
 			myGameObjects[i]->Update(someDelta);
+
+			if (myGameObjects[i]->GetIsCharacter())
+			{
+				Character* tempCharacter = (Character*)myGameObjects[i];
+
+				tempCharacter->CharacterUpdate(someDelta);
+			}
 		}
 	}
 
@@ -79,11 +83,6 @@ void Game::Draw(sf::RenderWindow& aWindow)
 	{
 		myGUI[i]->Draw(aWindow);
 	}
-}
-
-void RequestHit(Player* aPlayer, float aHitAngle, float aHitRange)
-{
-
 }
 
 std::vector<GameObject*> Game::SortByLayer(std::vector<GameObject*> someGameObjects)

@@ -68,6 +68,11 @@ bool Animation::GetIsPlaying()
 	return myIsPlaying;
 }
 
+float Animation::GetAnimationCompletion()
+{
+	return myTimer / myLength;
+}
+
 sf::Texture Animation::GetTexture()
 {
 	return myTexture;

@@ -1,9 +1,8 @@
 #include "Boss.h"
 
-
 Boss::Boss()
 {
-	myCharacterType = BossType;
+	myIsPlayer = false;
 	myPlayer = gameInfo::getPlayer();
 }
 

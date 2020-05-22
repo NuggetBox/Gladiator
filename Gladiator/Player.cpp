@@ -2,7 +2,7 @@
 
 Player::Player() : Character()
 {
-	myCharacterType = PlayerType;
+	myIsPlayer = true;
 
 	mySpeed = 250;
 	mySwordSwingSpeed = 0.2f;
@@ -108,9 +108,6 @@ void Player::Update(const float& someDelta)
 		myDodgeTimer = 0;
 		myDodgeDirection = tempMove;
 		myIsInvincible = true;
-		myHeadVisual.SetColor(sf::Color(255, 255, 255, 100));
-		myBodyVisual.SetColor(sf::Color(255, 255, 255, 100));
-		myWeaponVisual.SetColor(sf::Color(255, 255, 255, 100));
 
 		mySound.setBuffer(myDodgeSound);
 		mySound.play();
@@ -125,17 +122,11 @@ void Player::Update(const float& someDelta)
 		if (myDodgeTimer >= myDodgeInvincibilityTime)
 		{
 			myIsInvincible = false;
-			myHeadVisual.SetColor(sf::Color(255, 255, 255, 255));
-			myBodyVisual.SetColor(sf::Color(255, 255, 255, 255));
-			myWeaponVisual.SetColor(sf::Color(255, 255, 255, 255));
 		}
 
 		if (myDodgeTimer >= myDodgeTime)
 		{
 			myIsDodging = false;
-			myHeadVisual.SetColor(sf::Color(255, 255, 255, 255));
-			myBodyVisual.SetColor(sf::Color(255, 255, 255, 255));
-			myWeaponVisual.SetColor(sf::Color(255, 255, 255, 255));
 		}
 	}
 	else
@@ -150,7 +141,7 @@ void Player::Update(const float& someDelta)
 	// Swing
 	if (in::getM1Pressed() && !myBodyVisual.GetAnimationOn())
 	{
-		RequestHit(PlayerType);
+		RequestHit(myIsPlayer);
 
 		myBodyVisual.PlayAnimationOnce(Animation(myNoArmorSwing, 3, mySwordSwingSpeed));
 		myHeadVisual.PlayAnimationOnce(Animation(myNoHelmetSwing, 3, mySwordSwingSpeed));
@@ -175,6 +166,9 @@ void Player::Update(const float& someDelta)
 
 void Player::Draw(sf::RenderWindow& aWindow)
 {
+	myHeadVisual.SetColor(sf::Color(myVisual.GetColor().r, myVisual.GetColor().g, myVisual.GetColor().b, myIsDodging ? myInvincibilityAlpha : 255));
+	myBodyVisual.SetColor(sf::Color(myVisual.GetColor().r, myVisual.GetColor().g, myVisual.GetColor().b, myIsDodging ? myInvincibilityAlpha : 255));
+	myWeaponVisual.SetColor(sf::Color(myVisual.GetColor().r, myVisual.GetColor().g, myVisual.GetColor().b, myIsDodging ? myInvincibilityAlpha : 255));
 	myBodyVisual.Draw(aWindow, myPosition);
 	myHeadVisual.Draw(aWindow, myPosition);
 	myWeaponVisual.Draw(aWindow, myPosition);

@@ -3,7 +3,7 @@
 
 Enemy::Enemy()
 {
-	myCharacterType = EnemyType;
+	myIsPlayer = false;
 	myHealth = 10;
 	myDamage = 10;
 	mySpeed = 120;

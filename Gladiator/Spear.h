@@ -1,32 +1,28 @@
-#ifndef SPEAR__HEADER
-#define SPEAR_HEADER
+#ifndef SPEAR_H
+#define SPEAR_H
 
-#include "Vector2.h"
-#include "GameObject.h"
 #include "Character.h"
-#include "GameInfo.h"
 
-class Spear : public GameObject
+class Spear :
+	public GameObject
 {
 public:
-
-	Spear(CharacterType aCharactertype, Vector2 aDir);
+	Spear(Vector2 aPosition, Vector2 someMovement);
 	~Spear();
 
-	Vector2 GetDir();
-	void SetDir(Vector2 aDir);
-
-	void Update(const float& someDelta);
-
-	void Draw(sf::RenderWindow& aWindow);
-
-	void RequestMove(Vector2 aMovement);
-	void RequestHit(CharacterType anAllyCharacterType);
+	void Update(const float& someDelta) override;
+	void Draw(sf::RenderWindow& aWindow) override;
 
 private:
-	Vector2 myDir;
+	bool TryMove(Vector2 someMovement);
+
+	sf::Texture myTexture;
+
+	Vector2 myMovement;
+
 	float mySpeed, myDamage;
-	CharacterType myCharactertype;
+
+	bool myIsStuck;
 };
 
 #endif
