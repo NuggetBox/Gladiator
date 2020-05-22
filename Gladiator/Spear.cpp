@@ -1,8 +1,8 @@
 #include "Spear.h"
 
-Spear::Spear(CharacterType aCharactertype, Vector2 aDir) {
+Spear::Spear(bool anIsPlayer, Vector2 aDir) {
 	myHitRadius = 3;
-	myCharactertype = aCharactertype;
+	myIsPlayer = anIsPlayer;
 	myDir = aDir;
 }
 
@@ -15,7 +15,7 @@ void Spear::Update(const float& someDelta) {
 	myDir *= (mySpeed * someDelta);
 	RequestMove(myDir);
 
-	RequestHit(myCharactertype);
+	RequestHit(myIsPlayer);
 }
 
 void Spear::Draw(sf::RenderWindow& aWindow) {
@@ -71,15 +71,11 @@ void Spear::RequestHit(bool anIsPlayer)
 				{
 					Vector2 dir = tempCharacter->GetPosition() - myPosition;
 
-					if (dir.Length() < myHitRange)
+					if (dir.Length() < myHitRadius)
 					{
-						float diff = myVisual.GetRotation() - dir.Angle();
-
-						if (abs(diff) < myHitAngle || abs(diff) + myHitAngle > 360)
-						{
-							tempCharacter->TakeDamage(myDamage);
-							// It's a hit
-						}
+						tempCharacter->TakeDamage(myDamage);
+						// It's a hit
+						
 					}
 				}
 			}
