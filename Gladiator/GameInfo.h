@@ -10,8 +10,11 @@ namespace gameInfo
 	bool getOutOfBounds(Vector2 aNewPosition, float aHitBoxRadius);
 
 	bool getBossIsDead();
-
 	void setBossIsDead(bool anAlive);
+
+	bool getWinButtonPressed();
+	void setWinButton(bool anAlive);
+	bool* getWinButtonBool();
 
 	Vector2 getArenaCenter();
 

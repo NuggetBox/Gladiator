@@ -19,6 +19,13 @@ public:
 	void Draw(sf::RenderWindow& aWindow);
 
 private:
+
+	void BattleBossOne();
+	void BattleBossTwo();
+	void BattleBossThree();
+
+	void OpenSkillAndEquipmentMenu();
+
 	std::vector<GameObject*> myGameObjects;
 
 	std::vector<GUI*> myGUI;
@@ -26,6 +33,9 @@ private:
 	std::vector<GameObject*> SortByLayer(std::vector<GameObject*> someGameObjects);
 
 	std::vector<GUI*> SortByLayer(std::vector<GUI*> someGUI);
+
+	float myDelayTime = 2;
+	float myDelayTimer;
 
 	//GUI* myCrosshair;
 };

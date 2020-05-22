@@ -5,21 +5,29 @@ Game::Game()
 {
 	gameInfo::setGameObjects(&myGameObjects);
 
-	Player* tempPlayer = new Player();
+	// Player
+	/*Player* tempPlayer = new Player();
 	gameInfo::setPlayer(tempPlayer);
-
-	SecondBoss* tempBoss = new SecondBoss();
 	myGameObjects.push_back(tempPlayer);
+
+	// Second boss
+	SecondBoss* tempBoss = new SecondBoss();
 	myGameObjects.push_back(tempBoss);
+
+	// Third boss
 	ThirdBoss* tempThird = new ThirdBoss();
 	myGameObjects.push_back(tempThird);
 
+	// Sand ground
 	sf::Texture tempTexture;
 	tempTexture.loadFromFile("Textures/Sand.png");
 	myGameObjects.push_back(new GameObject({ 1000, 500 }, tempTexture, 0, 5, 0, 0));
 
+	// Gay button
 	tempTexture.loadFromFile("Textures/gmod.png");
-	myGUI.push_back(new GUI(tempTexture, { 900, 320 }, { 10,5 }, "You have to win in the gladiator tournament\n				to get the gay vaccine.", 40, { 400, 200 }, true));
+	myGUI.push_back(new GUI(tempTexture, { 900, 320 }, { 10,5 }, "You have to win in the gladiator tournament\n				to get the gay vaccine.", 40, { 400, 200 }, true));*/
+
+	BattleBossOne();
 }
 
 Game::~Game()
@@ -29,8 +37,23 @@ Game::~Game()
 
 bool Game::Update(const float& someDelta, sf::RenderWindow &aRenderWindow)
 {
-	
+	// Boss has been killed
+	if (gameInfo::getBossIsDead())
+	{
+		gameInfo::setBossIsDead(false);
 
+		sf::Texture tempTexture;
+		tempTexture.loadFromFile("Textures/Ok.png");
+		myGUI.push_back(new GUI(tempTexture, { 900, 320 }, { 10, 5 }, "Congratulations! You Win!", 40, { 400, 200 }, gameInfo::getWinButtonBool(), true));
+	}
+
+	// Win button pressed
+	if (gameInfo::getWinButtonPressed())
+	{
+		gameInfo::setWinButton(false);
+
+		myGameObjects.clear();
+	}
 
 	for (int i = 0; i < myGameObjects.size(); ++i)
 	{
@@ -68,6 +91,62 @@ bool Game::Update(const float& someDelta, sf::RenderWindow &aRenderWindow)
 	return true;
 }
 
+void Game::BattleBossOne()
+{
+	// Sand ground
+	sf::Texture tempTexture;
+	tempTexture.loadFromFile("Textures/Sand.png");
+	myGameObjects.push_back(new GameObject({ 1000, 500 }, tempTexture, 0, 5, 0, 0));
+
+	// Player
+	Player* tempPlayer = new Player();
+	gameInfo::setPlayer(tempPlayer);
+	myGameObjects.push_back(tempPlayer);
+
+	// First boss
+	StartingBoss* tempStartingBoss = new StartingBoss();
+	myGameObjects.push_back(tempStartingBoss);
+}
+
+void Game::BattleBossTwo()
+{
+	// Sand ground
+	sf::Texture tempTexture;
+	tempTexture.loadFromFile("Textures/Sand.png");
+	myGameObjects.push_back(new GameObject({ 1000, 500 }, tempTexture, 0, 5, 0, 0));
+
+	// Player
+	Player* tempPlayer = new Player();
+	gameInfo::setPlayer(tempPlayer);
+	myGameObjects.push_back(tempPlayer);
+
+	// Second boss
+	SecondBoss* tempBoss = new SecondBoss();
+	myGameObjects.push_back(tempBoss);
+}
+
+void Game::BattleBossThree()
+{
+	// Sand ground
+	sf::Texture tempTexture;
+	tempTexture.loadFromFile("Textures/Sand.png");
+	myGameObjects.push_back(new GameObject({ 1000, 500 }, tempTexture, 0, 5, 0, 0));
+
+	// Player
+	Player* tempPlayer = new Player();
+	gameInfo::setPlayer(tempPlayer);
+	myGameObjects.push_back(tempPlayer);
+
+	// Third boss
+	ThirdBoss* tempThird = new ThirdBoss();
+	myGameObjects.push_back(tempThird);
+}
+
+void Game::OpenSkillAndEquipmentMenu()
+{
+
+}
+
 void Game::Draw(sf::RenderWindow& aWindow)
 {
 	myGameObjects = SortByLayer(myGameObjects);
@@ -94,14 +173,14 @@ std::vector<GameObject*> Game::SortByLayer(std::vector<GameObject*> someGameObje
 	{
 		tempNoErrors = true;
 
-		for (int i = 0; 1.0f + i < someGameObjects.size(); ++i)
+		for (int i = 0; (size_t)i + (size_t)1 < someGameObjects.size(); ++i)
 		{
-			if (someGameObjects[i]->GetLayer() > someGameObjects[1.0f + i]->GetLayer())
+			if (someGameObjects[i]->GetLayer() > someGameObjects[(size_t)i + (size_t)1]->GetLayer())
 			{
 				tempNoErrors = false;
 
-				GameObject* tempGameObject = someGameObjects[1.0f + i];
-				someGameObjects[1.0f + i] = someGameObjects[i];
+				GameObject* tempGameObject = someGameObjects[(size_t)i + (size_t)1];
+				someGameObjects[(size_t)i + (size_t)1] = someGameObjects[i];
 				someGameObjects[i] = tempGameObject;
 			}
 		}
@@ -124,14 +203,14 @@ std::vector<GUI*> Game::SortByLayer(std::vector<GUI*> someGUI)
 	{
 		tempNoErrors = true;
 
-		for (int i = 0; 1.0f + i < someGUI.size(); ++i)
+		for (int i = 0; (size_t)i + (size_t)1 < someGUI.size(); ++i)
 		{
-			if (someGUI[i]->GetLayer() > someGUI[1.0f + i]->GetLayer())
+			if (someGUI[i]->GetLayer() > someGUI[(size_t)i + (size_t)1]->GetLayer())
 			{
 				tempNoErrors = false;
 
-				GUI* tempGUI = someGUI[1.0f + i];
-				someGUI[1.0f + i] = someGUI[i];
+				GUI* tempGUI = someGUI[(size_t)i + (size_t)1];
+				someGUI[(size_t)i + (size_t)1] = someGUI[i];
 				someGUI[i] = tempGUI;
 			}
 		}
