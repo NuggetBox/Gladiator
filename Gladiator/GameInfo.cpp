@@ -9,6 +9,7 @@ namespace gameInfo
 		Player* myPlayer;
 		float myArenaRadius = 1080 * 0.5f - 50;
 		Vector2 myArenaCenter = Vector2(1920.0f * 0.5f, 1080.0f * 0.5f);
+		bool myBossIsDead = false;
 	}
 
 	bool getOutOfBounds(Vector2 aNewPosition, float aHitBoxRadius)
@@ -44,5 +45,15 @@ namespace gameInfo
 	void addGameObject(GameObject* aGameObject)
 	{
 		myGameObjects->push_back(aGameObject);
+	}
+
+	bool getBossIsDead()
+	{
+		return myBossIsDead;
+	}
+
+	void setBossIsDead(bool anAlive)
+	{
+		myBossIsDead = anAlive;
 	}
 }
