@@ -2,7 +2,7 @@
 
 Player::Player() : Character()
 {
-	myCharacterType = PlayerType;
+	myIsPlayer = true;
 
 	mySpeed = 250;
 	mySwordSwingSpeed = 0.2f;
@@ -141,7 +141,7 @@ void Player::Update(const float& someDelta)
 	// Swing
 	if (in::getM1Pressed() && !myBodyVisual.GetAnimationOn())
 	{
-		RequestHit(PlayerType);
+		RequestHit(myIsPlayer);
 
 		myBodyVisual.PlayAnimationOnce(Animation(myNoArmorSwing, 3, mySwordSwingSpeed));
 		myHeadVisual.PlayAnimationOnce(Animation(myNoHelmetSwing, 3, mySwordSwingSpeed));

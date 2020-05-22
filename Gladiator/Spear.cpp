@@ -55,7 +55,7 @@ bool Spear::TryMove(Vector2 someMovement)
 		{
 			Character* tempCharacter = (Character*)g;
 
-			if (tempCharacter->GetCharacterType() == PlayerType)
+			if (tempCharacter->GetIsPlayer())
 			{
 				if (!myIsStuck)
 				{
