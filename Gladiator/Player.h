@@ -26,6 +26,7 @@ private:
 	float myDodgeInvincibilityTime;
 	float myDodgeTimer;
 	float myDodgeSpeed;
+	float mySpearTimer, myOriginalSpearTimer;
 	bool myIsDodging;
 	Vector2 myDodgeDirection;
 	

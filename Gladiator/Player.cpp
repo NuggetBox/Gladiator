@@ -12,7 +12,8 @@ Player::Player() : Character()
 	myMaxHealth = 30;
 	myHealth = myMaxHealth;
 	myDamage = 10;
-
+	myOriginalSpearTimer = 1.5f;
+	mySpearTimer = myOriginalSpearTimer;
 	myDodgeTime = 0.1f;
 	myDodgeInvincibilityTime = 0.08f; 
 	myDodgeTimer = 0;
@@ -164,12 +165,14 @@ void Player::Update(const float& someDelta)
 		myWeaponVisual.PlayAnimationOnce(Animation(myStoneSwordSwing, 3, mySwordSwingSpeed));
 	}
 
-	if (in::getM2Pressed() && !myBodyVisual.GetAnimationOn()) 
+	if (in::getM2Pressed() && !myBodyVisual.GetAnimationOn() && mySpearTimer <= 0) 
 	{
 		mySpears.push_back(new Spear(true, (in::getMousePos() - myPosition), myPosition));
 		myBodyVisual.PlayAnimationOnce(Animation(myNoArmorThrow, 3, 0.2f));
 		myHeadVisual.PlayAnimationOnce(Animation(myNoHelmetThrow, 3, 0.2f));
+		mySpearTimer = myOriginalSpearTimer;
 	}
+	mySpearTimer -= 1 * someDelta;
 
 #pragma region Rotate player
 
