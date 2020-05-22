@@ -96,12 +96,12 @@ std::vector<GameObject*> Game::SortByLayer(std::vector<GameObject*> someGameObje
 
 		for (int i = 0; 1.0f + i < someGameObjects.size(); ++i)
 		{
-			if (someGameObjects[i]->GetLayer() > someGameObjects[1.0f + i]->GetLayer())
+			if (someGameObjects[i]->GetLayer() > someGameObjects[(size_t)1 + (size_t)i]->GetLayer())
 			{
 				tempNoErrors = false;
 
-				GameObject* tempGameObject = someGameObjects[1.0f + i];
-				someGameObjects[1.0f + i] = someGameObjects[i];
+				GameObject* tempGameObject = someGameObjects[(size_t)1 + (size_t)i];
+				someGameObjects[(size_t)1 + (size_t)i] = someGameObjects[i];
 				someGameObjects[i] = tempGameObject;
 			}
 		}
@@ -126,12 +126,12 @@ std::vector<GUI*> Game::SortByLayer(std::vector<GUI*> someGUI)
 
 		for (int i = 0; 1.0f + i < someGUI.size(); ++i)
 		{
-			if (someGUI[i]->GetLayer() > someGUI[1.0f + i]->GetLayer())
+			if (someGUI[i]->GetLayer() > someGUI[(size_t)1 + (size_t)i]->GetLayer())
 			{
 				tempNoErrors = false;
 
-				GUI* tempGUI = someGUI[1.0f + i];
-				someGUI[1.0f + i] = someGUI[i];
+				GUI* tempGUI = someGUI[(size_t)1 + (size_t)i];
+				someGUI[(size_t)1 + (size_t)i] = someGUI[i];
 				someGUI[i] = tempGUI;
 			}
 		}
