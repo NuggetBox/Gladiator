@@ -4,7 +4,7 @@
 #define _USE_MATH_DEFINES
 
 #include "Character.h"
-//#include "Spear.h"
+#include "Spear.h"
 #include <cmath>
 
 class Player 

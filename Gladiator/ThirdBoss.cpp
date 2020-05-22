@@ -5,7 +5,7 @@ ThirdBoss::ThirdBoss()
 	myIsPlayer = false;
 	myMaxHealth = 100;
 	myHealth = myMaxHealth;
-	myPlayer = gameInfo::getPlayer();
+	myPlayer = playerInfo::getPlayer();
 	myRegularSpeed = 150;
 	myPickupSpeed = 300;
 	mySpeed = myRegularSpeed;

@@ -2,8 +2,7 @@
 #define GAMEINFO_HEADER
 
 #include <vector>
-#include "Player.h"
-#include "GameObject.h"	
+#include "GameObject.h"
 
 namespace gameInfo
 {
@@ -20,11 +19,11 @@ namespace gameInfo
 
 	std::vector<GameObject*>* getGameObjects();
 
-	Player* getPlayer();
+	//Player* getPlayer();
 
 	void setGameObjects(std::vector<GameObject*>* aPointerToTheGameObjects);
 
-	void setPlayer(Player* aPointerToPlayer);
+	//void setPlayer(Player* aPointerToPlayer);
 
 	void addGameObject(GameObject* aGameObject);
 }

@@ -2,6 +2,7 @@
 #define BOSS_HEADER
 
 #include "GameInfo.h"
+#include "PlayerInfo.h"
 #include "Character.h"
 
 class Boss

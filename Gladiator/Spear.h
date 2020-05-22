@@ -1,11 +1,8 @@
 #ifndef SPEAR__HEADER
 #define SPEAR_HEADER
 
-#include "Vector2.h"
-#include "GameObject.h"
 #include "Character.h"
 #include "GameInfo.h"
-
 
 class Spear : public GameObject
 {

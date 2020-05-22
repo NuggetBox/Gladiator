@@ -145,6 +145,7 @@
     <ClCompile Include="GMath.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="PlayerInfo.cpp" />
     <ClCompile Include="Ray.cpp" />
     <ClCompile Include="SecondBoss.cpp" />
     <ClCompile Include="Spear.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="GMath.h" />
     <ClInclude Include="GUI.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="PlayerInfo.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="SecondBoss.h" />
     <ClInclude Include="Spear.h" />
