@@ -200,10 +200,12 @@ void Player::Draw(sf::RenderWindow& aWindow)
 	myBodyVisual.Draw(aWindow, myPosition);
 	myHeadVisual.Draw(aWindow, myPosition);
 	myWeaponVisual.Draw(aWindow, myPosition);
-	//for (int i = 0; i < mySpears.size(); i++)
-	//{
-	//	mySpears[i]->Draw(aWindow);
-	//}
+
+
+	for (int i = 0; i < mySpears.size(); i++)
+	{
+		mySpears[i]->Draw(aWindow);
+	}
 
 
 	sf::Sprite tempSprite;

@@ -38,7 +38,7 @@ private:
 
 	sf::Texture myHealthBarTexture;
 
-	//std::vector<Spear*> mySpears;
+	std::vector<Spear*> mySpears;
 
 	sf::Texture
 		myNoHelmetIdle, myIronHelmetIdle, myDiamondHelmetIdle,
