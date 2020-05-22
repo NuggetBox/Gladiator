@@ -1,33 +1,28 @@
-#ifndef BOSS2SPEAR__HEADER
+#ifndef BOSS2SPEAR_HEADER
 #define BOSS2SPEAR_HEADER
 
-#include "Vector2.h"
-#include "GameObject.h"
 #include "Character.h"
-#include "GameInfo.h"
 
-class Boss2Spear : public GameObject
+class Boss2Spear :
+	public GameObject
 {
 public:
+	Boss2Spear(Vector2 aPosition, Vector2 someMovement);
+	~Boss2Spear();
 
-	Spear(CharacterType aCharactertype, Vector2 aDir);
-	~Spear();
-
-	Vector2 GetDir();
-	void SetDir(Vector2 aDir);
-
-	void Update(const float& someDelta);
-
-	void Draw(sf::RenderWindow& aWindow);
-
-	void RequestMove(Vector2 aMovement);
-	void RequestHit(CharacterType anAllyCharacterType);
+	void Update(const float& someDelta) override;
+	void Draw(sf::RenderWindow& aWindow) override;
 
 private:
-	Vector2 myDir;
+	bool TryMove(Vector2 someMovement);
+
+	sf::Texture myTexture;
+
+	Vector2 myMovement;
+
 	float mySpeed, myDamage;
-	CharacterType myCharactertype;
+
+	bool myIsStuck;
 };
 
 #endif
-
