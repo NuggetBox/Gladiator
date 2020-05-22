@@ -151,6 +151,6 @@ void ThirdBoss::ThrowSpear()
 {
 	Vector2 tempMovement = myPlayer->GetPosition() - myPosition;
 	tempMovement.Normalize();
-	mySpear = new Boss2Spear(myPosition, tempMovement);
+	mySpear = new Boss3Spear(myPosition, tempMovement);
 	gameInfo::addGameObject(mySpear);
 }

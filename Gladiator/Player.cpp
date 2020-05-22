@@ -167,7 +167,7 @@ void Player::Update(const float& someDelta)
 	if (in::getM2Pressed() && !myBodyVisual.GetAnimationOn()) 
 	{
 		//mySpears.push_back(new Spear(true, (in::getMousePos() - myPosition), myPosition));
-		//myBodyVisual.PlayAnimationOnce(Animation(myNoArmorThrow, 3, 0.2f));
+		myBodyVisual.PlayAnimationOnce(Animation(myNoArmorThrow, 3, 0.2f));
 		myHeadVisual.PlayAnimationOnce(Animation(myNoHelmetThrow, 3, 0.2f));
 	}
 
