@@ -282,10 +282,7 @@ bool Game::Update(const float& someDelta, sf::RenderWindow &aRenderWindow)
 
 void Game::BattleBossOne()
 {
-	// Sand ground
-	sf::Texture tempTexture;
-	tempTexture.loadFromFile("Textures/Sand.png");
-	myGameObjects.push_back(new GameObject({ 1000, 500 }, tempTexture, 0, 5, 0, 0));
+	SpawnSand();
 
 	// Player
 	Player* tempPlayer = new Player();
@@ -299,10 +296,7 @@ void Game::BattleBossOne()
 
 void Game::BattleBossTwo()
 {
-	// Sand ground
-	sf::Texture tempTexture;
-	tempTexture.loadFromFile("Textures/Sand.png");
-	myGameObjects.push_back(new GameObject({ 1000, 500 }, tempTexture, 0, 5, 0, 0));
+	SpawnSand();
 
 	// Player
 	Player* tempPlayer = new Player();
@@ -316,10 +310,7 @@ void Game::BattleBossTwo()
 
 void Game::BattleBossThree()
 {
-	// Sand ground
-	sf::Texture tempTexture;
-	tempTexture.loadFromFile("Textures/Sand.png");
-	myGameObjects.push_back(new GameObject({ 1000, 500 }, tempTexture, 0, 5, 0, 0));
+	SpawnSand();
 
 	// Player
 	Player* tempPlayer = new Player();
@@ -450,4 +441,11 @@ std::vector<GUI*> Game::SortByLayer(std::vector<GUI*> someGUI)
 	}
 
 	return someGUI;
+}
+
+void Game::SpawnSand()
+{
+	sf::Texture tempTexture;
+	tempTexture.loadFromFile("Textures/Sand.png");
+	myGameObjects.push_back(new GameObject({ 1000, 500 }, tempTexture, 0, 5, 0, 0));
 }
