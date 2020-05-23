@@ -4,14 +4,18 @@ Player::Player() : Character()
 {
 	myIsPlayer = true;
 
+	myHelmetLv = abilityInfo::getPlayerHelmetLevel();
+	myArmorLv = abilityInfo::getPlayerArmorLevel();
+	mySwordLv = abilityInfo::getPlayerSwordLevel();
+
 	mySpeed = 250;
 	mySwordSwingSpeed = 0.2f;
 	myLayer = 10;
 	myPosition = { 1000, 500 };
 	myHitRadius = 10;
-	myMaxHealth = 30;
+	myMaxHealth = 30 * (myArmorLv + myHelmetLv);
 	myHealth = myMaxHealth;
-	myDamage = 10;
+	myDamage = 10 * (mySwordLv);
 	myOriginalSpearTimer = 1.5f;
 	mySpearTimer = myOriginalSpearTimer;
 	myDodgeTime = 0.1f;
@@ -66,9 +70,13 @@ Player::Player() : Character()
 	myDiamondArmorThrow.loadFromFile("Textures/Player/DiamondArmorThrow.png");
 #pragma endregion
 
-	myBodyVisual = Visual(myNoArmor, tempRotation, { tempScale, tempScale }, { tempXOrigin * myNoArmor.getSize().x, tempYOrigin * myNoArmor.getSize().y });
-	myHeadVisual = Visual(myNoHelmet, tempRotation, { tempScale, tempScale }, { tempXOrigin * myNoHelmet.getSize().x, tempYOrigin * myNoHelmet.getSize().y });
-	myWeaponVisual = Visual(myStoneSword, tempRotation, { tempScale, tempScale }, { tempXOrigin * myStoneSword.getSize().x, tempYOrigin * myStoneSword.getSize().y });
+	sf::Texture tempHelmet = myHelmetLv == 1 ? myNoHelmet : (myHelmetLv == 2 ? myIronHelmet : myDiamondHelmet );
+	sf::Texture tempArmor = myArmorLv == 1 ? myNoArmor : (myArmorLv == 2 ? myIronArmor : myDiamondArmor);
+	sf::Texture tempSword = mySwordLv == 1 ? myStoneSword : (mySwordLv == 2 ? myIronSword : myDiamondSword);
+
+	myHeadVisual = Visual(tempHelmet, tempRotation, { tempScale, tempScale }, { tempXOrigin * tempHelmet.getSize().x, tempYOrigin * tempHelmet.getSize().y });
+	myBodyVisual = Visual(tempArmor, tempRotation, { tempScale, tempScale }, { tempXOrigin * tempArmor.getSize().x, tempYOrigin * tempArmor.getSize().y });
+	myWeaponVisual = Visual(tempSword, tempRotation, { tempScale, tempScale }, { tempXOrigin * tempSword.getSize().x, tempYOrigin * tempSword.getSize().y });
 }
 
 Player::~Player()
@@ -162,16 +170,18 @@ void Player::Update(const float& someDelta)
 	{
 		RequestHit(myIsPlayer);
 
-		myBodyVisual.PlayAnimationOnce(Animation(myNoArmorSwing, 3, mySwordSwingSpeed));
-		myHeadVisual.PlayAnimationOnce(Animation(myNoHelmetSwing, 3, mySwordSwingSpeed));
-		myWeaponVisual.PlayAnimationOnce(Animation(myStoneSwordSwing, 3, mySwordSwingSpeed));
+		myHeadVisual.PlayAnimationOnce(Animation(myHelmetLv == 1 ? myNoHelmetSwing : (myHelmetLv == 2 ? myIronHelmetSwing : myDiamondHelmetSwing), 3, mySwordSwingSpeed));
+		myBodyVisual.PlayAnimationOnce(Animation(myArmorLv == 1 ? myNoArmorSwing : (myArmorLv == 2 ? myIronArmorSwing : myDiamondArmorSwing), 3, mySwordSwingSpeed));
+		myWeaponVisual.PlayAnimationOnce(Animation(mySwordLv == 1 ? myStoneSwordSwing : (mySwordLv == 2 ? myIronSwordSwing : myDiamondSwordSwing), 3, mySwordSwingSpeed));
 	}
 
+	// Throw spear
 	if (in::getM2Pressed() && !myBodyVisual.GetAnimationOn() && mySpearTimer <= 0) 
 	{
 		mySpears.push_back(new Spear(true, (in::getMousePos() - myPosition), myPosition));
-		myBodyVisual.PlayAnimationOnce(Animation(myNoArmorThrow, 3, 0.2f));
-		myHeadVisual.PlayAnimationOnce(Animation(myNoHelmetThrow, 3, 0.2f));
+		myHeadVisual.PlayAnimationOnce(Animation(myHelmetLv == 1 ? myNoHelmetThrow : (myHelmetLv == 2 ? myIronHelmetThrow : myDiamondHelmetThrow), 3, 0.2f));
+		myBodyVisual.PlayAnimationOnce(Animation(myArmorLv == 1 ? myNoArmorThrow : (myArmorLv == 2 ? myIronArmorThrow : myDiamondArmorThrow), 3, 0.2f));
+		myWeaponVisual.PlayAnimationOnce(Animation(sf::Texture(), 1, 0.2f));
 		mySpearTimer = myOriginalSpearTimer;
 	}
 	mySpearTimer -= 1 * someDelta;

@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbilityInfo.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Boss3Spear.cpp" />
     <ClCompile Include="ConditionsInfo.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbilityInfo.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Boss3Spear.h" />
     <ClInclude Include="ConditionsInfo.h" />

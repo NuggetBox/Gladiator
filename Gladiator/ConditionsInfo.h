@@ -3,19 +3,33 @@
 
 namespace conditionsInfo
 {
-	bool getBossIsDead();
-	void setBossIsDead(bool anAlive);
+	bool* accessBossIsDead();
 
-	bool getLoseButtonPressed();
-	void setLoseButton(bool anAlive);
-	bool* getLoseButtonBool();
+	bool* accessLoseButton();
 
-	bool getPlayerIsDead();
-	void setPlayerIsDead(bool anAlive);
+	bool* accessPlayerIsDead();
 
-	bool getWinButtonPressed();
-	void setWinButton(bool anAlive);
-	bool* getWinButtonBool();
+	bool* accessWinButton();
+
+	bool* accessIronHelmet();
+
+	bool* accessIronArmor();
+
+	bool* accessIronSword();
+
+	bool* accessDiamondHelmet();
+
+	bool* accessDiamondArmor();
+
+	bool* accessDiamondSword();
+
+	bool* accessDoneBuying();
+
+	bool* accessFacingChariotFirst();
+
+	bool* accessFacingRetiariusFirst();
+
+	bool* accessVictory();
 }
 
 #endif

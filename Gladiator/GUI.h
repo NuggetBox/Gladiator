@@ -21,6 +21,8 @@ public:
 	int GetLayer();
 	bool GetDead();
 
+	void Kill();
+
 	void SetPosition(Vector2 aPosition);
 	void SetOrigin(Vector2 anOrigin);
 	void SetScale(Vector2 aScale);
@@ -32,17 +34,13 @@ private:
 	bool MouseAbove();
 
 	bool* myBoolToChange;
-	bool myHasEffect;
-
-	bool myImageVisible;
-	bool myTextVisible;
+	bool myHasEffect = false;
 	
-	bool myIsClickable;
-	bool mySelfDestruct;
+	bool mySelfDestruct = false;
 
-	int myLayer;
+	int myLayer = 100;
 
-	bool myIsDead;
+	bool myIsDead = false;
 
 	sf::Texture myTexture;
 	Vector2 myPosition = { 0,0 };

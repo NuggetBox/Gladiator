@@ -150,3 +150,8 @@ bool GUI::GetDead()
 {
 	return myIsDead;
 }
+
+void GUI::Kill()
+{
+	myIsDead = true;
+}

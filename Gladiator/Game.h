@@ -9,6 +9,7 @@
 #include "ThirdBoss.h"
 #include "GUI.h"
 #include "ConditionsInfo.h"
+#include "AbilityInfo.h"
 
 class Game
 {
@@ -22,12 +23,19 @@ public:
 private:
 
 	int myLevel;
+	int myItemPointsLeft;
+	bool myFacedChariotFirst = false;
+
+	GUI myIronHelmetButton, myIronArmorButton, myIronSwordButton, myDiamondHelmetButton, myDiamondArmorButton, myDiamondSwordButton, myDoneBuyingButton;
+
+	GUI myChooseBossText, myChariotButton, myRetiariusButton;
 
 	void BattleBossOne();
 	void BattleBossTwo();
 	void BattleBossThree();
 
 	void OpenSkillAndEquipmentMenu();
+	void OpenChooseBossMenu();
 
 	std::vector<GameObject*> myGameObjects;
 

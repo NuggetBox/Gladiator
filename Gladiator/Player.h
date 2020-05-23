@@ -6,6 +6,7 @@
 #include "Character.h"
 #include "Spear.h"
 #include <cmath>
+#include "AbilityInfo.h"
 
 class Player 
 	: public Character
@@ -32,8 +33,10 @@ private:
 	
 	int myInvincibilityAlpha;
 
-	Visual myBodyVisual;
+	int  myHelmetLv, myArmorLv, mySwordLv;
+
 	Visual myHeadVisual;
+	Visual myBodyVisual;
 	Visual myWeaponVisual;
 
 	sf::Texture myHealthBarTexture;

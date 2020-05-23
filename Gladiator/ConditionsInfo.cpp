@@ -8,59 +8,44 @@ namespace conditionsInfo
 		bool myPlayerIsDead = false;
 		bool myWinButtonPressed = false;
 		bool myLoseButtonPressed = false;
+		bool myIronHelmetPressed = false;
+		bool myIronArmorPressed = false;
+		bool myIronSwordPressed = false;
+		bool myDiamondHelmetPressed = false;
+		bool myDiamondArmorPressed = false;
+		bool myDiamondSwordPressed = false;
+		bool myDoneBuying = false;
+		bool myFacingChariotFirst = false;
+		bool myFacingRetiariusFirst = false;
+		bool myVictory = false;
 	}
 
 
-	bool getPlayerIsDead()
-	{
-		return myPlayerIsDead;
-	}
+	bool* accessPlayerIsDead() { return &myPlayerIsDead; }
 
-	void setPlayerIsDead(bool anAlive)
-	{
-		myPlayerIsDead = anAlive;
-	}
+	bool* accessLoseButton() { return &myLoseButtonPressed; }
 
+	bool* accessBossIsDead() { return &myBossIsDead; }
 
-	bool getLoseButtonPressed()
-	{
-		return myLoseButtonPressed;
-	}
+	bool* accessWinButton() { return &myWinButtonPressed; }
 
-	void setLoseButton(bool anAlive)
-	{
-		myLoseButtonPressed = anAlive;
-	}
+	bool* accessIronHelmet() { return &myIronHelmetPressed; }
 
-	bool* getLoseButtonBool()
-	{
-		return &myLoseButtonPressed;
-	}
+	bool* accessIronArmor() { return &myIronArmorPressed; }
 
+	bool* accessIronSword() { return &myIronSwordPressed; }
 
-	bool getBossIsDead()
-	{
-		return myBossIsDead;
-	}
+	bool* accessDiamondHelmet() { return &myDiamondHelmetPressed; }
 
-	void setBossIsDead(bool anAlive)
-	{
-		myBossIsDead = anAlive;
-	}
+	bool* accessDiamondArmor() { return &myDiamondArmorPressed; }
 
+	bool* accessDiamondSword() { return &myDiamondSwordPressed; }
 
-	bool getWinButtonPressed()
-	{
-		return myWinButtonPressed;
-	}
+	bool* accessDoneBuying() { return &myDoneBuying; }
 
-	void setWinButton(bool anAlive)
-	{
-		myWinButtonPressed = anAlive;
-	}
+	bool* accessFacingChariotFirst() { return &myFacingChariotFirst; }
 
-	bool* getWinButtonBool()
-	{
-		return &myWinButtonPressed;
-	}
+	bool* accessFacingRetiariusFirst() { return &myFacingRetiariusFirst; }
+
+	bool* accessVictory() { return &myVictory; }
 }

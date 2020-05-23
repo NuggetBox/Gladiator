@@ -128,11 +128,11 @@ bool Character::TakeDamage(int someDamage)
 
 		if (!myIsPlayer && !imFuckingDead)
 		{
-			conditionsInfo::setBossIsDead(true);
+			*conditionsInfo::accessBossIsDead() = true;
 		}
 		else if (myIsPlayer && !imFuckingDead)
 		{
-			conditionsInfo::setPlayerIsDead(true);
+			*conditionsInfo::accessPlayerIsDead() = true;
 		}
 
 		imFuckingDead = true;
