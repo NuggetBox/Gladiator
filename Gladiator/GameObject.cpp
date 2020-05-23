@@ -6,7 +6,7 @@ GameObject::GameObject(Vector2 aPosition, sf::Texture aTexture, float aRotation,
 	myLayer = aLayer;
 	myHitRadius = aHitBox;
 	myIsCharacter = false;
-	imFuckingDead = false;
+	myIsDead = false;
 
 	myVisual = Visual(aTexture, aRotation, { aScale, aScale }, { 0.5f * aTexture.getSize().x, 0.5f * aTexture.getSize().y });
 }

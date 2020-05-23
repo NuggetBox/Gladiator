@@ -129,7 +129,7 @@ void ThirdBoss::Update(const float& someDelta)
 			{
 				myPickupTimer = 0;
 				myVisual.SetTexture(mySpearTexture);
-				mySpear->imFuckingDead = true;
+				mySpear->myIsDead = true;
 				mySpear = NULL;
 				mySpeed = myRegularSpeed;
 				myState = Moving;

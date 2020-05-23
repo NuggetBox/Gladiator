@@ -3,7 +3,7 @@
 
 Boss3Spear::Boss3Spear(Vector2 aPosition, Vector2 someMovement)
 {
-	imFuckingDead = false;
+	myIsDead = false;
 	myPosition = aPosition;
 	myTexture.loadFromFile("Textures/spear.png");
 	myVisual = Visual(myTexture, 0, Vector2(5, 5), Vector2(myTexture.getSize().x * 0.5f, myTexture.getSize().y * 0.5f));

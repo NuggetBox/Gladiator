@@ -4,7 +4,7 @@ Spear::Spear(bool anIsPlayer, Vector2 aDir, Vector2 aStartPos)
 {
 	myHitRadius = 50;
 	myIsPlayer = anIsPlayer;
-	imFuckingDead = false;
+	myIsDead = false;
 	myDir = aDir;
 	mySpeed = 1000;
 	myDamage = 5;
@@ -51,7 +51,7 @@ void Spear::RequestMove(Vector2 aMovement)
 
 	if (gameInfo::getOutOfBounds(myPosition, myHitRadius))
 	{
-		imFuckingDead = true;
+		myIsDead = true;
 	}
 
 	//for (GameObject* g : *tempGameObjects)
@@ -86,7 +86,7 @@ void Spear::RequestHit(bool anIsPlayer)
 					if (dir.Length() < myHitRadius)
 					{
 						tempCharacter->TakeDamage(myDamage);
-						imFuckingDead = true;
+						myIsDead = true;
 						// It's a hit	
 					}
 				}

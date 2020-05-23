@@ -26,7 +26,7 @@ Player::Player() : Character()
 	myDodgeDirection = { 0, 0 };
 	myIsInvincible = false;
 	myInvincibilityAlpha = 100;
-	imFuckingDead = false;
+	myIsDead = false;
 
 	float tempXOrigin = 0.5f;
 	float tempYOrigin = 0.7f;
@@ -93,7 +93,7 @@ void Player::Update(const float& someDelta)
 
 	for (int i = 0; i < mySpears.size(); i++)
 	{
-		if (mySpears[i]->imFuckingDead == true)
+		if (mySpears[i]->myIsDead == true)
 		{
 			mySpears.erase(mySpears.begin() + i);
 		}
