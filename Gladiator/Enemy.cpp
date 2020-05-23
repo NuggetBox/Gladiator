@@ -14,7 +14,7 @@ Enemy::Enemy()
 	myLayer = 9;
 	myHitRadius = 10;
 	myIsCharacter = true;
-	imFuckingDead = false;
+	myIsDead = false;
 	
 	sf::Texture tempTex;
 	tempTex.loadFromFile("Textures/gmod.png");

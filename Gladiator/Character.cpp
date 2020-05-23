@@ -126,16 +126,16 @@ bool Character::TakeDamage(int someDamage)
 	{
 		myHealth = 0;
 
-		if (!myIsPlayer && !imFuckingDead)
+		if (!myIsPlayer && !myIsDead)
 		{
 			*conditionsInfo::accessBossIsDead() = true;
 		}
-		else if (myIsPlayer && !imFuckingDead)
+		else if (myIsPlayer && !myIsDead)
 		{
 			*conditionsInfo::accessPlayerIsDead() = true;
 		}
 
-		imFuckingDead = true;
+		myIsDead = true;
 
 		return true;
 	}

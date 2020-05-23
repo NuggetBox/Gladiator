@@ -246,7 +246,7 @@ bool Game::Update(const float& someDelta, sf::RenderWindow &aRenderWindow)
 
 	for (int i = 0; i < myGameObjects.size(); ++i)
 	{
-		if (myGameObjects[i]->imFuckingDead)
+		if (myGameObjects[i]->myIsDead)
 		{
 			myGameObjects.erase(myGameObjects.begin() + i);
 		}

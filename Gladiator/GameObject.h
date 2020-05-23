@@ -23,7 +23,7 @@ public:
 	float GetHitRadius();
 	bool GetIsCharacter();
 
-	bool imFuckingDead;
+	bool myIsDead;
 
 protected:
 	Visual myVisual;

@@ -49,7 +49,7 @@ void SecondBoss::Update(const float& someDelta)
 
 	for (int i = 0; i < mySpears.size(); i++)
 	{
-		if (mySpears[i]->imFuckingDead == true)
+		if (mySpears[i]->myIsDead == true)
 		{
 			mySpears.erase(mySpears.begin() + i);
 		}
