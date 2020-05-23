@@ -31,6 +31,7 @@ private:
 	int myChargeSpeed;
 	float myRotation, myOriginalHealth;
 	float myStunTimer, myIdleTimer;
+	bool myHasAttacked;
 	int myHits;
 	States myBossStates;
 };

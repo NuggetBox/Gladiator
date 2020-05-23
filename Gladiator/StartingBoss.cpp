@@ -15,8 +15,9 @@ StartingBoss::StartingBoss()
 	myRotation = 0;
 	//myVisual = Visual(myTexture, myRotation, myScale, myOrigin);
 	myVisual = Visual(myTexture, myRotation, { 5, 5 }, { 0.5f * myTexture.getSize().x, 0.5f * myTexture.getSize().y });
-	myHitRadius = 10;
+	myHitRadius = 100;
 	myHits = 0;
+	myHasAttacked = false;
 	myIsInvincible = true;
 }
 
@@ -54,9 +55,10 @@ void StartingBoss::Attack(const float& someDelta)
 {
 	myVisual.SetColor(sf::Color(0,255,255,255));
 
-	if (myPosition.Distance(myPlayer->GetPosition()) < myHitRadius)
+	if (myPosition.Distance(myPlayer->GetPosition()) <= myHitRadius && myHasAttacked == false)
 	{
 		myPlayer->TakeDamage(10);
+		myHasAttacked = true;
 	}
 
 
@@ -72,6 +74,7 @@ void StartingBoss::Attack(const float& someDelta)
 		else 
 		{
 			myHits++;
+			myHasAttacked = false;
 			myMove = (myPlayer->GetPosition() - myPosition);
 			myMove.Normalize();
 			myRotation = myMove.Angle();
