@@ -156,7 +156,6 @@
     <ClCompile Include="Visual.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Boss.cpp" />
-    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameInfo.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -181,7 +180,6 @@
     <ClInclude Include="Visual.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Boss.h" />
-    <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameInfo.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Player.h" />

@@ -1,3 +1,4 @@
+// Används ej, Måns skrev den men det visade sig att vi inte behövde den.
 #include "Ray.h"
 
 Ray::Ray()
