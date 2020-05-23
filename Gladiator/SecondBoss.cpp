@@ -13,7 +13,7 @@ SecondBoss::SecondBoss()
 	myAttackOriginalValueTimer = 1.3f;
 	myAttackTimer = myAttackOriginalValueTimer;
 	myPosition = Vector2(960, 150);
-	myHitRadius = 10;
+	myHitRadius = 100;
 	myTexture.loadFromFile("Textures/Boss/hastavagn.png");
 	myVisual = Visual(myTexture, myRotation, { 0.3f, 0.3f }, { 0.5f * myTexture.getSize().x, 0.5f * myTexture.getSize().y });
 

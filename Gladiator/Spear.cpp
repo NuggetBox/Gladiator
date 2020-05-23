@@ -2,7 +2,7 @@
 
 Spear::Spear(bool anIsPlayer, Vector2 aDir, Vector2 aStartPos) 
 {
-	myHitRadius = 20;
+	myHitRadius = 50;
 	myIsPlayer = anIsPlayer;
 	imFuckingDead = false;
 	myDir = aDir;
